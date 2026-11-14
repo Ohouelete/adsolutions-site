@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AD SOLUTIONS — Sites web, applications web et mobiles au Bénin</title>
   <meta name="description" content="AD SOLUTIONS conçoit et développe des sites web, des applications web et des applications mobiles sur mesure, du design à l'hébergement. Équipe fullstack basée à Cotonou, au service de clients au Bénin et à l'international. Devis gratuit sous 24 h.">
-  <meta property="og:title" content="AD SOLUTIONS — Sites, applications web et mobiles sur mesure">
-  <meta property="og:description" content="Équipe de développement fullstack à Cotonou : sites web, applications web, applications mobiles, hébergement et maintenance. Devis gratuit sous 24 h.">
+  <meta property="og:title" content="AD SOLUTIONS — Sites web, applications web et mobiles au Bénin">
+  <meta property="og:description" content="AD SOLUTIONS conçoit et développe des sites web, des applications web et des applications mobiles sur mesure, du design à l'hébergement. Équipe fullstack basée à Cotonou, au service de clients au Bénin et à l'international. Devis gratuit sous 24 h.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="realisations/thalias-traiteur.jpg">
   <meta name="theme-color" content="#0F1B2D">
@@ -32,7 +32,7 @@
   <!-- Curseur contextuel (« Visiter », « Démarrer ») : souris uniquement -->
   <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
 
-  <!-- ===== EN-TÊTE : bandeau d'annonce + Pill Nav ===== -->
+  <!-- ===== EN-TÊTE : bandeau d'annonce + Pill Nav (identique sur toutes les pages) ===== -->
   <header class="header" id="top">
     <a class="announce" href="#audit">
       <span class="announce__tag mono">Offert</span>
@@ -47,14 +47,12 @@
       <nav class="nav" id="nav" aria-label="Navigation principale">
         <div class="nav__pill">
           <span class="nav__indicator" aria-hidden="true"></span>
-          <a href="#realisations" data-swap>Réalisations</a>
-          <a href="#services" data-swap>Services</a>
-          <a href="#stack" data-swap>Technologies</a>
-          <a href="#methode" data-swap>Méthode</a>
-          <a href="#offres" data-swap>Offres</a>
-          <a href="#apropos" data-swap>À propos</a>
+          <a href="realisations.html" data-swap>Réalisations</a>
+          <a href="services.html" data-swap>Services</a>
+          <a href="offres.html" data-swap>Offres</a>
+          <a href="a-propos.html" data-swap>À propos</a>
         </div>
-        <a href="#contact" class="btn btn--primary btn--sm nav__cta" data-magnet>Démarrer un projet</a>
+        <a href="contact.html" class="btn btn--primary btn--sm nav__cta" data-magnet>Démarrer un projet</a>
       </nav>
       <div class="header__actions">
         <!-- Bouton de thème : chaque clic passe au suivant (Nuit → Espresso → Sable → Nuit) -->
@@ -99,7 +97,7 @@
           </p>
 
           <div class="hero__actions reveal">
-            <a href="#contact" class="btn btn--primary btn--lg btn--glow" data-magnet data-spark>
+            <a href="contact.html" class="btn btn--primary btn--lg btn--glow" data-magnet data-spark>
               <span>Démarrer mon projet</span>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
@@ -164,12 +162,12 @@
             <span class="hw__text"><b>Thalia's Traiteur</b><small>Site vitrine + commande · Québec</small></span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
           </a>
-          <a class="hw" href="#realisations">
+          <a class="hw" href="realisations/marck-land.html">
             <span class="hw__thumb hw__thumb--a" aria-hidden="true"><i></i></span>
             <span class="hw__text"><b>Marck-Land</b><small>Portfolio personnel</small></span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
           </a>
-          <a class="hw" href="#realisations">
+          <a class="hw" href="realisations/blog.html">
             <span class="hw__thumb hw__thumb--b" aria-hidden="true"><i></i></span>
             <span class="hw__text"><b>Le Blog</b><small>Blog et articles</small></span><!-- TODO nom exact du blog -->
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
@@ -230,23 +228,23 @@
             <ul class="case__features">
               <li>Design sur mesure</li><li>Commande en ligne</li><li>Responsive mobile</li><li>Avis clients</li><li>WhatsApp intégré</li>
             </ul>
-            <a class="link-arrow" href="https://thaliastraiteur.com/" target="_blank" rel="noopener">
-              <span data-swap>Voir le site en ligne</span>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
-            </a>
+            <div class="case__links">
+              <a class="link-arrow" href="realisations/thalias-traiteur.html"><span data-swap>Lire l'étude de cas</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="link-arrow link-arrow--muted" href="https://thaliastraiteur.com/" target="_blank" rel="noopener"><span data-swap>Voir le site en ligne</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            </div>
           </div>
         </article>
 
         <!--
           Autres projets. Pour chacun :
-          - remplacer href="#" par l'adresse du site (tant que c'est "#", le lien est masqué automatiquement) ;
+          - remplacer href="#" du lien « Voir le site » par l'adresse du site (tant que c'est "#", ce lien est masqué automatiquement) ;
           - pour une vraie capture : remplacer le bloc <div class="mini">…</div>
             par <img src="realisations/nom.jpg" alt="Capture du site …" width="1200" height="750" loading="lazy">
-            (image 1200 × 750 conseillée).
+            (image 1200 × 750 conseillée), ici et dans la page de l'étude de cas.
         -->
         <div class="work">
           <article class="work__item reveal">
-            <a class="work__media" href="#" target="_blank" rel="noopener" data-cursor="Visiter" aria-label="Voir le portfolio Marck-Land"><!-- TODO lien -->
+            <a class="work__media" href="realisations/marck-land.html" data-cursor="Découvrir" aria-label="Étude de cas : Marck-Land">
               <div class="mini mini--portfolio" aria-hidden="true">
                 <div class="mini__bar"><i></i><i></i><i></i><span>marck-land</span></div>
                 <div class="mini__body">
@@ -261,12 +259,15 @@
               <div class="case__tags"><span class="tag">Site web</span><span class="tag">Portfolio</span></div>
               <h3>Marck-Land</h3>
               <p>Un portfolio personnel pour présenter un parcours, des compétences et des projets, avec un moyen simple d'entrer en contact.</p>
-              <a class="link-arrow" href="#" target="_blank" rel="noopener" data-project-link>Voir le site <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><!-- TODO lien -->
+              <div class="case__links">
+                <a class="link-arrow" href="realisations/marck-land.html">Étude de cas <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a class="link-arrow link-arrow--muted" href="#" target="_blank" rel="noopener" data-project-link>Voir le site <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><!-- TODO lien -->
+              </div>
             </div>
           </article>
 
           <article class="work__item reveal">
-            <a class="work__media" href="#" target="_blank" rel="noopener" data-cursor="Visiter" aria-label="Voir le blog"><!-- TODO lien -->
+            <a class="work__media" href="realisations/blog.html" data-cursor="Découvrir" aria-label="Étude de cas : le blog">
               <div class="mini mini--blog" aria-hidden="true">
                 <div class="mini__bar"><i></i><i></i><i></i><span>blog</span></div>
                 <div class="mini__body">
@@ -280,11 +281,14 @@
               <div class="case__tags"><span class="tag">Site web</span><span class="tag">Blog</span></div>
               <h3>Le Blog</h3><!-- TODO nom exact du blog -->
               <p>Un blog pour publier des articles, les classer par thème et les rendre agréables à lire sur téléphone comme sur ordinateur.</p>
-              <a class="link-arrow" href="#" target="_blank" rel="noopener" data-project-link>Voir le site <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><!-- TODO lien -->
+              <div class="case__links">
+                <a class="link-arrow" href="realisations/blog.html">Étude de cas <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a class="link-arrow link-arrow--muted" href="#" target="_blank" rel="noopener" data-project-link>Voir le site <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><!-- TODO lien -->
+              </div>
             </div>
           </article>
 
-          <a class="work__item work__item--cta reveal" href="#contact" data-cursor="Démarrer">
+          <a class="work__item work__item--cta reveal" href="contact.html" data-cursor="Démarrer">
             <span class="work__plus" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
             </span>
@@ -292,6 +296,9 @@
             <p>Site, application web ou application mobile : le prochain projet de cette liste pourrait être le vôtre. Le devis est gratuit.</p>
             <span class="link-arrow">Démarrer mon projet <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
+        </div>
+        <div class="more reveal">
+          <a class="link-arrow" href="realisations.html"><span data-swap>Toutes nos réalisations</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </section>
@@ -308,7 +315,7 @@
         </div>
 
         <ol class="svc" data-svc>
-          <li><a class="svc__row reveal" href="#contact" data-offer="AD BUSINESS" data-art="0">
+          <li id="svc-sites"><a class="svc__row reveal" href="contact.html?offre=AD%20BUSINESS" data-offer="AD BUSINESS" data-art="0">
             <span class="svc__num mono">01</span>
             <span class="svc__title">Sites vitrines</span>
             <span class="svc__body">
@@ -317,7 +324,7 @@
             </span>
             <span class="svc__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
           </a></li>
-          <li><a class="svc__row reveal" href="#contact" data-offer="AD PREMIUM" data-art="1">
+          <li id="svc-ecommerce"><a class="svc__row reveal" href="contact.html?offre=AD%20PREMIUM" data-offer="AD PREMIUM" data-art="1">
             <span class="svc__num mono">02</span>
             <span class="svc__title">E-commerce</span>
             <span class="svc__body">
@@ -326,7 +333,7 @@
             </span>
             <span class="svc__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
           </a></li>
-          <li><a class="svc__row reveal" href="#contact" data-offer="Application web" data-art="2">
+          <li id="svc-applications-web"><a class="svc__row reveal" href="contact.html?offre=Application%20web" data-offer="Application web" data-art="2">
             <span class="svc__num mono">03</span>
             <span class="svc__title">Applications web</span>
             <span class="svc__body">
@@ -335,7 +342,7 @@
             </span>
             <span class="svc__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
           </a></li>
-          <li><a class="svc__row reveal" href="#contact" data-offer="Application mobile" data-art="3">
+          <li id="svc-applications-mobiles"><a class="svc__row reveal" href="contact.html?offre=Application%20mobile" data-offer="Application mobile" data-art="3">
             <span class="svc__num mono">04</span>
             <span class="svc__title">Applications mobiles</span>
             <span class="svc__body">
@@ -344,7 +351,7 @@
             </span>
             <span class="svc__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
           </a></li>
-          <li><a class="svc__row reveal" href="#contact" data-art="4">
+          <li id="svc-design"><a class="svc__row reveal" href="contact.html" data-art="4">
             <span class="svc__num mono">05</span>
             <span class="svc__title">UI / UX design</span>
             <span class="svc__body">
@@ -353,7 +360,7 @@
             </span>
             <span class="svc__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
           </a></li>
-          <li><a class="svc__row reveal" href="#contact" data-art="5">
+          <li id="svc-api"><a class="svc__row reveal" href="contact.html" data-art="5">
             <span class="svc__num mono">06</span>
             <span class="svc__title">API et intégrations</span>
             <span class="svc__body">
@@ -362,7 +369,7 @@
             </span>
             <span class="svc__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
           </a></li>
-          <li><a class="svc__row reveal" href="#contact" data-art="6">
+          <li id="svc-hebergement"><a class="svc__row reveal" href="contact.html" data-art="6">
             <span class="svc__num mono">07</span>
             <span class="svc__title">Hébergement et DevOps</span>
             <span class="svc__body">
@@ -371,7 +378,7 @@
             </span>
             <span class="svc__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
           </a></li>
-          <li><a class="svc__row reveal" href="#contact" data-offer="Maintenance" data-art="7">
+          <li id="svc-maintenance"><a class="svc__row reveal" href="contact.html?offre=Maintenance" data-offer="Maintenance" data-art="7">
             <span class="svc__num mono">08</span>
             <span class="svc__title">Maintenance et évolution</span>
             <span class="svc__body">
@@ -450,77 +457,10 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ===== TECHNOLOGIES ===== -->
-    <section class="section bg-blueprint" id="stack">
-      <div class="container">
-        <div class="section__head section__head--center">
-          <p class="eyebrow" data-scramble>Technologies</p>
-          <h2 data-split>La bonne technologie pour chaque projet.</h2>
-          <p class="section__intro reveal">Nous maîtrisons les outils modernes du web et du mobile. Nous ne choisissons pas une technologie par habitude : nous partons de votre budget, de vos délais et de la façon dont votre projet doit grandir.</p>
+        <div class="more reveal">
+          <a class="link-arrow" href="services.html"><span data-swap>Nos services en détail, nos technologies et notre méthode</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-      </div>
-
-      <div class="logos" aria-label="Quelques technologies que nous utilisons">
-        <div class="logos__row">
-          <div class="logos__track" data-velocity="1">
-            <span>React</span><span>Next.js</span><span>Vue.js</span><span>Nuxt</span><span>Angular</span><span>Svelte</span><span>TypeScript</span><span>Tailwind CSS</span><span>Flutter</span><span>React Native</span><span>Kotlin</span><span>Swift</span>
-          </div>
-        </div>
-        <div class="logos__row">
-          <div class="logos__track" data-velocity="-1">
-            <span>Node.js</span><span>NestJS</span><span>Laravel</span><span>Django</span><span>FastAPI</span><span>Spring Boot</span><span>PostgreSQL</span><span>MongoDB</span><span>Firebase</span><span>Supabase</span><span>Docker</span><span>AWS</span><span>WordPress</span><span>Figma</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="stack-grid" data-spotlight-group>
-          <article class="stk tile reveal">
-            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13"/><path d="M8 21h8M12 17v4"/></svg></span>
-            <h3>Front-end web</h3>
-            <p>Des interfaces rapides, accessibles et animées.</p>
-            <ul class="stk__list"><li>HTML · CSS · JavaScript</li><li>TypeScript</li><li>React · Next.js</li><li>Vue.js · Nuxt</li><li>Angular · Svelte</li><li>Tailwind CSS</li></ul>
-          </article>
-          <article class="stk tile reveal">
-            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20"/><path d="M11 18h2"/></svg></span>
-            <h3>Mobile</h3>
-            <p>Android et iOS, multiplateforme ou natif.</p>
-            <ul class="stk__list"><li>Flutter · Dart</li><li>React Native · Expo</li><li>Kotlin · Jetpack Compose</li><li>Swift · SwiftUI</li><li>Notifications push</li><li>Play Store · App Store</li></ul>
-          </article>
-          <article class="stk tile reveal">
-            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="7"/><rect x="4" y="14" width="16" height="7"/><path d="M8 6.5h.01M8 17.5h.01"/></svg></span>
-            <h3>Back-end et API</h3>
-            <p>La logique, la sécurité et les données.</p>
-            <ul class="stk__list"><li>Node.js · NestJS · Express</li><li>PHP · Laravel</li><li>Python · Django · FastAPI</li><li>Java · Spring Boot</li><li>Go</li><li>REST · GraphQL · WebSockets</li></ul>
-          </article>
-          <article class="stk tile reveal">
-            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>
-            <h3>Données</h3>
-            <p>Des bases fiables, sauvegardées, qui tiennent la charge.</p>
-            <ul class="stk__list"><li>PostgreSQL · MySQL</li><li>MongoDB</li><li>Redis</li><li>Firebase</li><li>Supabase</li><li>Prisma · ORM</li></ul>
-          </article>
-          <article class="stk tile reveal">
-            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 8a4 4 0 0 1-1 10z"/></svg></span>
-            <h3>Cloud et DevOps</h3>
-            <p>Mise en ligne, surveillance et déploiement continu.</p>
-            <ul class="stk__list"><li>Docker</li><li>AWS · Google Cloud</li><li>Vercel · Netlify</li><li>VPS Linux · Nginx</li><li>Cloudflare</li><li>GitHub Actions · CI/CD</li></ul>
-          </article>
-          <article class="stk tile reveal">
-            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13"/><path d="M3 10h18M7 15h4"/></svg></span>
-            <h3>CMS, e-commerce et paiement</h3>
-            <p>Des contenus faciles à gérer, des ventes faciles à encaisser.</p>
-            <ul class="stk__list"><li>WordPress · WooCommerce</li><li>Shopify · Strapi</li><li>MTN MoMo · Moov Money</li><li>FedaPay · KKiaPay</li><li>Stripe · PayPal</li><li>Figma (design)</li></ul>
-          </article>
-        </div>
-
-        <ul class="criteria reveal">
-          <li><b class="mono">01</b><span><strong>Votre budget</strong>La solution la plus simple qui répond vraiment au besoin.</span></li>
-          <li><b class="mono">02</b><span><strong>Vos délais</strong>Des outils éprouvés pour livrer vite, sans bricolage.</span></li>
-          <li><b class="mono">03</b><span><strong>Votre croissance</strong>Un code propre, prêt à évoluer avec votre activité.</span></li>
-        </ul>
       </div>
     </section>
 
@@ -539,7 +479,7 @@
         <div class="why__text">
           <h2 data-split>Une page Facebook ne suffit plus.</h2>
           <p class="reveal">Les réseaux sociaux sont utiles, mais ils ne vous appartiennent pas. Votre site ou votre application, si : votre nom, votre image, vos règles, vos données.</p>
-          <a href="#contact" class="link-arrow reveal"><span data-swap>Je lance mon projet</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="contact.html" class="link-arrow reveal"><span data-swap>Je lance mon projet</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
 
         <div class="compare reveal" role="table" aria-label="Comparaison entre une page Facebook et un projet AD SOLUTIONS">
@@ -565,141 +505,6 @@
           <li class="reveal"><b><span class="roll" data-roll="100">100</span><small>%</small></b><span>sur mesure, aucun modèle recyclé</span></li>
           <li class="reveal"><b><span class="roll" data-roll="3">3</span><small>mois</small></b><span>de maintenance offerts (AD PREMIUM)</span></li>
         </ul>
-      </div>
-    </section>
-
-    <!-- ===== MÉTHODE (Stacking Cards) ===== -->
-    <section class="section section--raised" id="methode">
-      <div class="container process">
-        <div class="process__head">
-          <p class="eyebrow" data-scramble>Méthode</p>
-          <h2 data-split>Un projet clair, en 5 étapes.</h2>
-          <p class="reveal">Site ou application, vous savez toujours où en est votre projet, et ce que vous payez.</p>
-          <a href="#contact" class="btn btn--dark reveal" data-magnet>Commencer par l'étape 1</a>
-        </div>
-        <ol class="stack" data-stack>
-          <li class="stack__card">
-            <div class="stack__top"><span class="ico ico--lg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span><span class="stack__tag mono">Jour 1</span></div>
-            <span class="stack__step">Étape 1</span>
-            <h3>Échange</h3>
-            <p>Nous discutons de votre activité, de vos utilisateurs et de vos objectifs, par WhatsApp, téléphone, visio ou de vive voix.</p>
-          </li>
-          <li class="stack__card">
-            <div class="stack__top"><span class="ico ico--lg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7M9 16h5"/></svg></span><span class="stack__tag mono">Sous 24 h</span></div>
-            <span class="stack__step">Étape 2</span>
-            <h3>Devis et choix techniques</h3>
-            <p>Vous recevez une proposition claire : fonctionnalités, technologies retenues, prix, délais. Sans engagement.</p>
-          </li>
-          <li class="stack__card">
-            <div class="stack__top"><span class="ico ico--lg" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m14 4 6 6-10 10H4v-6z"/><path d="m12 6 6 6"/></svg></span><span class="stack__tag mono">Après l'acompte</span></div>
-            <span class="stack__step">Étape 3</span>
-            <h3>Design et développement</h3>
-            <p>Maquettes d'abord, puis développement par étapes. Vous suivez l'avancement et testez au fur et à mesure.</p>
-          </li>
-          <li class="stack__card">
-            <div class="stack__top"><span class="ico ico--lg" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span><span class="stack__tag mono">Vos retours</span></div>
-            <span class="stack__step">Étape 4</span>
-            <h3>Tests et validation</h3>
-            <p>Vous essayez tout sur téléphone et ordinateur. Nous testons, corrigeons et ajustons ce qui est prévu.</p>
-          </li>
-          <li class="stack__card stack__card--last">
-            <div class="stack__top"><span class="ico ico--lg" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3Z"/></svg></span><span class="stack__tag mono">C'est en ligne</span></div>
-            <span class="stack__step">Étape 5</span>
-            <h3>Lancement et suivi</h3>
-            <p>Mise en ligne, publication sur les stores si besoin, hébergement à votre nom. On vous forme et on reste à vos côtés.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ===== OFFRES ===== -->
-    <section class="section bg-aurora-light" id="offres">
-      <div class="container">
-        <div class="section__head section__head--center">
-          <p class="eyebrow" data-scramble>Offres</p>
-          <h2 data-split>Une formule pour chaque ambition.</h2>
-          <p class="section__intro reveal">Des prix clairs, sans frais cachés, pour les sites web. Les applications sont chiffrées sur devis, selon vos fonctionnalités.</p>
-        </div>
-
-        <div class="pricing" data-spotlight-group>
-          <article class="plan tile reveal">
-            <h3 class="plan__name mono">AD START</h3>
-            <p class="plan__for">Pour être présent sur Internet, vite et bien.</p>
-            <p class="plan__price"><small>À partir de</small><!-- TODO prix --><b>XX XXX</b><span>FCFA</span></p>
-            <a href="#contact" class="btn btn--outline btn--block" data-offer="AD START">Choisir AD START</a>
-            <ul class="plan__list">
-              <li>Site d'une page</li>
-              <li>Design moderne, parfait sur téléphone</li>
-              <li>Bouton WhatsApp et appel direct</li>
-              <li>Plan d'accès Google Maps</li>
-              <li>Mise en ligne incluse</li>
-            </ul>
-          </article>
-
-          <article class="plan plan--featured reveal">
-            <span class="plan__badge mono">Le plus demandé</span>
-            <h3 class="plan__name mono">AD BUSINESS</h3>
-            <p class="plan__for">Pour les entreprises qui veulent un site complet.</p>
-            <p class="plan__price"><small>À partir de</small><!-- TODO prix --><b>XXX XXX</b><span>FCFA</span></p>
-            <a href="#contact" class="btn btn--primary btn--block" data-offer="AD BUSINESS" data-spark>Choisir AD BUSINESS</a>
-            <ul class="plan__list">
-              <li><b>Tout AD START, plus :</b></li>
-              <li>Jusqu'à 5 pages</li>
-              <li>Formulaire de contact</li>
-              <li>Référencement Google de base</li>
-              <li>Nom de domaine et e-mails pro (1 an)</li>
-              <li>1 mois de maintenance offert</li>
-            </ul>
-          </article>
-
-          <article class="plan tile reveal">
-            <h3 class="plan__name mono">AD PREMIUM</h3>
-            <p class="plan__for">Pour les sites sur mesure et les boutiques en ligne.</p>
-            <p class="plan__price"><small>Prix</small><b>Sur devis</b></p>
-            <a href="#contact" class="btn btn--outline btn--block" data-offer="AD PREMIUM">Demander un devis</a>
-            <ul class="plan__list">
-              <li>Nombre de pages selon le besoin</li>
-              <li>Catalogue produits ou boutique en ligne</li>
-              <li>Paiement en ligne (Mobile Money, carte)</li>
-              <li>Espace d'administration</li>
-              <li>3 mois de maintenance offerts</li>
-            </ul>
-          </article>
-        </div>
-
-        <!-- Applications : sur devis (fond « lens flare » de Gradient Magic, recoloré) -->
-        <div class="apps reveal">
-          <div class="apps__text">
-            <span class="plan__name mono">AD APPS</span>
-            <h3>Application web ou mobile sur mesure</h3>
-            <p>SaaS, plateforme, espace client, application Android et iOS : nous cadrons le projet avec vous, puis nous chiffrons chaque fonctionnalité. Développement par étapes, paiements échelonnés.</p>
-          </div>
-          <ul class="apps__list">
-            <li>Atelier de cadrage offert</li>
-            <li>Maquettes cliquables avant le code</li>
-            <li>Livraisons par étapes</li>
-            <li>Code source et données à votre nom</li>
-          </ul>
-          <div class="apps__cta">
-            <a href="#contact" class="btn btn--primary btn--lg" data-offer="Application web" data-magnet>Parler de mon application</a>
-          </div>
-        </div>
-
-        <div class="maintenance reveal">
-          <div class="maintenance__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
-          </div>
-          <div>
-            <h3>Maintenance mensuelle</h3>
-            <p>Sauvegardes, mises à jour de sécurité, petites modifications de contenu et assistance prioritaire, pour les sites comme pour les applications.</p>
-          </div>
-          <p class="maintenance__price"><small>À partir de</small><!-- TODO prix --> <b>X XXX FCFA</b><span>/mois</span></p>
-        </div>
-
-        <p class="note reveal">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13"/><path d="M3 10h18M7 15h4"/></svg>
-          Acompte au lancement, solde à la livraison. Mobile Money et virement acceptés. Facture remise.
-        </p>
       </div>
     </section>
 
@@ -750,179 +555,34 @@
       </div>
     </section>
 
-    <!-- ===== À PROPOS ===== -->
-    <section class="section section--raised" id="apropos">
-      <div class="container about">
-        <div class="about__text">
-          <p class="eyebrow" data-scramble>À propos</p>
-          <h2 class="reveal">Une équipe <mark class="hl">béninoise</mark>, des standards <mark class="hl">internationaux</mark>.</h2>
-          <p class="reveal">
-            AD SOLUTIONS est une entreprise de services numériques née au Bénin, portée par des développeurs fullstack.
-            Front-end, back-end, mobile, bases de données, serveurs : nous maîtrisons toute la chaîne, ce qui nous permet
-            de prendre en charge un projet de A à Z, sans sous-traiter l'essentiel.
-          </p>
-          <p class="reveal">
-            Nous travaillons principalement à distance, ce qui nous rend réactifs et nous permet de proposer des prix justes,
-            pour des clients au Bénin comme à l'étranger. Et quand c'est utile, nous venons vous rencontrer.
-          </p>
-        </div>
-        <div class="values" data-spotlight-group>
-          <div class="value tile reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7M9 16h5"/></svg></span><h3>Clarté</h3><p>Devis détaillé, contrat écrit, aucun frais caché.</p></div>
-          <div class="value tile reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span><h3>Excellence technique</h3><p>Code propre, testé, sécurisé et documenté.</p></div>
-          <div class="value tile reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><h3>Proximité</h3><p>Un interlocuteur unique, joignable sur WhatsApp.</p></div>
-          <div class="value tile reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.9-3.5M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.9 3.5M20 20v-4h-4"/></svg></span><h3>Suivi</h3><p>Le lancement n'est pas la fin : on reste à vos côtés.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== FAQ ===== -->
-    <section class="section" id="faq">
-      <div class="container faq-wrap">
-        <div class="faq-wrap__head">
-          <p class="eyebrow" data-scramble>Questions fréquentes</p>
-          <h2 data-split>Vous vous demandez peut&#8209;être…</h2>
-          <p class="reveal">Une autre question&nbsp;? <a href="#" data-contact="whatsapp" target="_blank" rel="noopener">Écrivez-nous sur WhatsApp</a>, on répond vite.</p>
-        </div>
-        <div class="faq">
-          <details class="reveal">
-            <summary>Combien de temps faut-il pour créer mon site&nbsp;?</summary>
-            <div class="faq__a"><p>Comptez en général 1 à 2 semaines pour un site AD START ou AD BUSINESS, dès réception de vos contenus (textes, photos, logo). Pour AD PREMIUM et les applications, le délai est fixé dans le devis.</p></div>
-          </details>
-          <details class="reveal">
-            <summary>Pouvez-vous créer une application mobile Android et iOS&nbsp;?</summary>
-            <div class="faq__a"><p>Oui. Selon le projet, nous développons une seule application multiplateforme (Flutter ou React Native) ou des applications natives (Kotlin, Swift), et nous nous occupons de la publication sur le Play Store et l'App Store.</p></div>
-          </details>
-          <details class="reveal">
-            <summary>Quelles technologies utilisez-vous&nbsp;?</summary>
-            <div class="faq__a"><p>Celles qui conviennent à votre projet : React, Next.js, Vue, Laravel, Node.js, Django, Flutter, WordPress et bien d'autres. Nous vous expliquons nos choix dans le devis, en termes simples.</p></div>
-          </details>
-          <details class="reveal">
-            <summary>Vous occupez-vous de l'hébergement et du nom de domaine&nbsp;?</summary>
-            <div class="faq__a"><p>Oui, de bout en bout : nom de domaine, e-mails professionnels, serveur, certificat HTTPS, sauvegardes et mises à jour. Le nom de domaine est enregistré à votre nom.</p></div>
-          </details>
-          <details class="reveal">
-            <summary>Je n'ai ni textes ni photos, est-ce un problème&nbsp;?</summary>
-            <div class="faq__a"><p>Non. Nous vous aidons à rédiger les textes et pouvons utiliser des images adaptées à votre activité en attendant vos propres photos.</p></div>
-          </details>
-          <details class="reveal">
-            <summary>Comment se passe le paiement&nbsp;?</summary>
-            <div class="faq__a"><p>Un acompte est demandé au lancement et le solde à la livraison. Pour les applications, le paiement est échelonné par étapes. Nous acceptons Mobile Money et le virement bancaire. Une facture vous est remise.</p></div>
-          </details>
-          <details class="reveal">
-            <summary>Le code et les données m'appartiennent-ils&nbsp;?</summary>
-            <div class="faq__a"><p>Oui. Une fois le paiement effectué, le site ou l'application, son code source et vos données vous appartiennent. Tout est précisé dans le contrat.</p></div>
-          </details>
-          <details class="reveal">
-            <summary>Travaillez-vous avec des clients hors du Bénin&nbsp;?</summary>
-            <div class="faq__a"><p>Oui. Nous travaillons à distance et accompagnons déjà des clients à l'international, comme Thalia's Traiteur au Québec.</p></div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== RECRUTEMENT ===== -->
-    <!-- Les offres se gèrent dans script.js (liste OFFRES_EMPLOI). -->
-    <section class="section section--raised section--tight" id="recrutement">
-      <div class="container">
-        <div class="section__head section__head--split">
-          <div>
-            <p class="eyebrow" data-scramble>Recrutement</p>
-            <h2 data-split>Construisez le web avec nous.</h2>
-          </div>
-          <p class="section__intro reveal">Stages, emplois ou missions ponctuelles : nous cherchons des développeurs, des designers et des profils commerciaux motivés pour grandir avec nous.</p>
-        </div>
-        <div class="jobs" id="jobs"></div>
-        <div class="jobs-empty reveal" id="jobs-empty" hidden>
-          <div>
-            <h3>Aucune offre ouverte pour le moment</h3>
-            <p>Développeur web ou mobile, designer, commercial ou étudiant ? Envoyez-nous une candidature spontanée : nous la gardons pour nos prochains besoins.</p>
-          </div>
-          <a href="#" class="btn btn--outline" data-apply="Candidature spontanée">Candidature spontanée</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== CONTACT ===== -->
-    <section class="section contact dark island" id="contact" data-spotlight>
+    <!-- ===== APPEL À L'ACTION ===== -->
+    <section class="section contact cta-end dark island" id="cta" data-spotlight>
       <div class="bg-beams" aria-hidden="true"></div>
       <div class="bg-grid" aria-hidden="true"></div>
       <div class="bg-noise" aria-hidden="true"></div>
-      <div class="container contact__inner">
-        <div class="contact__info">
-          <p class="eyebrow" data-scramble>Contact</p>
-          <h2 data-split>Parlons de votre projet.</h2>
-          <p class="contact__lead reveal">Site, application web ou mobile : décrivez votre idée en quelques mots. Le premier échange est gratuit et vous recevez un devis détaillé sous 24 h, sans engagement.</p>
-          <ul class="contact__list reveal">
-            <!-- TODO : remplacer par les vraies coordonnées -->
-            <li>
-              <span class="contact__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
-              <span><small>Téléphone / WhatsApp</small><a href="tel:+22900000000" class="mono">+229 00 00 00 00</a></span>
-            </li>
-            <li>
-              <span class="contact__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="m3 7 9 6 9-6"/></svg></span>
-              <span><small>E-mail</small><a href="mailto:contact@adsolutions.bj" class="mono">contact@adsolutions.bj</a></span>
-            </li>
-            <li>
-              <span class="contact__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
-              <span><small>Basés à</small>Cotonou, Bénin · clients partout dans le monde</span>
-            </li>
-          </ul>
+      <div class="container cta-end__inner">
+        <p class="eyebrow" data-scramble>Contact</p>
+        <h2 data-split>Parlons de votre projet.</h2>
+        <p class="contact__lead reveal">Site, application web ou mobile : décrivez votre idée en quelques mots. Le premier échange est gratuit et vous recevez un devis détaillé sous 24 h, sans engagement.</p>
+        <div class="cta-end__actions reveal">
+          <a href="contact.html" class="btn btn--primary btn--lg btn--glow" data-magnet data-spark><span>Démarrer mon projet</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#" class="btn btn--ghost btn--lg" data-contact="whatsapp" target="_blank" rel="noopener" data-magnet><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg> Discuter sur WhatsApp</a>
         </div>
-
-        <form class="form reveal" id="contact-form" novalidate>
-          <div class="form__head">
-            <span class="eyebrow form__eyebrow">Nouveau projet</span>
-            <span class="form__status"><i></i>Réponse sous 24 h</span>
-          </div>
-          <div class="form__row">
-            <label class="field">
-              <span>Nom complet *</span>
-              <input type="text" name="nom" required autocomplete="name">
-            </label>
-            <label class="field">
-              <span>Téléphone / WhatsApp *</span>
-              <input type="tel" name="tel" required autocomplete="tel" placeholder="+229 …">
-            </label>
-          </div>
-          <label class="field">
-            <span>Entreprise ou activité</span>
-            <input type="text" name="entreprise" autocomplete="organization">
-          </label>
-          <fieldset class="field">
-            <legend>Votre projet</legend>
-            <div class="chips">
-              <label class="chip"><input type="radio" name="offre" value="Je ne sais pas encore" checked><span>Je ne sais pas</span></label>
-              <label class="chip"><input type="radio" name="offre" value="AD START"><span>AD START</span></label>
-              <label class="chip"><input type="radio" name="offre" value="AD BUSINESS"><span>AD BUSINESS</span></label>
-              <label class="chip"><input type="radio" name="offre" value="AD PREMIUM"><span>AD PREMIUM</span></label>
-              <label class="chip"><input type="radio" name="offre" value="Application web"><span>Application web</span></label>
-              <label class="chip"><input type="radio" name="offre" value="Application mobile"><span>Application mobile</span></label>
-              <label class="chip"><input type="radio" name="offre" value="Maintenance"><span>Maintenance</span></label>
-            </div>
-          </fieldset>
-          <label class="field">
-            <span>Votre projet en quelques mots *</span>
-            <textarea name="message" rows="4" required placeholder="Ex. : je veux une application pour que mes clients commandent et paient par Mobile Money."></textarea>
-          </label>
-          <p class="form__error" role="alert" hidden>Merci de remplir les champs marqués d'un *.</p>
-          <button type="submit" class="btn btn--primary btn--lg btn--block btn--glow" data-spark>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg>
-            Envoyer via WhatsApp
-          </button>
-          <p class="form__hint">Le message s'ouvre dans WhatsApp, prêt à être envoyé. Aucune donnée n'est stockée.</p>
-        </form>
+        <ul class="cta-end__points reveal">
+          <li>Premier échange gratuit</li><li>Devis détaillé sous 24 h</li><li>Sans engagement</li>
+        </ul>
       </div>
     </section>
 
   </main>
 
-  <!-- ===== PIED DE PAGE ===== -->
+  <!-- ===== PIED DE PAGE (identique sur toutes les pages) ===== -->
   <footer class="footer dark island">
     <div class="bg-noise" aria-hidden="true"></div>
     <div class="container">
       <div class="footer__top">
         <div class="footer__brand">
-          <a href="#top" aria-label="AD SOLUTIONS, retour en haut">
+          <a href="index.html" aria-label="AD SOLUTIONS, accueil">
             <img class="logo-on-dark" src="logos/ad-solutions-logo-inverse.svg" alt="AD SOLUTIONS" width="156" height="60">
             <img class="logo-on-light" src="logos/ad-solutions-logo.svg" alt="AD SOLUTIONS" width="156" height="60">
           </a>
@@ -931,32 +591,38 @@
         <nav class="footer__nav" aria-label="Pied de page">
           <div>
             <h4 class="mono">Services</h4>
-            <a href="#services" data-swap>Sites web</a>
-            <a href="#services" data-swap>E-commerce</a>
-            <a href="#services" data-swap>Applications web</a>
-            <a href="#services" data-swap>Applications mobiles</a>
+            <a href="services.html#svc-sites" data-swap>Sites web</a>
+            <a href="services.html#svc-ecommerce" data-swap>E-commerce</a>
+            <a href="services.html#svc-applications-web" data-swap>Applications web</a>
+            <a href="services.html#svc-applications-mobiles" data-swap>Applications mobiles</a>
+            <a href="offres.html" data-swap>Offres et tarifs</a>
           </div>
           <div>
             <h4 class="mono">Agence</h4>
-            <a href="#realisations" data-swap>Réalisations</a>
-            <a href="#stack" data-swap>Technologies</a>
-            <a href="#methode" data-swap>Méthode</a>
-            <a href="#apropos" data-swap>À propos</a>
+            <a href="realisations.html" data-swap>Réalisations</a>
+            <a href="services.html#stack" data-swap>Technologies</a>
+            <a href="services.html#methode" data-swap>Méthode</a>
+            <a href="a-propos.html" data-swap>À propos</a>
+            <a href="a-propos.html#recrutement" data-swap>Recrutement</a>
           </div>
           <div>
             <h4 class="mono">Contact</h4>
-            <a href="#contact" data-swap>Démarrer un projet</a>
-            <a href="#audit" data-swap>Audit gratuit</a>
+            <a href="contact.html" data-swap>Démarrer un projet</a>
+            <a href="contact.html#audit" data-swap>Audit gratuit</a>
+            <a href="contact.html#faq" data-swap>Questions fréquentes</a>
             <a href="#" data-contact="whatsapp" target="_blank" rel="noopener" data-swap>WhatsApp</a>
-            <a href="#recrutement" data-swap>Recrutement</a>
           </div>
         </nav>
       </div>
       <p class="footer__word" aria-hidden="true" data-letters>AD SOLUTIONS</p>
-      <!-- TODO : compléter RCCM et IFU une fois obtenus -->
+      <!-- TODO : compléter RCCM et IFU une fois obtenus (ici et dans mentions-legales.html) -->
       <div class="footer__bottom">
         <p>© <span id="year"></span> AD SOLUTIONS SARL · RCCM : RB/COT/XX X XXXX · IFU : XXXXXXXXXXXXX</p>
-        <a href="#top" class="footer__top-link">Retour en haut ↑</a>
+        <nav class="footer__legal" aria-label="Informations légales">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="confidentialite.html">Confidentialité</a>
+          <a href="#top" class="footer__top-link">Retour en haut ↑</a>
+        </nav>
       </div>
     </div>
   </footer>

@@ -1179,6 +1179,131 @@ mark.hl { color: inherit; background: linear-gradient(transparent 58%, #f26b1d66
 .audit__checks li { display: flex; align-items: center; gap: 10px; font-size: 15px; }
 .audit__checks li::before { content: "✓"; display: grid; place-items: center; flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #0F1B2D; font: 700 11px/1 var(--sans); }
 
+/* ============================================================
+   V4 — SITE MULTI-PAGES
+   En-têtes de page, appel à l'action final, études de cas, pages légales, 404.
+   ============================================================ */
+
+/* ---------- En-tête de page (même fond que le hero de l'accueil) ---------- */
+.page-hero { padding-bottom: clamp(64px, 8vw, 112px); }
+.page-hero__inner > * { max-width: 940px; }
+.page-hero__title { font-size: clamp(2.5rem, 5.6vw, 4.6rem); line-height: 1.02; letter-spacing: -0.015em; margin-bottom: 26px; }
+.page-hero__lead { font-size: clamp(1.08rem, 1.4vw, 1.25rem); line-height: 1.6; color: var(--text-muted); max-width: 640px; margin-bottom: 0; }
+.page-hero .hero__actions { margin: 36px 0 0; }
+
+/* Fil d'Ariane */
+.crumbs { margin-bottom: 26px; }
+.crumbs ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 0; padding: 0; font: 500 12.5px/1.4 var(--mono); color: var(--text-faint); }
+.crumbs li { display: inline-flex; align-items: center; gap: 10px; }
+.crumbs li + li::before { content: "/"; color: var(--line-strong); }
+.crumbs a { color: var(--text-muted); text-decoration: none; transition: color .2s; }
+.crumbs a:hover { color: var(--accent-text); }
+.crumbs [aria-current] { color: var(--text); }
+
+/* Lien « voir plus » sous une section */
+a.work__media { text-decoration: none; color: inherit; }
+.more { display: flex; justify-content: center; margin-top: clamp(36px, 4vw, 56px); }
+.case__links { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; }
+.work__body .case__links { margin-top: auto; }
+.link-arrow--muted { color: var(--text-muted); background-size: 100% 1px; }
+
+/* ---------- Appel à l'action final (toutes les pages sauf Contact) ---------- */
+.cta-end__inner { max-width: 860px; text-align: center; }
+.cta-end .contact__lead { margin: 0 auto 36px; max-width: 600px; }
+.cta-end__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.cta-end__points { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; margin: 36px 0 0; padding: 0; font-size: 15px; color: var(--text-muted); }
+.cta-end__points li { display: inline-flex; align-items: center; gap: 10px; }
+.cta-end__points li::before { content: "✓"; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft-2); color: var(--accent-text); font: 700 11px/1 var(--sans); }
+
+/* Page Contact : le formulaire ouvre la page */
+.contact--page { padding-top: calc(var(--header-h) + var(--announce-h) + clamp(48px, 6vw, 92px)); }
+.contact__title { margin-bottom: 20px; font-size: clamp(2.5rem, 5.2vw, 4.4rem); line-height: 1.02; }
+
+/* ---------- Études de cas ---------- */
+.cs-tags { margin: 30px 0 0; }
+.cs-meta { display: grid; grid-template-columns: repeat(5, minmax(0, auto)); max-width: none !important; justify-content: start; gap: 18px 44px; margin: 30px 0 0; padding: 22px 0 0; border-top: 1px solid var(--line); }
+.cs-meta div { min-width: 0; }
+.cs-meta dt { font: 500 11.5px/1.4 var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--text-faint); margin-bottom: 6px; }
+.cs-meta dd { margin: 0; font-weight: 500; }
+.cs-meta a { color: var(--accent-text); text-decoration: none; }
+.cs-meta a:hover { text-decoration: underline; }
+.cs-shot { max-width: 1040px; margin: 0 auto clamp(64px, 8vw, 110px); }
+.cs-browser { box-shadow: var(--shadow-xl), 0 0 120px -50px #f26b1d66; }
+.cs-mock { display: grid; place-items: end center; padding: clamp(28px, 5vw, 64px) clamp(20px, 6vw, 96px) 0; border-radius: var(--r-xl); background: linear-gradient(160deg, var(--accent-soft-2), var(--surface-2)); border: 1px solid var(--line); overflow: visible; }
+.cs-mock > .mini { width: 100%; max-width: 640px; height: clamp(240px, 32vw, 380px); }
+[data-theme="light"] .cs-mock { background: linear-gradient(160deg, #E9E5DE, var(--surface-2)); }
+.cs-story { display: grid; grid-template-columns: minmax(0, .6fr) minmax(0, 1.4fr); gap: 24px clamp(40px, 6vw, 96px); align-items: start; }
+.cs-story__blocks { display: grid; gap: clamp(32px, 4vw, 48px); }
+.cs-block { padding-left: 24px; border-left: 2px solid var(--line-strong); }
+.cs-block:first-child { border-left-color: var(--accent); }
+.cs-block h2 { font-size: clamp(1.5rem, 2.4vw, 2rem); margin-bottom: 12px; }
+.cs-block p { margin: 0; color: var(--text-muted); font-size: 1.08rem; max-width: 640px; }
+.cs-chips { justify-self: end; margin: 0; }
+.cs-feats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.cs-feat .ico { margin-bottom: 26px; }
+.cs-next { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px 24px; padding: clamp(28px, 4vw, 48px); border: 1px solid var(--line); border-radius: var(--r-xl); background: var(--surface); text-decoration: none; overflow: hidden; transition: border-color .4s, transform .5s var(--ease); }
+.cs-next .mono { grid-column: 1; font-size: 12.5px; text-transform: uppercase; letter-spacing: .14em; color: var(--text-muted); }
+.cs-next__name { grid-column: 1; font: 600 clamp(2.2rem, 6vw, 4.8rem)/1 var(--display); letter-spacing: -0.02em; transition: color .3s; }
+.cs-next__arrow { grid-column: 2; grid-row: 1 / 3; display: grid; place-items: center; width: clamp(56px, 7vw, 84px); height: clamp(56px, 7vw, 84px); border-radius: 50%; background: var(--accent); color: var(--on-accent); transition: transform .5s var(--ease); }
+.cs-next__arrow svg { width: 28px; height: 28px; }
+.cs-next:hover { border-color: var(--accent); transform: translateY(-4px); }
+.cs-next:hover .cs-next__name { color: var(--accent-text); }
+.cs-next:hover .cs-next__arrow { transform: translateX(6px) rotate(-8deg); }
+
+/* ---------- Pages légales ---------- */
+.legal { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.legal__toc { position: sticky; top: calc(var(--header-h) + 40px); padding: 22px 24px; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); }
+.legal__toc .mono { margin: 0 0 12px; font-size: 12px; text-transform: uppercase; letter-spacing: .14em; color: var(--text-faint); }
+.legal__toc ol { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: 15px; }
+.legal__toc ol ::marker { color: var(--accent-text); font-family: var(--mono); font-size: 12px; }
+.legal__toc a { color: var(--text-muted); text-decoration: none; }
+.legal__toc a:hover { color: var(--text); }
+.prose { max-width: 760px; color: var(--text-muted); }
+.prose__date { margin-bottom: 8px; font-size: 13px; color: var(--text-faint); }
+.prose h2 { font-size: clamp(1.5rem, 2.4vw, 1.95rem); color: var(--text); margin: 48px 0 14px; scroll-margin-top: calc(var(--header-h) + 24px); }
+.prose h2:first-of-type { margin-top: 24px; }
+.prose ul { padding-left: 22px; display: grid; gap: 8px; margin: 0 0 1em; }
+.prose li::marker { color: var(--accent); }
+.prose a { color: var(--accent-text); font-weight: 500; }
+.prose__dl { display: grid; margin: 0; border-top: 1px solid var(--line); }
+.prose__dl div { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 4px 24px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.prose__dl dt { font: 500 12px/1.6 var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--text-faint); padding-top: 2px; }
+.prose__dl dd { margin: 0; color: var(--text); }
+mark.todo { padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-text); font: 500 12px/1.4 var(--mono); white-space: nowrap; }
+
+/* ---------- Pied de page : liens légaux ---------- */
+.footer__legal { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.footer__legal a { text-decoration: none; transition: color .2s; }
+.footer__legal a:hover { color: var(--text); }
+
+/* ---------- 404 ---------- */
+.page-hero--404 { min-height: 100vh; min-height: 100svh; display: flex; align-items: center; }
+.page-hero--404 .page-hero__inner { width: min(1200px, 100% - 40px); }
+@media (max-width: 680px) { .page-hero--404 .page-hero__inner { width: min(1200px, 100% - 32px); } }
+.lost__code { margin: 0 0 8px; font: 600 clamp(6rem, 22vw, 15rem)/.8 var(--display); letter-spacing: -0.04em;
+  background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 10%, transparent) 92%);
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lost { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 36px 0 0; padding: 0; }
+.lost a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--glass-line); background: var(--glass); color: var(--text-muted); font-size: 14px; text-decoration: none; transition: color .2s, border-color .2s; }
+.lost a:hover { color: var(--text); border-color: var(--accent); }
+
+@media (max-width: 1020px) {
+  .cs-story, .legal { grid-template-columns: 1fr; }
+  .legal__toc { position: static; }
+  .cs-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cs-feats { grid-template-columns: 1fr 1fr; }
+  .cs-chips { justify-self: start; }
+}
+@media (max-width: 680px) {
+  .cs-feats { grid-template-columns: 1fr; }
+  .cs-meta { gap: 16px 20px; }
+  .cs-block { padding-left: 18px; }
+  .cta-end__actions .btn { flex: 1 1 100%; }
+  .prose__dl div { grid-template-columns: 1fr; }
+  .cs-next__arrow { grid-row: auto; grid-column: 1; justify-self: start; }
+  .footer__bottom { flex-direction: column; }
+}
+
 /* ---------- Apparition au défilement ---------- */
 .js .reveal { opacity: 0; transform: translateY(28px); filter: blur(6px); transition: opacity .9s var(--ease), transform .9s var(--ease), filter .9s var(--ease); transition-delay: var(--d, 0s); }
 .js .reveal.is-visible { opacity: 1; transform: none; filter: none; }

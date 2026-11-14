@@ -49,6 +49,7 @@ $$('[data-contact="whatsapp"]').forEach((el) => {
 });
 
 // --- Projets sans lien : on masque le bouton et on désactive l'image ---
+$$('[data-project-link][href="#"]').forEach((a) => a.remove());
 $$(".work__item").forEach((item) => {
   const media = $(".work__media", item);
   if (media && media.getAttribute("href") === "#") {
@@ -306,23 +307,14 @@ navLinks.forEach((a) => {
 });
 pill.addEventListener("mouseleave", () => moveIndicator(null));
 
-// Lien actif selon la section visible
-const sections = navLinks.map((a) => $(a.getAttribute("href"))).filter(Boolean);
-if ("IntersectionObserver" in window) {
-  const spy = new IntersectionObserver((entries) => {
-    entries.forEach((en) => {
-      if (en.isIntersecting) navLinks.forEach((a) => a.classList.toggle("is-active", a.getAttribute("href") === `#${en.target.id}`));
-    });
-  }, { rootMargin: "-45% 0px -50% 0px" });
-  sections.forEach((s) => spy.observe(s));
-}
+// Le lien de la page en cours est marqué dans le HTML (class="is-active" aria-current="page").
 
 // ============================================================
 // DÉFILEMENT : en-tête, progression, cartes empilées, bandeaux
 // ============================================================
 const header = $(".header");
 const waFloat = $(".wa-float");
-const contact = $("#contact");
+const contact = $(".contact"); // formulaire de contact ou bloc « Parlons de votre projet »
 const stackCards = $$("[data-stack] .stack__card");
 stackCards.forEach((c, i) => c.style.setProperty("--i", i));
 
@@ -348,8 +340,10 @@ function onScroll() {
   const max = document.documentElement.scrollHeight - innerHeight;
   header.classList.toggle("is-scrolled", y > 12);
   header.style.setProperty("--progress", max > 0 ? (y / max).toFixed(4) : 0);
-  const r = contact.getBoundingClientRect();
-  waFloat.classList.toggle("is-hidden", r.top < innerHeight * 0.6 && r.bottom > 0);
+  if (contact && waFloat) {
+    const r = contact.getBoundingClientRect();
+    waFloat.classList.toggle("is-hidden", r.top < innerHeight * 0.6 && r.bottom > 0);
+  }
   updateStack();
   updateStatement();
   ticking = false;
@@ -668,12 +662,13 @@ if ("IntersectionObserver" in window && !reduceMotion) {
 // FORMULAIRE
 // ============================================================
 const form = $("#contact-form");
-$$("[data-offer]").forEach((btn) =>
-  btn.addEventListener("click", () => {
-    const radio = $(`input[name="offre"][value="${btn.dataset.offer}"]`, form);
-    if (radio) radio.checked = true;
-  })
-);
+const pickOffer = (value) => {
+  const radio = form && $$('input[name="offre"]', form).find((r) => r.value === value);
+  if (radio) radio.checked = true;
+};
+// Sur les autres pages, les boutons d'offre mènent à contact.html?offre=… : on présélectionne le choix
+pickOffer(new URLSearchParams(location.search).get("offre"));
+$$("[data-offer]").forEach((btn) => btn.addEventListener("click", () => pickOffer(btn.dataset.offer)));
 
 // Vérifie les champs obligatoires ; renvoie false (et place le curseur) s'il en manque
 function checkRequired(formEl, fields) {
@@ -689,7 +684,7 @@ function checkRequired(formEl, fields) {
 }
 const openWhatsApp = (text) => window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
 
-form.addEventListener("submit", (e) => {
+form?.addEventListener("submit", (e) => {
   e.preventDefault();
   const f = form.elements;
   if (!checkRequired(form, [f.nom, f.tel, f.message])) return;
@@ -769,7 +764,9 @@ function renderList(title, items) {
 }
 
 const jobsContainer = $("#jobs");
-if (OFFRES_EMPLOI.length === 0) {
+if (!jobsContainer) {
+  // Pas de section recrutement sur cette page
+} else if (OFFRES_EMPLOI.length === 0) {
   $("#jobs-empty").hidden = false;
   jobsContainer.hidden = true;
 } else {

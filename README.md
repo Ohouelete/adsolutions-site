@@ -18,44 +18,54 @@ puis aller sur http://localhost:5173.
 
 | Fichier / dossier | Rôle |
 | --- | --- |
-| `index.html` | Toutes les sections de la page |
+| `index.html` | Accueil : hero, réalisations, services, pourquoi nous, audit gratuit |
+| `services.html` | Services 01 → 08, technologies, méthode en 5 étapes |
+| `realisations.html` | Toutes les réalisations |
+| `realisations/*.html` | Une étude de cas par projet (Thalia's Traiteur, Marck-Land, le blog) |
+| `offres.html` | AD START, AD BUSINESS, AD PREMIUM, AD APPS, maintenance |
+| `a-propos.html` | Présentation, valeurs, recrutement |
+| `contact.html` | Formulaire de projet, FAQ, audit gratuit |
+| `mentions-legales.html`, `confidentialite.html` | Pages légales |
+| `404.html` + `.htaccess` | Page « introuvable » (`.htaccess` la branche sur les hébergements Apache / cPanel) |
 | `styles.css` | Styles, basés sur la charte « Nuit & Orange » (couleurs, typo, rayons) |
-| `script.js` | Menu mobile, formulaire → WhatsApp, offres d'emploi, animations |
+| `script.js` | Menu mobile, formulaires → WhatsApp, offres d'emploi, animations (commun à toutes les pages) |
 | `logos/` | Logos officiels (SVG, texte vectorisé : ne pas modifier) |
 | `fonts/` | Clash Display, Satoshi (Fontshare, licence gratuite y compris usage commercial) et JetBrains Mono, hébergées localement |
-| `realisations/` | Captures d'écran des sites réalisés (1200 × 750) |
+| `realisations/` | Études de cas et captures d'écran des sites réalisés (1200 × 750) |
 
-## Ordre des sections
+**En-tête et pied de page** : ils sont recopiés à l'identique dans chaque page (pas d'étape de compilation).
+Pour modifier un lien du menu ou du pied de page, faire la même modification dans toutes les pages
+(une recherche/remplacement sur `*.html` et `realisations/*.html` suffit). Les pages de `realisations/`
+utilisent des chemins en `../`, et `404.html` des chemins absolus (`/styles.css`), car elle peut être affichée à n'importe quelle adresse.
+
+Les boutons d'offre des autres pages mènent à `contact.html?offre=…` : le type de projet est alors présélectionné dans le formulaire.
+
+## Parcours
 
 La structure s'inspire des meilleurs sites d'agences web et logicielles du catalogue websitevice.com
 (catégories *agency*, *business*, *corporate*) : Amply, GojiLabs, Ask Phill, Refokus, Bunsen, Agota, Grafit.
 
-0. **Bandeau d'annonce** orange (audit gratuit), qui se replie au défilement.
-1. **Hero** (fond nuit) : « Nous créons votre site web / app mobile / app web / e-boutique de A à Z », la vraie réalisation
-   Thalia's Traiteur avec un téléphone d'illustration, puis la rangée « Déjà en ligne » (les 3 projets).
-2. Bandeaux croisés : qualités et services.
-3. **Réalisations** : projet phare (Thalia's Traiteur), Marck-Land, le blog, carte « Votre projet ici ».
-4. **Services** : liste numérotée 01 → 08 (sites vitrines, e-commerce, applications web, applications mobiles, UI/UX,
-   API et intégrations, hébergement et DevOps, maintenance). Au survol, un aperçu illustré suit la souris ;
-   un clic présélectionne le bon type de projet dans le formulaire.
-5. **Technologies** : deux bandeaux défilants, six familles (front, mobile, back-end, données, cloud, CMS et paiement)
-   et les trois critères de choix (budget, délais, croissance).
-6. **Pourquoi nous** : texte qui s'allume, comparatif page Facebook / AD SOLUTIONS, chiffres clés.
-7. **Méthode** en 5 étapes (cartes empilées).
-8. **Offres** : AD START, AD BUSINESS, AD PREMIUM, encart **AD APPS** (applications sur devis) et maintenance.
-9. **Audit gratuit** (fond nuit) : formulaire qui envoie l'adresse à analyser sur WhatsApp.
-10. À propos, FAQ, Recrutement.
-11. **Contact** (fond nuit) : formulaire qui ouvre WhatsApp avec le message prêt.
+- Sur toutes les pages : **bandeau d'annonce** orange (audit gratuit), menu (Réalisations, Services, Offres, À propos,
+  bouton « Démarrer un projet »), puis en bas un bloc nuit **« Parlons de votre projet »** et le pied de page.
+- **Accueil** : hero « Nous créons votre site web / app mobile / app web / e-boutique de A à Z » avec la vraie réalisation
+  Thalia's Traiteur, bandeaux croisés, réalisations, services 01 → 08 (aperçu qui suit la souris), pourquoi nous
+  (comparatif page Facebook / site, chiffres clés), audit gratuit.
+- **Services** : les 8 services, les technologies (bandeaux + 6 familles + 3 critères), la méthode en 5 étapes (cartes empilées).
+- **Réalisations** et **études de cas** : contexte, besoin, réponse, ce qui a été livré, projet suivant.
+- **Offres** : les trois formules, l'encart AD APPS (applications sur devis) et la maintenance.
+- **À propos** : présentation, valeurs, recrutement.
+- **Contact** : formulaire → WhatsApp, FAQ, audit gratuit.
 
 ## Ce qui reste à compléter
 
-Chercher `TODO` dans le code :
+Chercher `TODO` (et les pastilles « à compléter » des pages légales) :
 
 - `script.js` : `WHATSAPP_NUMBER` et `RECRUTEMENT_EMAIL` ;
-- `index.html` : téléphone et e-mail de contact, prix des offres, RCCM et IFU (pied de page) ;
-- section **Réalisations** : liens du portfolio Marck-Land et du blog, nom exact du blog, et captures d'écran.
-  Tant qu'un lien vaut `#`, le bouton « Voir le site » est masqué automatiquement.
-  Pour une capture : déposer l'image dans `realisations/` et suivre le commentaire dans `index.html`.
+- `contact.html` : téléphone et e-mail de contact ; `offres.html` : prix des offres ;
+- toutes les pages : RCCM et IFU du pied de page ;
+- `mentions-legales.html` : adresse, RCCM, IFU, téléphone, directeur de la publication, hébergeur ;
+- **Réalisations** : liens du portfolio Marck-Land et du blog, nom exact du blog, et captures d'écran
+  (dans `index.html`, `realisations.html` et l'étude de cas). Tant qu'un lien vaut `#`, le bouton « Voir le site » est masqué automatiquement.
 
 ## Publier une offre d'emploi
 

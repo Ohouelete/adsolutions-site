@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réalisations · AD SOLUTIONS</title>
+  <meta name="description" content="Thalia's Traiteur, Marck-Land, le blog : les sites conçus et développés par AD SOLUTIONS, avec le besoin de chaque client et ce que nous avons livré.">
+  <meta property="og:title" content="Réalisations · AD SOLUTIONS">
+  <meta property="og:description" content="Thalia's Traiteur, Marck-Land, le blog : les sites conçus et développés par AD SOLUTIONS, avec le besoin de chaque client et ce que nous avons livré.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="realisations/thalias-traiteur.jpg">
+  <meta name="theme-color" content="#0F1B2D">
+  <link rel="icon" href="logos/ad-solutions-icone.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/clash-display-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/satoshi-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    /* Thème appliqué avant l'affichage pour éviter un flash. Sombre par défaut. */
+    (function () {
+      var d = document.documentElement, t = "dark";
+      try { t = localStorage.getItem("ad-theme") || "dark"; } catch (e) {}
+      d.dataset.theme = (t === "light" || t === "espresso") ? t : "dark";
+      d.classList.add("js");
+    })();
+  </script>
+</head>
+<body>
+
+  <a class="skip" href="#main">Aller au contenu</a>
+
+  <!-- Curseur contextuel (« Visiter », « Démarrer ») : souris uniquement -->
+  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+
+  <!-- ===== EN-TÊTE : bandeau d'annonce + Pill Nav (identique sur toutes les pages) ===== -->
+  <header class="header" id="top">
+    <a class="announce" href="contact.html#audit">
+      <span class="announce__tag mono">Offert</span>
+      <span class="announce__text">Audit gratuit de votre site, de votre page ou de votre application</span>
+      <span class="announce__go">En profiter <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo" aria-label="AD SOLUTIONS, accueil">
+        <img class="logo-on-dark" src="logos/ad-solutions-logo-inverse.svg" alt="AD SOLUTIONS" width="104" height="40">
+        <img class="logo-on-light" src="logos/ad-solutions-logo.svg" alt="AD SOLUTIONS" width="104" height="40">
+      </a>
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <div class="nav__pill">
+          <span class="nav__indicator" aria-hidden="true"></span>
+          <a href="realisations.html" class="is-active" aria-current="page" data-swap>Réalisations</a>
+          <a href="services.html" data-swap>Services</a>
+          <a href="offres.html" data-swap>Offres</a>
+          <a href="a-propos.html" data-swap>À propos</a>
+        </div>
+        <a href="contact.html" class="btn btn--primary btn--sm nav__cta" data-magnet>Démarrer un projet</a>
+      </nav>
+      <div class="header__actions">
+        <!-- Bouton de thème : chaque clic passe au suivant (Nuit → Espresso → Sable → Nuit) -->
+        <button class="theme-toggle" type="button" aria-label="Thème Nuit. Passer au thème Espresso">
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
+          <svg class="i-cup" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17M8 3c-1 1.2 1 2.3 0 3.5M12 3c-1 1.2 1 2.3 0 3.5"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="header__progress" aria-hidden="true"></div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== EN-TÊTE DE PAGE ===== -->
+    <section class="hero page-hero dark" data-spotlight>
+      <div class="bg-rays" aria-hidden="true"></div>
+      <canvas class="grid-canvas" aria-hidden="true"></canvas>
+      <div class="bg-aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="bg-noise" aria-hidden="true"></div>
+      <div class="container page-hero__inner">
+        <nav class="crumbs reveal" aria-label="Fil d'Ariane"><ol><li><a href="index.html">Accueil</a></li><li aria-current="page">Réalisations</li></ol></nav>
+        <p class="eyebrow" data-scramble>Réalisations</p>
+        <h1 class="page-hero__title" data-split>Trois projets en ligne. Le vôtre est le prochain.</h1>
+        <p class="page-hero__lead reveal">Chaque projet est conçu sur mesure, pour l'activité et les clients de son propriétaire. Découvrez le besoin, ce que nous avons livré, puis visitez le site.</p>
+      </div>
+    </section>
+
+    <!-- ===== RÉALISATIONS ===== -->
+    <section class="section bg-squares" id="realisations">
+      <div class="container">
+
+        <!-- Projet phare -->
+        <article class="case reveal">
+          <a class="case__media corners glare" href="https://thaliastraiteur.com/" target="_blank" rel="noopener" data-cursor="Visiter" aria-label="Visiter le site Thalia's Traiteur (nouvel onglet)">
+            <div class="case__bar">
+              <span class="browser__dots"><i></i><i></i><i></i></span>
+              <span class="mono" data-decrypt>thaliastraiteur.com</span>
+            </div>
+            <div class="case__shot">
+              <img src="realisations/thalias-traiteur.jpg" alt="Page d'accueil du site Thalia's Traiteur" width="1200" height="750" loading="lazy">
+            </div>
+          </a>
+          <div class="case__body">
+            <div class="case__tags">
+              <span class="tag tag--accent">Projet phare</span>
+              <span class="tag">Site web</span>
+              <span class="tag">Traiteur</span>
+              <span class="tag">Québec, Canada</span>
+            </div>
+            <h3>Thalia's Traiteur</h3>
+            <p>Un traiteur ivoirien installé au Québec voulait un site à la hauteur de sa cuisine : élégant, appétissant et capable de transformer une visite en commande ou en réservation d'événement.</p>
+            <dl class="case__facts">
+              <div><dt>Le besoin</dt><dd>Présenter le menu et recevoir des demandes pour mariages et événements.</dd></div>
+              <div><dt>Ce qu'on a livré</dt><dd>Menu, services événementiels, commande en ligne, livraison, avis clients.</dd></div>
+            </dl>
+            <ul class="case__features">
+              <li>Design sur mesure</li><li>Commande en ligne</li><li>Responsive mobile</li><li>Avis clients</li><li>WhatsApp intégré</li>
+            </ul>
+            <div class="case__links">
+              <a class="link-arrow" href="realisations/thalias-traiteur.html"><span data-swap>Lire l'étude de cas</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a class="link-arrow link-arrow--muted" href="https://thaliastraiteur.com/" target="_blank" rel="noopener"><span data-swap>Voir le site en ligne</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!--
+          Autres projets. Pour chacun :
+          - remplacer href="#" du lien « Voir le site » par l'adresse du site (tant que c'est "#", ce lien est masqué automatiquement) ;
+          - pour une vraie capture : remplacer le bloc <div class="mini">…</div>
+            par <img src="realisations/nom.jpg" alt="Capture du site …" width="1200" height="750" loading="lazy">
+            (image 1200 × 750 conseillée), ici et dans la page de l'étude de cas.
+        -->
+        <div class="work">
+          <article class="work__item reveal">
+            <a class="work__media" href="realisations/marck-land.html" data-cursor="Découvrir" aria-label="Étude de cas : Marck-Land">
+              <div class="mini mini--portfolio" aria-hidden="true">
+                <div class="mini__bar"><i></i><i></i><i></i><span>marck-land</span></div>
+                <div class="mini__body">
+                  <span class="mini__avatar"></span>
+                  <span class="mini__h">Marck-Land</span>
+                  <span class="mini__l"></span><span class="mini__l mini__l--s"></span>
+                  <span class="mini__cards"><i></i><i></i><i></i></span>
+                </div>
+              </div>
+            </a>
+            <div class="work__body">
+              <div class="case__tags"><span class="tag">Site web</span><span class="tag">Portfolio</span></div>
+              <h3>Marck-Land</h3>
+              <p>Un portfolio personnel pour présenter un parcours, des compétences et des projets, avec un moyen simple d'entrer en contact.</p>
+              <div class="case__links">
+                <a class="link-arrow" href="realisations/marck-land.html">Étude de cas <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a class="link-arrow link-arrow--muted" href="#" target="_blank" rel="noopener" data-project-link>Voir le site <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><!-- TODO lien -->
+              </div>
+            </div>
+          </article>
+
+          <article class="work__item reveal">
+            <a class="work__media" href="realisations/blog.html" data-cursor="Découvrir" aria-label="Étude de cas : le blog">
+              <div class="mini mini--blog" aria-hidden="true">
+                <div class="mini__bar"><i></i><i></i><i></i><span>blog</span></div>
+                <div class="mini__body">
+                  <span class="mini__h">Le Blog</span>
+                  <span class="mini__posts"><i></i><i></i></span>
+                  <span class="mini__l"></span><span class="mini__l mini__l--s"></span>
+                </div>
+              </div>
+            </a>
+            <div class="work__body">
+              <div class="case__tags"><span class="tag">Site web</span><span class="tag">Blog</span></div>
+              <h3>Le Blog</h3><!-- TODO nom exact du blog -->
+              <p>Un blog pour publier des articles, les classer par thème et les rendre agréables à lire sur téléphone comme sur ordinateur.</p>
+              <div class="case__links">
+                <a class="link-arrow" href="realisations/blog.html">Étude de cas <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a class="link-arrow link-arrow--muted" href="#" target="_blank" rel="noopener" data-project-link>Voir le site <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a><!-- TODO lien -->
+              </div>
+            </div>
+          </article>
+
+          <a class="work__item work__item--cta reveal" href="contact.html" data-cursor="Démarrer">
+            <span class="work__plus" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+            <h3>Votre projet ici</h3>
+            <p>Site, application web ou application mobile : le prochain projet de cette liste pourrait être le vôtre. Le devis est gratuit.</p>
+            <span class="link-arrow">Démarrer mon projet <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BANDEAUX CROISÉS (Scroll Velocity) ===== -->
+    <div class="bands" aria-label="Ce que nous construisons">
+      <div class="band band--night" aria-hidden="true">
+        <div class="band__track" data-velocity="-1">
+          <span>Design sur mesure</span><span>Rapide sur mobile</span><span>Sécurisé</span><span>Pensé pour Google</span><span>Code propre</span><span>Livré clé en main</span><span>Suivi après la mise en ligne</span>
+        </div>
+      </div>
+      <div class="band band--orange">
+        <div class="band__track" data-velocity="1">
+          <span>Sites vitrines</span><span>E-commerce</span><span>Applications web</span><span>Applications mobiles</span><span>UI / UX design</span><span>API et intégrations</span><span>Paiement Mobile Money</span><span>Hébergement</span><span>Maintenance</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== APPEL À L'ACTION ===== -->
+    <section class="section contact cta-end dark island" id="cta" data-spotlight>
+      <div class="bg-beams" aria-hidden="true"></div>
+      <div class="bg-grid" aria-hidden="true"></div>
+      <div class="bg-noise" aria-hidden="true"></div>
+      <div class="container cta-end__inner">
+        <p class="eyebrow" data-scramble>Contact</p>
+        <h2 data-split>Parlons de votre projet.</h2>
+        <p class="contact__lead reveal">Site, application web ou mobile : décrivez votre idée en quelques mots. Le premier échange est gratuit et vous recevez un devis détaillé sous 24 h, sans engagement.</p>
+        <div class="cta-end__actions reveal">
+          <a href="contact.html" class="btn btn--primary btn--lg btn--glow" data-magnet data-spark><span>Démarrer mon projet</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#" class="btn btn--ghost btn--lg" data-contact="whatsapp" target="_blank" rel="noopener" data-magnet><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg> Discuter sur WhatsApp</a>
+        </div>
+        <ul class="cta-end__points reveal">
+          <li>Premier échange gratuit</li><li>Devis détaillé sous 24 h</li><li>Sans engagement</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== PIED DE PAGE (identique sur toutes les pages) ===== -->
+  <footer class="footer dark island">
+    <div class="bg-noise" aria-hidden="true"></div>
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" aria-label="AD SOLUTIONS, accueil">
+            <img class="logo-on-dark" src="logos/ad-solutions-logo-inverse.svg" alt="AD SOLUTIONS" width="156" height="60">
+            <img class="logo-on-light" src="logos/ad-solutions-logo.svg" alt="AD SOLUTIONS" width="156" height="60">
+          </a>
+          <p>Sites, applications web et mobiles, du design à l'hébergement.</p>
+        </div>
+        <nav class="footer__nav" aria-label="Pied de page">
+          <div>
+            <h4 class="mono">Services</h4>
+            <a href="services.html#svc-sites" data-swap>Sites web</a>
+            <a href="services.html#svc-ecommerce" data-swap>E-commerce</a>
+            <a href="services.html#svc-applications-web" data-swap>Applications web</a>
+            <a href="services.html#svc-applications-mobiles" data-swap>Applications mobiles</a>
+            <a href="offres.html" data-swap>Offres et tarifs</a>
+          </div>
+          <div>
+            <h4 class="mono">Agence</h4>
+            <a href="realisations.html" data-swap>Réalisations</a>
+            <a href="services.html#stack" data-swap>Technologies</a>
+            <a href="services.html#methode" data-swap>Méthode</a>
+            <a href="a-propos.html" data-swap>À propos</a>
+            <a href="a-propos.html#recrutement" data-swap>Recrutement</a>
+          </div>
+          <div>
+            <h4 class="mono">Contact</h4>
+            <a href="contact.html" data-swap>Démarrer un projet</a>
+            <a href="contact.html#audit" data-swap>Audit gratuit</a>
+            <a href="contact.html#faq" data-swap>Questions fréquentes</a>
+            <a href="#" data-contact="whatsapp" target="_blank" rel="noopener" data-swap>WhatsApp</a>
+          </div>
+        </nav>
+      </div>
+      <p class="footer__word" aria-hidden="true" data-letters>AD SOLUTIONS</p>
+      <!-- TODO : compléter RCCM et IFU une fois obtenus (ici et dans mentions-legales.html) -->
+      <div class="footer__bottom">
+        <p>© <span id="year"></span> AD SOLUTIONS SARL · RCCM : RB/COT/XX X XXXX · IFU : XXXXXXXXXXXXX</p>
+        <nav class="footer__legal" aria-label="Informations légales">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="confidentialite.html">Confidentialité</a>
+          <a href="#top" class="footer__top-link">Retour en haut ↑</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bouton WhatsApp flottant -->
+  <a class="wa-float" href="#" data-contact="whatsapp" aria-label="Nous écrire sur WhatsApp" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 8.5c0 3.5 3.5 7 7 7l1-1.5-2-1-1 .8c-1-.5-2-1.5-2.5-2.5l.8-1-1-2z"/></svg>
+    <span class="wa-float__label">Discuter sur WhatsApp</span>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
