@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="fr" data-kt-theme-switch="true" data-kt-theme-switch-mode="light">
+<html lang="fr" data-kt-theme-switch="true" data-kt-theme-switch-mode="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../logos/ad-solutions-icone.svg" type="image/svg+xml">
   <link rel="preload" href="../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="../assets/css/app.css?v=26">
+  <link rel="stylesheet" href="../assets/css/app.css?v=27">
   <link rel="stylesheet" href="../assets/css/liquid-glass.css?v=2"><!-- Verre noir transparent : retirer cette ligne pour désactiver -->
   <script>
-    /* Thème posé avant l'affichage : mode (clé KTThemeSwitch « kt-theme », clair par défaut ; « ad-mode » = espresso pour le sombre café, foret pour le sombre vert)
+    /* Thème posé avant l'affichage : mode (clé KTThemeSwitch « kt-theme », sombre par défaut à la première visite ; « ad-mode » = espresso pour le sombre café, foret pour le sombre vert)
        et couleur (« ad-accent » : orange par défaut, ou le bleu d'origine de KTUI). */
     (function () {
-      var d = document.documentElement, m = "light", a = "orange", t = "";
-      try { m = localStorage.getItem("kt-theme") || "light"; a = localStorage.getItem("ad-accent") || "orange"; t = localStorage.getItem("ad-mode") || ""; } catch (e) {}
+      var d = document.documentElement, m = "dark", a = "orange", t = "";
+      try { m = localStorage.getItem("kt-theme") || "dark"; a = localStorage.getItem("ad-accent") || "orange"; t = localStorage.getItem("ad-mode") || ""; } catch (e) {}
       if (m === "system") m = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       if (t === "espresso" || t === "foret") { m = "dark"; d.dataset.tone = t; }
       d.classList.add(m === "dark" ? "dark" : "light", "js");
@@ -647,6 +647,6 @@
 
   <script src="../assets/js/ktui.min.js?v=2"></script>
   <script src="../assets/js/lenis.min.js?v=2"></script>
-  <script src="../assets/js/site.js?v=4"></script>
+  <script src="../assets/js/site.js?v=5"></script>
 </body>
 </html>

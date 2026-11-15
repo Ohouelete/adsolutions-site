@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" data-kt-theme-switch="true" data-kt-theme-switch-mode="light">
+<html lang="fr" data-kt-theme-switch="true" data-kt-theme-switch-mode="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,14 +11,14 @@
   <meta property="og:image" content="assets/img/thalias-traiteur.jpg">
   <link rel="icon" href="logos/ad-solutions-icone.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/app.css?v=26">
+  <link rel="stylesheet" href="assets/css/app.css?v=27">
   <link rel="stylesheet" href="assets/css/liquid-glass.css?v=2"><!-- Verre noir transparent : retirer cette ligne pour désactiver -->
   <script>
-    /* Thème posé avant l'affichage : mode (clé KTThemeSwitch « kt-theme », clair par défaut ; « ad-mode » = espresso pour le sombre café, foret pour le sombre vert)
+    /* Thème posé avant l'affichage : mode (clé KTThemeSwitch « kt-theme », sombre par défaut à la première visite ; « ad-mode » = espresso pour le sombre café, foret pour le sombre vert)
        et couleur (« ad-accent » : orange par défaut, ou le bleu d'origine de KTUI). */
     (function () {
-      var d = document.documentElement, m = "light", a = "orange", t = "";
-      try { m = localStorage.getItem("kt-theme") || "light"; a = localStorage.getItem("ad-accent") || "orange"; t = localStorage.getItem("ad-mode") || ""; } catch (e) {}
+      var d = document.documentElement, m = "dark", a = "orange", t = "";
+      try { m = localStorage.getItem("kt-theme") || "dark"; a = localStorage.getItem("ad-accent") || "orange"; t = localStorage.getItem("ad-mode") || ""; } catch (e) {}
       if (m === "system") m = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       if (t === "espresso" || t === "foret") { m = "dark"; d.dataset.tone = t; }
       d.classList.add(m === "dark" ? "dark" : "light", "js");
@@ -991,7 +991,7 @@
         </div>
       </div>
       <!-- TODO : remplacer par les vraies coordonnées -->
-      <ul class="mx-auto mt-14 grid max-w-5xl gap-3 px-5 sm:grid-cols-3 lg:px-8" data-reveal>
+      <ul class="mx-auto mt-14 grid max-w-5xl justify-center gap-3 px-5 sm:grid-cols-[repeat(auto-fit,minmax(15rem,20rem))] lg:px-8" data-reveal>
         <li class="wa-only kt-card magic flex flex-row items-center gap-3 p-4"><span class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span class="min-w-0 flex-1"><span class="block text-xs text-muted-foreground">Téléphone / WhatsApp</span><a href="tel:+22900000000" class="font-medium text-mono hover:text-primary">+229 00 00 00 00</a></span><button type="button" class="kt-btn kt-btn-ghost kt-btn-icon kt-btn-sm" data-kt-clipboard="true" data-kt-clipboard-text="+229 00 00 00 00" aria-label="Copier le numéro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></li>
         <li class="kt-card magic flex flex-row items-center gap-3 p-4"><span class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span class="min-w-0 flex-1"><span class="block text-xs text-muted-foreground">E-mail</span><a href="mailto:contact@adsolutions.bj" class="truncate font-medium text-mono hover:text-primary">contact@adsolutions.bj</a></span><button type="button" class="kt-btn kt-btn-ghost kt-btn-icon kt-btn-sm" data-kt-clipboard="true" data-kt-clipboard-text="contact@adsolutions.bj" aria-label="Copier l'adresse e-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></li>
         <li class="kt-card magic flex flex-row items-center gap-3 p-4"><span class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><span class="block text-xs text-muted-foreground">Basés à</span><span class="font-medium text-mono">Cotonou, Bénin</span></span></li>
@@ -1256,6 +1256,6 @@
 
   <script src="assets/js/ktui.min.js?v=2"></script>
   <script src="assets/js/lenis.min.js?v=2"></script>
-  <script src="assets/js/site.js?v=4"></script>
+  <script src="assets/js/site.js?v=5"></script>
 </body>
 </html>

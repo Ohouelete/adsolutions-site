@@ -128,6 +128,12 @@ html[data-tone="foret"] { background: radial-gradient(120% 50% at 50% 0%, oklch(
   /* Le fond est porté par <html> : les calques de motifs (z-index négatif) passent ainsi sous tout le contenu de la page */
   html { background: var(--background); }
   body { @apply text-foreground antialiased; background: transparent; overflow-x: clip; }
+  /* Aucun défilement horizontal : la page entière (hidden pour les anciens Safari, clip ensuite)
+     et chaque section, qui découpe ce qui dépasse sur les côtés (halo du hero, bandeaux défilants, mur 3D, vitrine inclinée).
+     « clip » ne crée pas de zone de défilement : l'en-tête collant, la FAQ et « En coulisses » restent collants,
+     et les halos peuvent toujours déborder vers le haut et le bas. */
+  html { overflow-x: hidden; overflow-x: clip; }
+  #main > section { overflow-x: clip; }
   ::selection { @apply bg-primary text-primary-foreground; }
 }
 

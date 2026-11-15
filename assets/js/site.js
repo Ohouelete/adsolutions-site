@@ -97,7 +97,8 @@ function main() {
   if (/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent)) $$("[data-kbd]").forEach((k) => (k.textContent = "⌘ K"));
 
   // ---------- Apparence : couleur (Orange AD / Bleu KTUI) + mode via KTThemeSwitch ----------
-  const getMode = () => { try { return localStorage.getItem("ad-mode") || localStorage.getItem("kt-theme") || "light"; } catch (e) { return "light"; } };
+  // Sombre par défaut à la première visite
+  const getMode = () => { try { return localStorage.getItem("ad-mode") || localStorage.getItem("kt-theme") || "dark"; } catch (e) { return "dark"; } };
   const syncAppearance = () => {
     $$("[data-accent-set]").forEach((b) => b.classList.toggle("is-on", b.dataset.accentSet === html.dataset.accent));
     $$("[data-mode-set]").forEach((b) => b.classList.toggle("is-on", b.dataset.modeSet === getMode()));
