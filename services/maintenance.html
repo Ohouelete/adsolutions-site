@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="fr" data-kt-theme-switch="true" data-kt-theme-switch-mode="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../logos/ad-solutions-icone.svg" type="image/svg+xml">
+  <link rel="preload" href="../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/app.css?v=26">
+  <link rel="stylesheet" href="../assets/css/liquid-glass.css?v=2"><!-- Verre noir transparent : retirer cette ligne pour désactiver -->
+  <script>
+    /* Thème posé avant l'affichage : mode (clé KTThemeSwitch « kt-theme », clair par défaut ; « ad-mode » = espresso pour le sombre café, foret pour le sombre vert)
+       et couleur (« ad-accent » : orange par défaut, ou le bleu d'origine de KTUI). */
+    (function () {
+      var d = document.documentElement, m = "light", a = "orange", t = "";
+      try { m = localStorage.getItem("kt-theme") || "light"; a = localStorage.getItem("ad-accent") || "orange"; t = localStorage.getItem("ad-mode") || ""; } catch (e) {}
+      if (m === "system") m = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      if (t === "espresso" || t === "foret") { m = "dark"; d.dataset.tone = t; }
+      d.classList.add(m === "dark" ? "dark" : "light", "js");
+      d.dataset.accent = a === "blue" ? "blue" : "orange";
+    })();
+  </script>
+  <title>Maintenance de site web et d'application | AD SOLUTIONS</title>
+  <meta name="description" content="Sauvegardes, mises à jour de sécurité, petites modifications et assistance prioritaire sur WhatsApp : votre site ou votre application entre de bonnes mains.">
+  <meta property="og:title" content="Maintenance de site web et d'application | AD SOLUTIONS">
+  <meta property="og:description" content="Sauvegardes, mises à jour de sécurité, petites modifications et assistance prioritaire sur WhatsApp : votre site ou votre application entre de bonnes mains.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/img/thalias-traiteur.jpg">
+  <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Service","name":"Maintenance et évolution","serviceType":"Maintenance de site web et d'application","description":"Sauvegardes, mises à jour de sécurité, petites modifications et assistance prioritaire sur WhatsApp : votre site ou votre application entre de bonnes mains.","provider":{"@type":"Organization","name":"AD SOLUTIONS","address":{"@type":"PostalAddress","addressLocality":"Cotonou","addressCountry":"BJ"}},"areaServed":["Bénin","International"]},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Reprenez-vous un site réalisé par une autre agence ?","acceptedAnswer":{"@type":"Answer","text":"Oui, après un audit gratuit qui nous permet de vérifier son état et de vous dire honnêtement ce qu'il faut corriger."}},{"@type":"Question","name":"Qu'est-ce qu'une petite modification ?","acceptedAnswer":{"@type":"Answer","text":"Changer un texte, une photo, un prix ou un horaire, ajouter une actualité… Les nouvelles fonctionnalités sont chiffrées à part, avec votre accord."}},{"@type":"Question","name":"Comment vous joindre en cas de problème ?","acceptedAnswer":{"@type":"Answer","text":"Sur WhatsApp, en priorité. Vous avez un interlocuteur qui connaît votre site."}},{"@type":"Question","name":"La maintenance est-elle incluse avec un nouveau site ?","acceptedAnswer":{"@type":"Answer","text":"Oui, en partie : 1 mois offert avec AD BUSINESS et 3 mois avec AD PREMIUM. Ensuite, vous choisissez de continuer ou non."}}]}]</script>
+</head>
+<body data-home="../">
+  <div class="page-graph" aria-hidden="true"></div><!-- Fond unifié à l’essai : papier millimétré 10 / 60 px. Fond de référence à garder : « page-dots » (points + accents). Autres : « page-grid », « page-diag » (diagonales + pointillés orange), « page-hatch », « page-angular » -->
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[200] kt-btn kt-btn-primary">Aller au contenu</a>
+
+  <!-- ================================================================
+       EN-TÊTE
+       ================================================================ -->
+  <header id="hdr" class="sticky top-0 z-50 border-b border-transparent transition-colors duration-300 [&.is-stuck]:border-border [&.is-stuck]:bg-background/80 [&.is-stuck]:backdrop-blur-xl">
+    <a href="../index.html#audit" class="flex items-center justify-center gap-2.5 h-9 px-4 bg-mono text-mono-foreground text-xs sm:text-[13px] font-medium overflow-hidden transition-[height] duration-300 [.is-stuck_&]:h-0">
+      <span class="kt-badge kt-badge-xs kt-badge-primary">Offert</span>
+      <span class="truncate">Audit gratuit : découvrez ce qui vous fait perdre des clients en ligne</span>
+      <span class="hidden sm:inline-flex items-center gap-1 font-semibold">En profiter
+        <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+    <div class="mx-auto flex h-16 max-w-7xl items-center gap-4 px-5 lg:px-8">
+      <a href="../index.html#accueil" class="shrink-0" aria-label="AD SOLUTIONS, accueil">
+        <img class="logo-light h-8 w-auto" src="../logos/ad-solutions-logo.svg" alt="AD SOLUTIONS" width="104" height="40">
+        <img class="logo-dark h-8 w-auto" src="../logos/ad-solutions-logo-inverse.svg" alt="AD SOLUTIONS" width="104" height="40">
+      </a>
+
+      <nav id="nav" class="relative mx-auto hidden lg:flex items-center gap-0.5" aria-label="Navigation principale">
+        <span class="glider absolute inset-y-0 left-0 w-0 rounded-md bg-accent opacity-0" aria-hidden="true"></span>
+        <a href="../realisations.html" class="nav-link relative z-10 px-3 py-2 rounded-md text-sm font-medium text-secondary-foreground hover:text-foreground [&.is-active]:text-primary">Réalisations</a>
+        <div data-kt-dropdown="true" data-kt-dropdown-trigger="hover" data-kt-dropdown-placement="bottom" data-kt-dropdown-offset="0, 12px">
+          <button type="button" data-kt-dropdown-toggle="true" data-href="../index.html#services" class="nav-link relative z-10 inline-flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium text-secondary-foreground hover:text-foreground [&.is-active]:text-primary">
+            Services
+            <svg class="size-3.5 transition-transform [.open_&]:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div data-kt-dropdown-menu="true" class="kt-dropdown-menu w-[560px] p-2">
+            <div class="grid grid-cols-2 gap-0.5">
+              <a href="../services/site-vitrine.html" class="group flex items-center gap-3 rounded-md p-2.5 hover:bg-accent"><span class="flex size-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground group-hover:text-primary"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><span><span class="block text-sm font-medium text-mono">Sites vitrines</span><span class="block text-xs text-muted-foreground">Présenter et rassurer</span></span></a>
+              <a href="../services/e-commerce.html" class="group flex items-center gap-3 rounded-md p-2.5 hover:bg-accent"><span class="flex size-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground group-hover:text-primary"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11h11L21 7H6.2"/><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg></span><span><span class="block text-sm font-medium text-mono">E-commerce</span><span class="block text-xs text-muted-foreground">Vendre en ligne</span></span></a>
+              <a href="../services/application-web.html" class="group flex items-center gap-3 rounded-md p-2.5 hover:bg-accent"><span class="flex size-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground group-hover:text-primary"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span><span><span class="block text-sm font-medium text-mono">Applications web</span><span class="block text-xs text-muted-foreground">SaaS, back-office</span></span></a>
+              <a href="../services/application-mobile.html" class="group flex items-center gap-3 rounded-md p-2.5 hover:bg-accent"><span class="flex size-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground group-hover:text-primary"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span><span><span class="block text-sm font-medium text-mono">Applications mobiles</span><span class="block text-xs text-muted-foreground">Android et iOS</span></span></a>
+              <a href="../services/ui-ux-design.html" class="group flex items-center gap-3 rounded-md p-2.5 hover:bg-accent"><span class="flex size-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground group-hover:text-primary"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14 4 6 6-10 10H4v-6z"/></svg></span><span><span class="block text-sm font-medium text-mono">UI / UX design</span><span class="block text-xs text-muted-foreground">Maquettes, prototypes</span></span></a>
+              <a href="../services/api-integrations.html" class="group flex items-center gap-3 rounded-md p-2.5 hover:bg-accent"><span class="flex size-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground group-hover:text-primary"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg></span><span><span class="block text-sm font-medium text-mono">API et intégrations</span><span class="block text-xs text-muted-foreground">Paiements, outils</span></span></a>
+              <a href="../services/hebergement.html" class="group flex items-center gap-3 rounded-md p-2.5 hover:bg-accent"><span class="flex size-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground group-hover:text-primary"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 8a4 4 0 0 1-1 10z"/></svg></span><span><span class="block text-sm font-medium text-mono">Hébergement</span><span class="block text-xs text-muted-foreground">Domaine, serveurs</span></span></a>
+              <a href="../services/maintenance.html" class="group flex items-center gap-3 rounded-md p-2.5 hover:bg-accent"><span class="flex size-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground group-hover:text-primary"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span><span class="block text-sm font-medium text-mono">Maintenance</span><span class="block text-xs text-muted-foreground">Suivi, évolutions</span></span></a>
+            </div>
+            <div class="mt-2 flex items-center justify-between gap-3 border-t border-border px-2.5 pt-3 pb-1 text-sm text-muted-foreground">
+              <span>Pas sûr de ce qu'il vous faut&nbsp;?</span>
+              <button type="button" class="kt-btn kt-btn-sm kt-btn-primary" data-kt-modal-toggle="#devis">On en parle</button>
+            </div>
+          </div>
+        </div>
+        <a href="../methode.html" class="nav-link relative z-10 px-3 py-2 rounded-md text-sm font-medium text-secondary-foreground hover:text-foreground [&.is-active]:text-primary">Méthode</a>
+        <a href="../offres.html" class="nav-link relative z-10 px-3 py-2 rounded-md text-sm font-medium text-secondary-foreground hover:text-foreground [&.is-active]:text-primary">Offres</a>
+        <a href="../a-propos.html" class="nav-link relative z-10 px-3 py-2 rounded-md text-sm font-medium text-secondary-foreground hover:text-foreground [&.is-active]:text-primary">À propos</a>
+        <a href="../faq.html" class="nav-link relative z-10 px-3 py-2 rounded-md text-sm font-medium text-secondary-foreground hover:text-foreground [&.is-active]:text-primary">FAQ</a>
+      </nav>
+
+      <div class="ms-auto lg:ms-0 flex items-center gap-2">
+        <button type="button" class="kt-btn kt-btn-outline hidden md:inline-flex text-muted-foreground" data-kt-modal-toggle="#palette" aria-label="Rechercher (Ctrl K)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <span class="hidden xl:inline">Rechercher</span>
+          <span class="kt-kbd kt-kbd-xs" data-kbd>Ctrl K</span>
+        </button>
+
+        <!-- KTUI Dropdown : couleur (Orange AD / Bleu KTUI) et mode (clair / sombre / système) -->
+        <div data-kt-dropdown="true" data-kt-dropdown-placement="bottom-end" data-kt-dropdown-offset="0, 10px">
+          <button type="button" class="kt-btn kt-btn-ghost kt-btn-icon" data-kt-dropdown-toggle="true" aria-label="Apparence">
+            <svg class="dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            <svg class="hidden dark:block [[data-tone=espresso]_&]:hidden [[data-tone=foret]_&]:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
+            <svg class="hidden text-primary [[data-tone=espresso]_&]:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17M8 3c-1 1.2 1 2.3 0 3.5M12 3c-1 1.2 1 2.3 0 3.5"/></svg>
+            <svg class="hidden text-primary [[data-tone=foret]_&]:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.4 5.2-6.1"/></svg>
+          </button>
+          <div data-kt-dropdown-menu="true" class="kt-dropdown-menu w-60 p-2">
+            <p class="px-2 pb-2 pt-1 text-xs font-medium text-muted-foreground">Couleur</p>
+            <div class="grid grid-cols-2 gap-1.5 px-1">
+              <button type="button" data-accent-set="orange" class="flex items-center gap-2 rounded-md border border-border px-2.5 py-2 text-sm text-mono hover:bg-accent [&.is-on]:border-primary [&.is-on]:bg-accent"><span class="size-4 rounded-full" style="background:oklch(64.6% 0.222 41.116)"></span>Orange AD</button>
+              <button type="button" data-accent-set="blue" class="flex items-center gap-2 rounded-md border border-border px-2.5 py-2 text-sm text-mono hover:bg-accent [&.is-on]:border-primary [&.is-on]:bg-accent"><span class="size-4 rounded-full" style="background:oklch(62.3% 0.214 259.815)"></span>Bleu KTUI</button>
+            </div>
+            <div class="kt-dropdown-menu-separator my-2"></div>
+            <p class="px-2 pb-1 text-xs font-medium text-muted-foreground">Mode</p>
+            <button type="button" data-mode-set="light" class="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-sm text-mono hover:bg-accent [&.is-on]:bg-accent"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>Clair</button>
+            <button type="button" data-mode-set="dark" class="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-sm text-mono hover:bg-accent [&.is-on]:bg-accent"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>Sombre</button>
+            <button type="button" data-mode-set="espresso" class="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-sm text-mono hover:bg-accent [&.is-on]:bg-accent"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17M8 3c-1 1.2 1 2.3 0 3.5M12 3c-1 1.2 1 2.3 0 3.5"/></svg>Espresso<span class="kt-badge kt-badge-xs kt-badge-primary kt-badge-outline ms-auto">café</span></button>
+            <button type="button" data-mode-set="foret" class="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-sm text-mono hover:bg-accent [&.is-on]:bg-accent"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.4 5.2-6.1"/></svg>Forêt<span class="kt-badge kt-badge-xs kt-badge-primary kt-badge-outline ms-auto">vert</span></button>
+            <button type="button" data-mode-set="system" class="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-sm text-mono hover:bg-accent [&.is-on]:bg-accent"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Système</button>
+          </div>
+        </div>
+
+        <button type="button" class="kt-btn kt-btn-primary shimmer hidden sm:inline-flex" data-kt-modal-toggle="#devis" data-magnet>Devis gratuit</button>
+        <button type="button" class="kt-btn kt-btn-ghost kt-btn-icon lg:hidden" data-kt-drawer-toggle="#nav-drawer" aria-label="Ouvrir le menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="progress" class="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-primary" aria-hidden="true"></div>
+  </header>
+
+  <main id="main" class="relative">
+
+    <!-- Fil conducteur : un voile de couleur qui serpente et deux rails qui relient toutes les sections -->
+    <div class="page-thread" aria-hidden="true"></div>
+    <div class="page-rails" aria-hidden="true"></div>
+    <div class="page-sparkle" aria-hidden="true"></div>
+
+    <!-- ================================================================
+         MAINTENANCE ET ÉVOLUTION — page générée par scripts/build-services.mjs (ne pas modifier à la main)
+         ================================================================ -->
+    <section id="top" data-label="Maintenance et évolution" class="relative pb-20 pt-10 sm:pt-14">
+      <div class="gm gm-sec" aria-hidden="true"></div>
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <nav aria-label="Fil d'Ariane" class="text-sm text-muted-foreground" data-reveal>
+          <ol class="flex flex-wrap items-center gap-1.5">
+            <li><a href="../index.html" class="hover:text-foreground">Accueil</a></li><li aria-hidden="true">/</li>
+            <li><a href="../index.html#services" class="hover:text-foreground">Services</a></li><li aria-hidden="true">/</li>
+            <li class="font-medium text-mono" aria-current="page">Maintenance et évolution</li>
+          </ol>
+        </nav>
+        <div class="mt-10 grid items-start gap-12 lg:grid-cols-[1.3fr_1fr]">
+          <div>
+            <span class="kt-badge kt-badge-outline kt-badge-primary rounded-full" data-scramble>Maintenance et évolution</span>
+            <h1 class="mt-5 text-4xl font-semibold leading-[1.08] tracking-tight text-mono sm:text-5xl xl:text-[3.6rem]" data-words>Votre site entre de bonnes mains, après le lancement aussi.</h1>
+            <p class="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg" data-reveal>Sauvegardes, mises à jour de sécurité, petites modifications et assistance prioritaire sur WhatsApp&nbsp;: vous vous concentrez sur votre activité, nous veillons sur votre site ou votre application.</p>
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row" data-reveal>
+            <button type="button" class="kt-btn kt-btn-primary kt-btn-lg shimmer shadow-lg shadow-primary/25" data-kt-modal-toggle="#devis" data-devis-type="Maintenance" data-magnet>Recevoir mon devis gratuit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <a href="#" class="kt-btn kt-btn-outline kt-btn-lg bg-background/70 backdrop-blur" data-wa-msg="Bonjour AD SOLUTIONS, je souhaite des informations sur votre offre « Maintenance et évolution »." target="_blank" rel="noopener" data-magnet><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg>Discuter sur WhatsApp</a>
+            </div>
+            <p class="mt-4 text-sm text-muted-foreground" data-reveal>Devis détaillé sous 24&nbsp;h · Gratuit et sans engagement · Solde payé à la livraison</p>
+          </div>
+          <aside class="kt-card beam" data-reveal="scale" aria-label="En bref"><div class="kt-card-content flex flex-col gap-5 p-7">
+            <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">En bref</p>
+            <dl class="grid gap-4 text-sm">
+              <div><dt class="text-muted-foreground">Idéal pour</dt><dd class="mt-1 font-medium text-mono">Sites et applications en ligne, réalisés par nous ou par une autre équipe</dd></div>
+              <div><dt class="text-muted-foreground">Délai</dt><dd class="mt-1 font-medium text-mono">Prise en main rapide, dès l'accord</dd></div>
+              <div><dt class="text-muted-foreground">Prix</dt><dd class="mt-1 text-2xl font-semibold tracking-tight text-mono">Sur devis <span class="text-sm font-normal text-muted-foreground">par mois</span></dd></div>
+            </dl>
+            <div class="kt-separator"></div>
+            <ul class="space-y-2.5 text-sm text-secondary-foreground"><li class="flex gap-2"><svg class="mt-0.5 size-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Sauvegardes régulières</span></li><li class="flex gap-2"><svg class="mt-0.5 size-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Mises à jour de sécurité</span></li><li class="flex gap-2"><svg class="mt-0.5 size-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Petites modifications incluses</span></li><li class="flex gap-2"><svg class="mt-0.5 size-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Assistance prioritaire sur WhatsApp</span></li></ul>
+          </div></aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="constat" data-label="Le constat" class="relative py-20 sm:py-28">
+      <div class="gm gm-sec" aria-hidden="true"></div>
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="max-w-2xl">
+          <span class="kt-badge kt-badge-outline kt-badge-primary rounded-full" data-scramble>Le constat</span>
+          <h2 class="mt-4 text-3xl font-semibold tracking-tight text-mono sm:text-4xl" data-words>Un site sans entretien finit par coûter cher.</h2>
+          
+        </div>
+        <div class="mt-12 grid gap-5 md:grid-cols-3">
+          <article class="kt-card magic" data-reveal><div class="kt-card-content flex flex-col gap-3 p-6">
+            <span class="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5M12 16h.01"/></svg></span>
+            <h3 class="mt-2 font-semibold text-mono">Un site laissé à l'abandon</h3>
+            <p class="text-sm text-muted-foreground">Extensions dépassées, failles de sécurité&nbsp;: un site sans mises à jour devient une cible.</p>
+          </div></article>
+          <article class="kt-card magic" data-reveal><div class="kt-card-content flex flex-col gap-3 p-6">
+            <span class="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5M12 16h.01"/></svg></span>
+            <h3 class="mt-2 font-semibold text-mono">Personne à appeler</h3>
+            <p class="text-sm text-muted-foreground">Quand quelque chose ne fonctionne plus, vous ne savez pas à qui vous adresser.</p>
+          </div></article>
+          <article class="kt-card magic" data-reveal><div class="kt-card-content flex flex-col gap-3 p-6">
+            <span class="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary"><svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5M12 16h.01"/></svg></span>
+            <h3 class="mt-2 font-semibold text-mono">Des modifications qui traînent</h3>
+            <p class="text-sm text-muted-foreground">Changer un prix ou une photo ne devrait pas prendre des semaines.</p>
+          </div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="solution" data-label="Ce que nous livrons" class="relative py-20 sm:py-28">
+      <div class="gm gm-sec" aria-hidden="true"></div>
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="max-w-2xl">
+          <span class="kt-badge kt-badge-outline kt-badge-primary rounded-full" data-scramble>Ce que nous livrons</span>
+          <h2 class="mt-4 text-3xl font-semibold tracking-tight text-mono sm:text-4xl" data-words>Un interlocuteur qui veille sur votre site, au quotidien.</h2>
+          <p class="mt-4 text-muted-foreground" data-reveal>Une seule équipe s'occupe de tout, du design à la mise en ligne. Vous n'avez qu'un interlocuteur, joignable sur WhatsApp.</p>
+        </div>
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="kt-card magic" data-reveal><div class="kt-card-content flex flex-col gap-2 p-6">
+            <span class="kt-badge kt-badge-sm kt-badge-primary kt-badge-outline self-start">01</span>
+            <h3 class="mt-2 font-semibold text-mono">Sauvegardes régulières</h3>
+            <p class="text-sm text-muted-foreground">Votre site et vos données sauvegardés, pour repartir vite en cas de problème.</p>
+          </div></article>
+          <article class="kt-card magic" data-reveal><div class="kt-card-content flex flex-col gap-2 p-6">
+            <span class="kt-badge kt-badge-sm kt-badge-primary kt-badge-outline self-start">02</span>
+            <h3 class="mt-2 font-semibold text-mono">Mises à jour de sécurité</h3>
+            <p class="text-sm text-muted-foreground">Le site, ses composants et le serveur tenus à jour.</p>
+          </div></article>
+          <article class="kt-card magic" data-reveal><div class="kt-card-content flex flex-col gap-2 p-6">
+            <span class="kt-badge kt-badge-sm kt-badge-primary kt-badge-outline self-start">03</span>
+            <h3 class="mt-2 font-semibold text-mono">Petites modifications incluses</h3>
+            <p class="text-sm text-muted-foreground">Un texte, une photo, un prix, un horaire&nbsp;: c'est fait, sans devis à chaque fois.</p>
+          </div></article>
+          <article class="kt-card magic" data-reveal><div class="kt-card-content flex flex-col gap-2 p-6">
+            <span class="kt-badge kt-badge-sm kt-badge-primary kt-badge-outline self-start">04</span>
+            <h3 class="mt-2 font-semibold text-mono">Assistance prioritaire</h3>
+            <p class="text-sm text-muted-foreground">Un interlocuteur joignable sur WhatsApp, qui connaît votre site.</p>
+          </div></article>
+          <article class="kt-card magic" data-reveal><div class="kt-card-content flex flex-col gap-2 p-6">
+            <span class="kt-badge kt-badge-sm kt-badge-primary kt-badge-outline self-start">05</span>
+            <h3 class="mt-2 font-semibold text-mono">Corrections</h3>
+            <p class="text-sm text-muted-foreground">Un bug, un affichage cassé&nbsp;: nous corrigeons.</p>
+          </div></article>
+          <article class="kt-card magic" data-reveal><div class="kt-card-content flex flex-col gap-2 p-6">
+            <span class="kt-badge kt-badge-sm kt-badge-primary kt-badge-outline self-start">06</span>
+            <h3 class="mt-2 font-semibold text-mono">Évolutions</h3>
+            <p class="text-sm text-muted-foreground">Nouvelles fonctionnalités chiffrées à part, avec votre accord, quand votre activité grandit.</p>
+          </div></article>
+        </div>
+        <div class="mt-10 flex flex-col gap-3 sm:flex-row" data-reveal>
+            <button type="button" class="kt-btn kt-btn-primary shimmer shadow-lg shadow-primary/25" data-kt-modal-toggle="#devis" data-devis-type="Maintenance" data-magnet>Recevoir mon devis gratuit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <a href="#" class="kt-btn kt-btn-outline bg-background/70 backdrop-blur" data-wa-msg="Bonjour AD SOLUTIONS, je souhaite des informations sur votre offre « Maintenance et évolution »." target="_blank" rel="noopener" data-magnet><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg>Discuter sur WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="pour-qui" data-label="Pour qui" class="relative py-20 sm:py-28">
+      <div class="gm gm-sec" aria-hidden="true"></div>
+      <div class="mx-auto grid max-w-7xl items-start gap-12 px-5 lg:grid-cols-[1fr_1.1fr] lg:px-8">
+        <div>
+        <div class="max-w-2xl">
+          <span class="kt-badge kt-badge-outline kt-badge-primary rounded-full" data-scramble>Pour qui</span>
+          <h2 class="mt-4 text-3xl font-semibold tracking-tight text-mono sm:text-4xl" data-words>Pensé pour votre activité.</h2>
+          <p class="mt-4 text-muted-foreground" data-reveal>Maintenance&nbsp;: quelques exemples de projets que nous accompagnons. Le vôtre n'y est pas&nbsp;? Parlons-en.</p>
+        </div>
+          <ul class="mt-8 flex flex-wrap gap-2" data-reveal><li class="kt-badge kt-badge-lg kt-badge-outline rounded-full">Site réalisé par AD SOLUTIONS</li><li class="kt-badge kt-badge-lg kt-badge-outline rounded-full">Site existant fait ailleurs</li><li class="kt-badge kt-badge-lg kt-badge-outline rounded-full">Boutique en ligne</li><li class="kt-badge kt-badge-lg kt-badge-outline rounded-full">Application web ou mobile</li></ul>
+        </div>
+        <article class="kt-card magic" data-reveal><div class="kt-card-content flex flex-col gap-3 p-6">
+            <span class="kt-badge kt-badge-sm kt-badge-primary kt-badge-outline self-start">Notre méthode</span>
+            <h3 class="text-lg font-semibold text-mono">Chaque projet AD SOLUTIONS passe par là.</h3>
+            <p class="text-sm text-muted-foreground">Échange, devis clair, maquettes validées, livraisons testées, suivi après le lancement&nbsp;: une méthode éprouvée sur nos réalisations.</p>
+            <a href="../index.html#methode" class="kt-link kt-link-underlined self-start text-sm">Voir notre méthode en 5 étapes</a>
+          </div></article>
+      </div>
+    </section>
+
+    <section id="deroulement" data-label="Déroulement" class="relative py-20 sm:py-28">
+      <div class="gm gm-sec" aria-hidden="true"></div>
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="max-w-2xl">
+          <span class="kt-badge kt-badge-outline kt-badge-primary rounded-full" data-scramble>Déroulement</span>
+          <h2 class="mt-4 text-3xl font-semibold tracking-tight text-mono sm:text-4xl" data-words>Comment ça se passe.</h2>
+          <p class="mt-4 text-muted-foreground" data-reveal>À chaque étape, vous savez où en est votre projet et ce que vous payez. Le premier échange est gratuit.</p>
+        </div>
+        <ol class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <li class="kt-card magic" data-reveal><div class="kt-card-content flex flex-col gap-2 p-6">
+            <span class="text-4xl font-semibold tracking-tight text-primary">1</span>
+            <h3 class="mt-2 font-semibold text-mono">Audit de l'existant</h3>
+            <p class="text-sm text-muted-foreground">Nous vérifions gratuitement l'état de votre site&nbsp;: sécurité, vitesse, mises à jour.</p>
+          </div></li>
+          <li class="kt-card magic" data-reveal><div class="kt-card-content flex flex-col gap-2 p-6">
+            <span class="text-4xl font-semibold tracking-tight text-primary">2</span>
+            <h3 class="mt-2 font-semibold text-mono">Proposition mensuelle</h3>
+            <p class="text-sm text-muted-foreground">Ce qui est inclus, le prix par mois, sans surprise.</p>
+          </div></li>
+          <li class="kt-card magic" data-reveal><div class="kt-card-content flex flex-col gap-2 p-6">
+            <span class="text-4xl font-semibold tracking-tight text-primary">3</span>
+            <h3 class="mt-2 font-semibold text-mono">Prise en main</h3>
+            <p class="text-sm text-muted-foreground">Accès, première sauvegarde complète et mises à jour en retard.</p>
+          </div></li>
+          <li class="kt-card magic" data-reveal><div class="kt-card-content flex flex-col gap-2 p-6">
+            <span class="text-4xl font-semibold tracking-tight text-primary">4</span>
+            <h3 class="mt-2 font-semibold text-mono">Suivi au quotidien</h3>
+            <p class="text-sm text-muted-foreground">Sauvegardes, mises à jour et modifications, et un interlocuteur sur WhatsApp.</p>
+          </div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="tarif" data-label="Tarif" class="relative py-20 sm:py-28">
+      <div class="gm gm-sec" aria-hidden="true"></div>
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <article class="kt-card beam mx-auto max-w-4xl" data-reveal="scale"><div class="kt-card-content grid items-center gap-8 p-8 sm:p-10 md:grid-cols-[1.3fr_1fr]">
+          <div>
+            <span class="kt-badge kt-badge-outline kt-badge-primary">Tarif</span>
+            <h2 class="mt-3 text-2xl font-semibold text-mono sm:text-3xl">Un prix clair, fixé avant de commencer.</h2>
+            <p class="mt-3 text-muted-foreground">Le prix mensuel dépend de la taille du site ou de l'application. La maintenance est offerte 1 mois avec AD BUSINESS et 3 mois avec AD PREMIUM.</p>
+            <ul class="mt-5 space-y-2.5 text-sm text-secondary-foreground">
+              <li class="flex gap-2"><svg class="mt-0.5 size-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Devis détaillé et gratuit sous 24 h, sans engagement</span></li>
+              <li class="flex gap-2"><svg class="mt-0.5 size-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Acompte au lancement, solde payé seulement à la livraison</span></li>
+              <li class="flex gap-2"><svg class="mt-0.5 size-4 shrink-0 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Mobile Money et virement acceptés, facture remise</span></li>
+            </ul>
+          </div>
+          <div class="flex flex-col gap-3 rounded-xl border border-border bg-muted/40 p-6">
+            <span class="text-xs text-muted-foreground">Prix</span>
+            <span class="text-4xl font-semibold tracking-tight text-mono">Sur devis <span class="text-base font-normal text-muted-foreground">par mois</span></span>
+            <button type="button" class="kt-btn kt-btn-primary shimmer mt-2 w-full justify-center" data-kt-modal-toggle="#devis" data-devis-type="Maintenance">Recevoir mon devis gratuit</button>
+            <a href="../index.html#offres" class="kt-link kt-link-underlined self-center text-sm">Comparer les formules</a>
+          </div>
+        </div></article>
+      </div>
+    </section>
+
+    <section id="questions" data-label="Questions" class="relative py-20 sm:py-28">
+      <div class="gm gm-sec" aria-hidden="true"></div>
+      <div class="mx-auto grid max-w-7xl items-start gap-12 px-5 lg:grid-cols-[1fr_1.4fr] lg:px-8">
+        <div class="lg:sticky lg:top-28">
+        <div class="max-w-2xl">
+          <span class="kt-badge kt-badge-outline kt-badge-primary rounded-full" data-scramble>Questions fréquentes</span>
+          <h2 class="mt-4 text-3xl font-semibold tracking-tight text-mono sm:text-4xl" data-words>Vous vous demandez peut‑être…</h2>
+          
+        </div>
+          <p class="wa-only mt-4 text-muted-foreground" data-reveal>Une autre question&nbsp;? <a href="#" class="kt-link" data-wa target="_blank" rel="noopener">Écrivez-nous sur WhatsApp</a>, on répond vite.</p>
+        </div>
+        <div class="kt-accordion kt-accordion-outline" data-kt-accordion="true" data-reveal>
+          <div class="kt-accordion-item magic bg-card" data-kt-accordion-item="true"><button type="button" class="kt-accordion-toggle" id="sq-t1" aria-controls="sq-c1" data-kt-accordion-toggle="#sq-c1"><span class="kt-accordion-title">Reprenez-vous un site réalisé par une autre agence&nbsp;?</span><span class="kt-accordion-indicator" aria-hidden="true"></span></button><div class="kt-accordion-content hidden" id="sq-c1" aria-labelledby="sq-t1"><div class="kt-accordion-wrapper text-muted-foreground">Oui, après un audit gratuit qui nous permet de vérifier son état et de vous dire honnêtement ce qu'il faut corriger.</div></div></div>
+          <div class="kt-accordion-item magic bg-card" data-kt-accordion-item="true"><button type="button" class="kt-accordion-toggle" id="sq-t2" aria-controls="sq-c2" data-kt-accordion-toggle="#sq-c2"><span class="kt-accordion-title">Qu'est-ce qu'une petite modification&nbsp;?</span><span class="kt-accordion-indicator" aria-hidden="true"></span></button><div class="kt-accordion-content hidden" id="sq-c2" aria-labelledby="sq-t2"><div class="kt-accordion-wrapper text-muted-foreground">Changer un texte, une photo, un prix ou un horaire, ajouter une actualité… Les nouvelles fonctionnalités sont chiffrées à part, avec votre accord.</div></div></div>
+          <div class="kt-accordion-item magic bg-card" data-kt-accordion-item="true"><button type="button" class="kt-accordion-toggle" id="sq-t3" aria-controls="sq-c3" data-kt-accordion-toggle="#sq-c3"><span class="kt-accordion-title">Comment vous joindre en cas de problème&nbsp;?</span><span class="kt-accordion-indicator" aria-hidden="true"></span></button><div class="kt-accordion-content hidden" id="sq-c3" aria-labelledby="sq-t3"><div class="kt-accordion-wrapper text-muted-foreground">Sur WhatsApp, en priorité. Vous avez un interlocuteur qui connaît votre site.</div></div></div>
+          <div class="kt-accordion-item magic bg-card" data-kt-accordion-item="true"><button type="button" class="kt-accordion-toggle" id="sq-t4" aria-controls="sq-c4" data-kt-accordion-toggle="#sq-c4"><span class="kt-accordion-title">La maintenance est-elle incluse avec un nouveau site&nbsp;?</span><span class="kt-accordion-indicator" aria-hidden="true"></span></button><div class="kt-accordion-content hidden" id="sq-c4" aria-labelledby="sq-t4"><div class="kt-accordion-wrapper text-muted-foreground">Oui, en partie&nbsp;: 1 mois offert avec AD BUSINESS et 3 mois avec AD PREMIUM. Ensuite, vous choisissez de continuer ou non.</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="demarrer" data-label="Démarrer" class="relative py-24 sm:py-32">
+      <div class="gm gm-sec" aria-hidden="true"></div>
+      <div class="mx-auto max-w-3xl px-5 text-center lg:px-8">
+        <span class="kt-badge kt-badge-outline kt-badge-primary rounded-full" data-scramble>Démarrer</span>
+        <h2 class="mt-4 text-4xl font-semibold tracking-tight text-mono sm:text-5xl" data-words>Prêt à lancer votre projet&nbsp;?</h2>
+        <p class="mx-auto mt-5 max-w-xl text-muted-foreground" data-reveal>Décrivez votre projet en 3 clics&nbsp;: vous recevez un devis détaillé sous 24 h, gratuit et sans engagement.<span class="wa-only"> Vous préférez parler&nbsp;? Écrivez-nous sur WhatsApp.</span></p>
+        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row" data-reveal>
+            <button type="button" class="kt-btn kt-btn-primary kt-btn-lg shimmer shadow-lg shadow-primary/25" data-kt-modal-toggle="#devis" data-devis-type="Maintenance" data-magnet>Recevoir mon devis gratuit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <a href="#" class="kt-btn kt-btn-outline kt-btn-lg bg-background/70 backdrop-blur" data-wa-msg="Bonjour AD SOLUTIONS, je souhaite des informations sur votre offre « Maintenance et évolution »." target="_blank" rel="noopener" data-magnet><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg>Discuter sur WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="autres-services" data-label="Nos autres services" class="relative py-20 sm:py-24">
+      <div class="gm gm-sec" aria-hidden="true"></div>
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="max-w-2xl">
+          <span class="kt-badge kt-badge-outline kt-badge-primary rounded-full" data-scramble>Nos autres services</span>
+          <h2 class="mt-4 text-3xl font-semibold tracking-tight text-mono sm:text-4xl" data-words>Une seule équipe, du premier écran au dernier serveur.</h2>
+          
+        </div>
+        <div class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <a href="site-vitrine.html" class="kt-card magic group" data-reveal><div class="kt-card-content flex items-center justify-between gap-3 p-5">
+            <span class="font-medium text-mono">Sites vitrines</span>
+            <span class="text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary [&>svg]:size-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div></a>
+          <a href="e-commerce.html" class="kt-card magic group" data-reveal><div class="kt-card-content flex items-center justify-between gap-3 p-5">
+            <span class="font-medium text-mono">E-commerce</span>
+            <span class="text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary [&>svg]:size-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div></a>
+          <a href="application-web.html" class="kt-card magic group" data-reveal><div class="kt-card-content flex items-center justify-between gap-3 p-5">
+            <span class="font-medium text-mono">Applications web</span>
+            <span class="text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary [&>svg]:size-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div></a>
+          <a href="application-mobile.html" class="kt-card magic group" data-reveal><div class="kt-card-content flex items-center justify-between gap-3 p-5">
+            <span class="font-medium text-mono">Applications mobiles</span>
+            <span class="text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary [&>svg]:size-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div></a>
+          <a href="ui-ux-design.html" class="kt-card magic group" data-reveal><div class="kt-card-content flex items-center justify-between gap-3 p-5">
+            <span class="font-medium text-mono">UI / UX design</span>
+            <span class="text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary [&>svg]:size-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div></a>
+          <a href="api-integrations.html" class="kt-card magic group" data-reveal><div class="kt-card-content flex items-center justify-between gap-3 p-5">
+            <span class="font-medium text-mono">API et intégrations</span>
+            <span class="text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary [&>svg]:size-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div></a>
+          <a href="hebergement.html" class="kt-card magic group" data-reveal><div class="kt-card-content flex items-center justify-between gap-3 p-5">
+            <span class="font-medium text-mono">Hébergement et DevOps</span>
+            <span class="text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary [&>svg]:size-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div></a>
+        </div>
+      </div>
+    </section>
+</main>
+
+  <!-- ================================================================
+       PIED DE PAGE
+       ================================================================ -->
+  <footer class="relative overflow-hidden bg-gradient-to-b from-transparent via-muted/30 to-muted/60">
+    <div class="mx-auto max-w-7xl px-5 pt-16 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-[1fr_1.6fr]">
+        <div class="flex flex-col items-start gap-4">
+          <img class="logo-light h-12 w-auto" src="../logos/ad-solutions-logo.svg" alt="AD SOLUTIONS" width="156" height="60">
+          <img class="logo-dark h-12 w-auto" src="../logos/ad-solutions-logo-inverse.svg" alt="AD SOLUTIONS" width="156" height="60">
+          <p class="text-sm text-muted-foreground">Sites, applications web et mobiles, du design à l'hébergement.</p>
+          <span class="kt-badge kt-badge-outline kt-badge-success"><span class="ping size-1.5 rounded-full bg-green-500 text-green-500"></span>Disponibles pour de nouveaux projets</span>
+        </div>
+        <nav class="grid grid-cols-2 gap-8 text-sm sm:grid-cols-3" aria-label="Pied de page">
+          <div class="flex flex-col gap-2.5"><h4 class="mb-1 text-xs font-semibold uppercase tracking-wider text-mono">Services</h4><a href="../services/site-vitrine.html" class="text-muted-foreground hover:text-foreground">Sites vitrines</a><a href="../services/e-commerce.html" class="text-muted-foreground hover:text-foreground">E-commerce</a><a href="../services/application-web.html" class="text-muted-foreground hover:text-foreground">Applications web</a><a href="../services/application-mobile.html" class="text-muted-foreground hover:text-foreground">Applications mobiles</a><a href="../services/ui-ux-design.html" class="text-muted-foreground hover:text-foreground">UI / UX design</a><a href="../services/api-integrations.html" class="text-muted-foreground hover:text-foreground">API et intégrations</a><a href="../services/hebergement.html" class="text-muted-foreground hover:text-foreground">Hébergement et DevOps</a><a href="../services/maintenance.html" class="text-muted-foreground hover:text-foreground">Maintenance et évolution</a></div>
+          <div class="flex flex-col gap-2.5"><h4 class="mb-1 text-xs font-semibold uppercase tracking-wider text-mono">Agence</h4><a href="../realisations.html" class="text-muted-foreground hover:text-foreground">Réalisations</a><a href="../methode.html" class="text-muted-foreground hover:text-foreground">Méthode</a><a href="../offres.html" class="text-muted-foreground hover:text-foreground">Offres</a><a href="../a-propos.html" class="text-muted-foreground hover:text-foreground">À propos</a><a href="../a-propos.html#recrutement" class="text-muted-foreground hover:text-foreground">Recrutement</a></div>
+          <div class="flex flex-col gap-2.5"><h4 class="mb-1 text-xs font-semibold uppercase tracking-wider text-mono">Contact</h4><button type="button" class="self-start text-muted-foreground hover:text-foreground" data-kt-modal-toggle="#devis">Démarrer un projet</button><a href="../index.html#audit" class="text-muted-foreground hover:text-foreground">Audit gratuit</a><a href="../faq.html" class="text-muted-foreground hover:text-foreground">Questions fréquentes</a><a href="#" data-wa target="_blank" rel="noopener" class="text-muted-foreground hover:text-foreground">WhatsApp</a></div>
+        </nav>
+      </div>
+      <p class="wordmark mt-16 select-none whitespace-nowrap text-center text-[13vw] font-bold leading-[.8] tracking-tighter lg:text-[10rem]" aria-hidden="true" data-letters>AD SOLUTIONS</p>
+      <!-- TODO : compléter RCCM et IFU une fois obtenus -->
+      <div class="flex flex-col gap-3 border-t border-border py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <p>© <span id="year"></span> AD SOLUTIONS SARL<span class="hidden"> · RCCM : RB/COT/XX X XXXX · IFU : XXXXXXXXXXXXX</span></p><!-- retirer « hidden » une fois RCCM et IFU renseignés -->
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <button type="button" class="hover:text-foreground" data-kt-modal-toggle="#legal">Mentions légales</button>
+          <button type="button" class="hover:text-foreground" data-kt-modal-toggle="#privacy">Confidentialité</button>
+          <span class="inline-flex items-center gap-1.5">Astuce : <span class="kt-kbd kt-kbd-xs" data-kbd>Ctrl K</span></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flottant (KTUI Button + Tooltip) -->
+  <a href="#" class="kt-btn kt-btn-primary kt-btn-icon fixed bottom-5 right-5 z-40 size-12 rounded-full shadow-xl transition-all duration-300 [&.is-off]:pointer-events-none [&.is-off]:translate-y-4 [&.is-off]:opacity-0" id="wa-float" data-wa target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp" data-kt-tooltip="true" data-kt-tooltip-placement="left">
+    <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 8.5c0 3.5 3.5 7 7 7l1-1.5-2-1-1 .8c-1-.5-2-1.5-2.5-2.5l.8-1-1-2z"/></svg>
+    <span class="kt-tooltip" data-kt-tooltip-content="true">Discuter sur WhatsApp</span>
+  </a>
+
+  <!-- ================================================================
+       KTUI DRAWER : menu mobile
+       ================================================================ -->
+  <div class="kt-drawer kt-drawer-start hidden w-[300px]" data-kt-drawer="true" data-kt-drawer-keyboard="true" id="nav-drawer">
+    <div class="kt-drawer-header">
+      <img class="logo-light h-7 w-auto" src="../logos/ad-solutions-logo.svg" alt="AD SOLUTIONS" width="94" height="36">
+      <img class="logo-dark h-7 w-auto" src="../logos/ad-solutions-logo-inverse.svg" alt="AD SOLUTIONS" width="94" height="36">
+      <button type="button" class="kt-drawer-close" data-kt-drawer-dismiss="true" aria-label="Fermer le menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <nav data-lenis-prevent class="kt-drawer-content flex flex-col gap-1" aria-label="Menu mobile">
+      <a href="../realisations.html" data-close-drawer class="kt-btn kt-btn-ghost justify-start">Réalisations</a>
+      <a href="../index.html#services" data-close-drawer class="kt-btn kt-btn-ghost justify-start">Services</a>
+      <div class="-mt-1 mb-1 ms-3 flex flex-col border-s border-border ps-2"><a href="../services/site-vitrine.html" class="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Sites vitrines</a><a href="../services/e-commerce.html" class="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">E-commerce</a><a href="../services/application-web.html" class="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Applications web</a><a href="../services/application-mobile.html" class="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Applications mobiles</a><a href="../services/ui-ux-design.html" class="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">UI / UX design</a><a href="../services/api-integrations.html" class="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">API et intégrations</a><a href="../services/hebergement.html" class="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Hébergement et DevOps</a><a href="../services/maintenance.html" class="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Maintenance et évolution</a></div>
+      <a href="../methode.html" data-close-drawer class="kt-btn kt-btn-ghost justify-start">Méthode</a>
+      <a href="../offres.html" data-close-drawer class="kt-btn kt-btn-ghost justify-start">Offres</a>
+      <a href="../index.html#audit" data-close-drawer class="kt-btn kt-btn-ghost justify-start">Audit gratuit</a>
+      <a href="../a-propos.html" data-close-drawer class="kt-btn kt-btn-ghost justify-start">À propos</a>
+      <a href="../faq.html" data-close-drawer class="kt-btn kt-btn-ghost justify-start">FAQ</a>
+      <a href="../index.html#contact" data-close-drawer class="kt-btn kt-btn-ghost justify-start">Contact</a>
+    </nav>
+    <div class="kt-drawer-footer">
+      <button type="button" class="kt-btn kt-btn-primary w-full justify-center" data-kt-modal-toggle="#devis" data-close-drawer>Recevoir mon devis gratuit</button>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       KTUI DRAWERS : études de cas
+       ================================================================ -->
+  <div class="kt-drawer kt-drawer-end hidden w-full max-w-[620px]" data-kt-drawer="true" data-kt-drawer-keyboard="true" id="cs-thalias">
+    <div class="kt-drawer-header"><h3 class="kt-drawer-title">Étude de cas · Thalia's Traiteur</h3><button type="button" class="kt-drawer-close" data-kt-drawer-dismiss="true" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <div data-lenis-prevent class="kt-drawer-content kt-scrollable flex flex-col gap-5 [&>*]:shrink-0">
+      <div class="overflow-hidden rounded-lg border border-border"><div class="flex items-center border-b border-border bg-muted/50 px-3 py-2"><span class="mx-auto font-mono text-xs text-muted-foreground">thaliastraiteur.com</span></div><img src="../assets/img/thalias-traiteur.jpg" alt="Page d'accueil du site Thalia's Traiteur" width="1200" height="750" class="w-full"></div>
+      <div class="flex flex-wrap gap-1.5"><span class="kt-badge kt-badge-outline">Site web</span><span class="kt-badge kt-badge-outline">Traiteur et événementiel</span><span class="kt-badge kt-badge-outline">Québec, Canada</span></div>
+      <div><h2 class="text-2xl font-semibold text-mono">Thalia's Traiteur</h2><p class="mt-2 text-muted-foreground">Un site sur mesure pour un traiteur ivoirien installé au Québec : un menu qui met en appétit, des services événementiels clairs, et une commande en ligne à portée de main.</p></div>
+      <div class="border-s-2 border-primary ps-4"><h4 class="font-semibold text-mono">Le contexte</h4><p class="mt-1 text-sm text-muted-foreground">Thalia's Traiteur propose une cuisine ivoirienne au Québec, pour les repas comme pour les mariages et les événements. Le traiteur voulait un site à la hauteur de sa cuisine : élégant, appétissant et capable de transformer une visite en commande ou en réservation d'événement.</p></div>
+      <div class="border-s-2 border-border ps-4"><h4 class="font-semibold text-mono">Le besoin</h4><p class="mt-1 text-sm text-muted-foreground">Présenter le menu et recevoir des demandes pour les mariages et les événements, sans que le visiteur ait à chercher comment commander ou qui contacter.</p></div>
+      <div class="border-s-2 border-border ps-4"><h4 class="font-semibold text-mono">Notre réponse</h4><p class="mt-1 text-sm text-muted-foreground">Un site conçu sur mesure et pensé d'abord pour le téléphone, où chaque page mène à une action : commander, demander un devis pour un événement ou écrire directement au traiteur. Le client étant au Canada, tout le projet a été mené à distance.</p></div>
+      <div><h4 class="font-semibold text-mono">Ce que nous avons livré</h4><div class="mt-3 flex flex-wrap gap-1.5"><span class="kt-badge kt-badge-success kt-badge-outline">Menu en ligne</span><span class="kt-badge kt-badge-success kt-badge-outline">Services événementiels</span><span class="kt-badge kt-badge-success kt-badge-outline">Commande en ligne</span><span class="kt-badge kt-badge-success kt-badge-outline">Livraison</span><span class="kt-badge kt-badge-success kt-badge-outline">Avis clients</span><span class="kt-badge kt-badge-success kt-badge-outline">WhatsApp intégré</span><span class="kt-badge kt-badge-success kt-badge-outline">Design sur mesure</span><span class="kt-badge kt-badge-success kt-badge-outline">Responsive mobile</span></div></div>
+    </div>
+    <div class="kt-drawer-footer"><a href="https://thaliastraiteur.com/" target="_blank" rel="noopener" class="kt-btn kt-btn-outline">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a><button type="button" class="kt-btn kt-btn-primary" data-kt-modal-toggle="#devis" data-close-drawer>Un projet similaire&nbsp;?</button></div>
+  </div>
+
+  <div class="kt-drawer kt-drawer-end hidden w-full max-w-[620px]" data-kt-drawer="true" data-kt-drawer-keyboard="true" id="cs-marck">
+    <div class="kt-drawer-header"><h3 class="kt-drawer-title">Étude de cas · Marck-Land</h3><button type="button" class="kt-drawer-close" data-kt-drawer-dismiss="true" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <div data-lenis-prevent class="kt-drawer-content kt-scrollable flex flex-col gap-5 [&>*]:shrink-0">
+      <div class="overflow-hidden rounded-lg border border-border"><div class="flex items-center border-b border-border bg-muted/50 px-3 py-2"><span class="mx-auto font-mono text-xs text-muted-foreground">marckland.com</span></div><img src="../assets/img/marck-land.png" alt="Page d'accueil du portfolio Marck-Land réalisé par AD SOLUTIONS" width="1200" height="750" class="w-full"></div>
+      <div class="flex flex-wrap gap-1.5"><span class="kt-badge kt-badge-outline">Site web</span><span class="kt-badge kt-badge-outline">Portfolio</span></div>
+      <div><h2 class="text-2xl font-semibold text-mono">Marck-Land</h2><p class="mt-2 text-muted-foreground">Un portfolio personnel pour présenter un parcours, des compétences et des projets, avec un moyen simple d'entrer en contact.</p></div>
+      <div class="border-s-2 border-primary ps-4"><h4 class="font-semibold text-mono">Le contexte</h4><p class="mt-1 text-sm text-muted-foreground">Un portfolio est souvent le premier contact avec un recruteur, un client ou un partenaire. En quelques secondes, il doit dire qui l'on est, ce que l'on sait faire, et donner envie d'aller plus loin.</p></div>
+      <div class="border-s-2 border-border ps-4"><h4 class="font-semibold text-mono">Le besoin</h4><p class="mt-1 text-sm text-muted-foreground">Réunir en un seul endroit le parcours, les compétences et les projets réalisés, et permettre à un visiteur intéressé de prendre contact sans effort.</p></div>
+      <div class="border-s-2 border-border ps-4"><h4 class="font-semibold text-mono">Notre réponse</h4><p class="mt-1 text-sm text-muted-foreground">Un site personnel clair, qui présente le parcours, met en avant les compétences et les projets, et se termine par un moyen simple d'entrer en contact, sur téléphone comme sur ordinateur.</p></div>
+      <div><h4 class="font-semibold text-mono">Ce que nous avons livré</h4><div class="mt-3 flex flex-wrap gap-1.5"><span class="kt-badge kt-badge-success kt-badge-outline">Parcours</span><span class="kt-badge kt-badge-success kt-badge-outline">Compétences</span><span class="kt-badge kt-badge-success kt-badge-outline">Projets</span><span class="kt-badge kt-badge-success kt-badge-outline">Contact direct</span><span class="kt-badge kt-badge-success kt-badge-outline">Responsive mobile</span></div></div>
+    </div>
+    <div class="kt-drawer-footer"><a href="https://marckland.com/" target="_blank" rel="noopener" class="kt-btn kt-btn-outline" data-project-link>Visiter le site</a><button type="button" class="kt-btn kt-btn-primary ms-auto" data-kt-modal-toggle="#devis" data-close-drawer>Un projet similaire&nbsp;?</button></div>
+  </div>
+
+  <div class="kt-drawer kt-drawer-end hidden w-full max-w-[620px]" data-kt-drawer="true" data-kt-drawer-keyboard="true" id="cs-blog">
+    <div class="kt-drawer-header"><h3 class="kt-drawer-title">Étude de cas · Le Blog</h3><button type="button" class="kt-drawer-close" data-kt-drawer-dismiss="true" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <div data-lenis-prevent class="kt-drawer-content kt-scrollable flex flex-col gap-5 [&>*]:shrink-0">
+      <div class="overflow-hidden rounded-lg border border-border"><div class="flex items-center border-b border-border bg-muted/50 px-3 py-2"><span class="mx-auto font-mono text-xs text-muted-foreground">blog.marckland.com</span></div><img src="../assets/img/blog.png" alt="Page d'accueil du blog de Marck-Land Ahouansou réalisé par AD SOLUTIONS" width="1200" height="750" class="w-full"></div>
+      <div class="flex flex-wrap gap-1.5"><span class="kt-badge kt-badge-outline">Site web</span><span class="kt-badge kt-badge-outline">Blog</span></div>
+      <div><h2 class="text-2xl font-semibold text-mono">Le Blog</h2><p class="mt-2 text-muted-foreground">Un blog pour publier des articles, les classer par thème et les rendre agréables à lire sur téléphone comme sur ordinateur.</p></div>
+      <div class="border-s-2 border-primary ps-4"><h4 class="font-semibold text-mono">Le contexte</h4><p class="mt-1 text-sm text-muted-foreground">Un blog vit de ses articles : il doit être simple à alimenter pour son auteur, et agréable à parcourir pour ses lecteurs, qui arrivent le plus souvent depuis leur téléphone.</p></div>
+      <div class="border-s-2 border-border ps-4"><h4 class="font-semibold text-mono">Le besoin</h4><p class="mt-1 text-sm text-muted-foreground">Publier des articles, les organiser par thème pour que chaque lecteur trouve ce qui l'intéresse, et soigner le confort de lecture.</p></div>
+      <div class="border-s-2 border-border ps-4"><h4 class="font-semibold text-mono">Notre réponse</h4><p class="mt-1 text-sm text-muted-foreground">Un blog à la mise en page aérée, avec des articles classés par thème et une typographie pensée pour la lecture, aussi confortable sur téléphone que sur ordinateur.</p></div>
+      <div><h4 class="font-semibold text-mono">Ce que nous avons livré</h4><div class="mt-3 flex flex-wrap gap-1.5"><span class="kt-badge kt-badge-success kt-badge-outline">Publication d'articles</span><span class="kt-badge kt-badge-success kt-badge-outline">Classement par thème</span><span class="kt-badge kt-badge-success kt-badge-outline">Lecture sur tous les écrans</span></div></div>
+    </div>
+    <div class="kt-drawer-footer"><a href="https://blog.marckland.com/" target="_blank" rel="noopener" class="kt-btn kt-btn-outline" data-project-link>Visiter le site</a><button type="button" class="kt-btn kt-btn-primary ms-auto" data-kt-modal-toggle="#devis" data-close-drawer>Un projet similaire&nbsp;?</button></div>
+  </div>
+
+  <!-- ================================================================
+       KTUI MODAL + STEPPER : devis en 3 étapes
+       ================================================================ -->
+  <div class="kt-modal" data-kt-modal="true" data-kt-modal-keyboard="true" id="devis">
+    <div class="kt-modal-content top-[6%] max-w-[600px]">
+      <div class="kt-modal-header">
+        <h3 class="kt-modal-title flex items-center gap-2">Votre devis gratuit <span class="kt-badge kt-badge-sm kt-badge-success kt-badge-outline">Réponse sous 24 h</span></h3>
+        <button type="button" class="kt-modal-close" data-kt-modal-dismiss="true" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      </div>
+      <form data-lenis-prevent class="kt-modal-body" id="devis-form" novalidate>
+        <div data-kt-stepper="true" id="devis-stepper">
+          <div class="flex gap-2">
+            <div class="flex flex-1 items-center gap-2 text-sm text-muted-foreground kt-stepper-item-active:font-medium kt-stepper-item-active:text-mono active" data-kt-stepper-item="#d-1"><span class="flex size-7 items-center justify-center rounded-full border border-border text-xs font-semibold kt-stepper-item-active:border-primary kt-stepper-item-active:bg-primary kt-stepper-item-active:text-primary-foreground kt-stepper-item-completed:border-primary kt-stepper-item-completed:text-primary" data-kt-stepper-number="true">1</span>Projet</div>
+            <div class="flex flex-1 items-center gap-2 text-sm text-muted-foreground kt-stepper-item-active:font-medium kt-stepper-item-active:text-mono" data-kt-stepper-item="#d-2"><span class="flex size-7 items-center justify-center rounded-full border border-border text-xs font-semibold kt-stepper-item-active:border-primary kt-stepper-item-active:bg-primary kt-stepper-item-active:text-primary-foreground kt-stepper-item-completed:border-primary kt-stepper-item-completed:text-primary" data-kt-stepper-number="true">2</span>Détails</div>
+            <div class="flex flex-1 items-center gap-2 text-sm text-muted-foreground kt-stepper-item-active:font-medium kt-stepper-item-active:text-mono" data-kt-stepper-item="#d-3"><span class="flex size-7 items-center justify-center rounded-full border border-border text-xs font-semibold kt-stepper-item-active:border-primary kt-stepper-item-active:bg-primary kt-stepper-item-active:text-primary-foreground kt-stepper-item-completed:border-primary kt-stepper-item-completed:text-primary" data-kt-stepper-number="true">3</span>Contact</div>
+          </div>
+          <div class="kt-progress kt-progress-primary mt-4" data-p id="devis-bar"><div class="kt-progress-indicator"></div></div>
+
+          <div id="d-1" class="pane-in mt-6 flex-col gap-4 [&:not(.hidden)]:flex">
+            <p class="text-lg font-semibold text-mono">Qu'aimeriez-vous construire&nbsp;?</p>
+            <div class="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+              <label class="choice kt-card cursor-pointer gap-1 p-4 transition-all hover:border-input"><input type="radio" class="kt-radio kt-radio-sm self-end" name="type" value="Site vitrine"><svg class="size-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span class="mt-1 text-sm font-medium text-mono">Site vitrine</span><span class="text-xs text-muted-foreground">AD START · BUSINESS</span></label>
+              <label class="choice kt-card cursor-pointer gap-1 p-4 transition-all hover:border-input"><input type="radio" class="kt-radio kt-radio-sm self-end" name="type" value="E-commerce"><svg class="size-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h2l2.4 11h11L21 7H6.2"/><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg><span class="mt-1 text-sm font-medium text-mono">E-commerce</span><span class="text-xs text-muted-foreground">Boutique, paiement</span></label>
+              <label class="choice kt-card cursor-pointer gap-1 p-4 transition-all hover:border-input"><input type="radio" class="kt-radio kt-radio-sm self-end" name="type" value="Application web"><svg class="size-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span class="mt-1 text-sm font-medium text-mono">Application web</span><span class="text-xs text-muted-foreground">SaaS, plateforme</span></label>
+              <label class="choice kt-card cursor-pointer gap-1 p-4 transition-all hover:border-input"><input type="radio" class="kt-radio kt-radio-sm self-end" name="type" value="Application mobile"><svg class="size-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><span class="mt-1 text-sm font-medium text-mono">Application mobile</span><span class="text-xs text-muted-foreground">Android et iOS</span></label>
+              <label class="choice kt-card cursor-pointer gap-1 p-4 transition-all hover:border-input"><input type="radio" class="kt-radio kt-radio-sm self-end" name="type" value="Maintenance"><svg class="size-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><span class="mt-1 text-sm font-medium text-mono">Maintenance</span><span class="text-xs text-muted-foreground">Un site existant</span></label>
+              <label class="choice kt-card cursor-pointer gap-1 p-4 transition-all hover:border-input"><input type="radio" class="kt-radio kt-radio-sm self-end" name="type" value="Je ne sais pas encore" checked><svg class="size-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/></svg><span class="mt-1 text-sm font-medium text-mono">Je ne sais pas</span><span class="text-xs text-muted-foreground">On vous conseille</span></label>
+            </div>
+            <input type="hidden" name="offre" value="">
+            <p class="wizard-err text-sm text-destructive" hidden>Choisissez un type de projet pour continuer.</p>
+          </div>
+
+          <div id="d-2" class="pane-in mt-6 hidden flex-col gap-4 [&:not(.hidden)]:flex">
+            <p class="text-lg font-semibold text-mono">Quel est votre calendrier&nbsp;?</p>
+            <div class="kt-toggle-group seg w-full" role="radiogroup" aria-label="Délai">
+              <label class="kt-btn kt-btn-outline flex-1 cursor-pointer justify-center"><input type="radio" name="delai" value="Dès que possible" checked>Dès que possible</label>
+              <label class="kt-btn kt-btn-outline flex-1 cursor-pointer justify-center"><input type="radio" name="delai" value="Dans le mois">Dans le mois</label>
+              <label class="kt-btn kt-btn-outline flex-1 cursor-pointer justify-center"><input type="radio" name="delai" value="Pas pressé">Pas pressé</label>
+            </div>
+            <div class="flex flex-col gap-2"><label class="kt-label" for="d-msg">Votre projet en quelques mots *</label><textarea class="kt-textarea" id="d-msg" name="message" rows="4" required placeholder="Ex. : je veux une application pour que mes clients commandent et paient par Mobile Money."></textarea></div>
+            <p class="wizard-err text-sm text-destructive" hidden>Décrivez votre projet en quelques mots.</p>
+          </div>
+
+          <div id="d-3" class="pane-in mt-6 hidden flex-col gap-4 [&:not(.hidden)]:flex">
+            <p class="text-lg font-semibold text-mono">Comment vous joindre&nbsp;?</p>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="flex flex-col gap-2"><label class="kt-label" for="d-nom">Nom complet *</label><input class="kt-input" id="d-nom" name="nom" type="text" autocomplete="name" required></div>
+              <div class="flex flex-col gap-2"><label class="kt-label" for="d-tel">Téléphone / WhatsApp *</label><input class="kt-input" id="d-tel" name="tel" type="tel" autocomplete="tel" required placeholder="+229 …"></div>
+              <div class="flex flex-col gap-2 sm:col-span-2"><label class="kt-label" for="d-ent">Entreprise ou activité</label><input class="kt-input" id="d-ent" name="entreprise" type="text" autocomplete="organization"></div>
+            </div>
+            <p class="wizard-err text-sm text-destructive" hidden>Indiquez votre nom et votre numéro.</p>
+            <p class="text-xs text-muted-foreground">Le message s'ouvre dans WhatsApp, prêt à être envoyé. Aucune donnée n'est stockée.</p>
+          </div>
+
+          <div class="mt-6 flex items-center justify-between border-t border-border pt-5">
+            <button type="button" class="kt-btn kt-btn-ghost kt-stepper-first:invisible" data-kt-stepper-back="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Retour</button>
+            <button type="button" class="kt-btn kt-btn-primary kt-stepper-last:hidden" data-kt-stepper-next="true">Continuer<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <button type="submit" class="kt-btn kt-btn-primary hidden kt-stepper-last:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg>Recevoir mon devis sur WhatsApp</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       KTUI MODAL : palette de commandes (Ctrl K / ⌘ K)
+       ================================================================ -->
+  <div class="kt-modal" data-kt-modal="true" data-kt-modal-keyboard="true" id="palette">
+    <div class="kt-modal-content top-[12%] max-w-[560px] overflow-hidden">
+      <div class="flex items-center gap-3 border-b border-border px-4 py-3">
+        <svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="text" id="palette-input" class="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground" placeholder="Aller à une section, lancer une action…" autocomplete="off" aria-label="Rechercher" data-kt-modal-input-focus="true">
+        <span class="kt-kbd kt-kbd-xs">Échap</span>
+      </div>
+      <div class="kt-scrollable max-h-[50vh] overflow-y-auto p-2" id="palette-list" role="listbox" data-lenis-prevent>
+        <p class="palette-group px-2 pb-1 pt-2 text-xs font-medium text-muted-foreground">Actions</p>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-act="devis"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Démarrer un projet<span class="hidden">devis</span></button>
+        <button type="button" class="wa-only palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-act="wa"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg>Discuter sur WhatsApp<span class="hidden">contact</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-act="theme"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>Changer de thème<span class="hidden">clair sombre espresso café</span></button>
+        <p class="palette-group px-2 pb-1 pt-3 text-xs font-medium text-muted-foreground">Sections</p>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="realisations.html"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Réalisations<span class="hidden">projets thalia marck blog portfolio</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-go="#bientot"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Bientôt : nos projets secrets<span class="hidden">produits lancement logement chambre ecole nouveautes</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-go="#services"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg>Services<span class="hidden">site e-commerce application mobile api hébergement technologies</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="methode.html"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h6"/></svg>Méthode<span class="hidden">étapes process</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="offres.html"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12V3h9l9 9-9 9z"/></svg>Offres et tarifs<span class="hidden">prix start business premium apps maintenance</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-go="#audit"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Audit gratuit<span class="hidden">analyse</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="a-propos.html"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>À propos<span class="hidden">équipe recrutement</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="faq.html"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/></svg>Questions fréquentes<span class="hidden">faq délais paiement</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-go="#contact"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Contact<span class="hidden">téléphone email</span></button>
+        <p class="palette-group px-2 pb-1 pt-3 text-xs font-medium text-muted-foreground">Pages services</p>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="services/site-vitrine.html">Sites vitrines<span class="hidden">service page offre Site vitrine</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="services/e-commerce.html">E-commerce<span class="hidden">service page offre E-commerce</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="services/application-web.html">Applications web<span class="hidden">service page offre Application web</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="services/application-mobile.html">Applications mobiles<span class="hidden">service page offre Application mobile</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="services/ui-ux-design.html">UI / UX design<span class="hidden">service page offre UI / UX design</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="services/api-integrations.html">API et intégrations<span class="hidden">service page offre API et intégrations</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="services/hebergement.html">Hébergement et DevOps<span class="hidden">service page offre Hébergement</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="services/maintenance.html">Maintenance et évolution<span class="hidden">service page offre Maintenance</span></button>
+        <p class="palette-empty px-2 py-6 text-center text-sm text-muted-foreground" hidden>Aucun résultat. Essayez « offres » ou « mobile ».</p>
+      </div>
+      <div class="flex gap-4 border-t border-border px-4 py-2.5 text-xs text-muted-foreground"><span class="inline-flex items-center gap-1"><span class="kt-kbd kt-kbd-xs">↑</span><span class="kt-kbd kt-kbd-xs">↓</span> naviguer</span><span class="inline-flex items-center gap-1"><span class="kt-kbd kt-kbd-xs">Entrée</span> ouvrir</span></div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       KTUI MODALS : informations légales
+       ================================================================ -->
+  <div class="kt-modal" data-kt-modal="true" data-kt-modal-keyboard="true" id="legal">
+    <div class="kt-modal-content top-[6%] max-w-[680px]">
+      <div class="kt-modal-header"><h3 class="kt-modal-title">Mentions légales</h3><button type="button" class="kt-modal-close" data-kt-modal-dismiss="true" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+      <div data-lenis-prevent class="kt-modal-body kt-scrollable max-h-[70vh] space-y-3 overflow-y-auto text-sm text-muted-foreground [&_h4]:mt-4 [&_h4]:font-semibold [&_h4]:text-mono">
+        <!-- TODO : compléter adresse, RCCM, IFU, téléphone, directeur de la publication et hébergeur -->
+        <h4>Éditeur du site</h4>
+        <p>AD SOLUTIONS SARL, Cotonou, Bénin.<span class="hidden"> Adresse, RCCM, IFU et téléphone : <span class="kt-badge kt-badge-sm kt-badge-warning kt-badge-outline">à compléter</span>.</span> E-mail : <a class="kt-link" href="mailto:contact@adsolutions.bj">contact@adsolutions.bj</a>.<span class="hidden"> Directeur de la publication : <span class="kt-badge kt-badge-sm kt-badge-warning kt-badge-outline">à compléter</span>.</span></p>
+        <h4 class="hidden">Hébergeur</h4>
+        <p class="hidden"><span class="kt-badge kt-badge-sm kt-badge-warning kt-badge-outline">à compléter</span></p><!-- retirer « hidden » une fois l'hébergeur renseigné -->
+        <h4>Propriété intellectuelle</h4>
+        <p>Les textes, le logo, les éléments graphiques et le code de ce site sont la propriété d'AD SOLUTIONS. Toute reproduction sans autorisation écrite préalable est interdite. Les captures et les noms des projets présentés appartiennent à leurs propriétaires respectifs et sont présentés à titre de références.</p>
+        <p>Interface construite avec KTUI par Keenthemes et Tailwind CSS (licences MIT). Police Inter (SIL Open Font License), hébergée sur ce site.</p>
+        <h4>Responsabilité</h4>
+        <p>Les prix indiqués sont des prix de départ : seul le devis remis au client fait foi. Ce site contient des liens vers des sites tiers dont AD SOLUTIONS n'est pas responsable.</p>
+        <h4>Droit applicable</h4>
+        <p>Ce site est soumis au droit béninois. À défaut d'accord amiable, les tribunaux de Cotonou sont compétents.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kt-modal" data-kt-modal="true" data-kt-modal-keyboard="true" id="privacy">
+    <div class="kt-modal-content top-[6%] max-w-[680px]">
+      <div class="kt-modal-header"><h3 class="kt-modal-title">Politique de confidentialité</h3><button type="button" class="kt-modal-close" data-kt-modal-dismiss="true" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+      <div data-lenis-prevent class="kt-modal-body kt-scrollable max-h-[70vh] space-y-3 overflow-y-auto text-sm text-muted-foreground [&_h4]:mt-4 [&_h4]:font-semibold [&_h4]:text-mono">
+        <div class="kt-alert kt-alert-success kt-alert-light"><div class="kt-alert-title">Aucun cookie, aucun traceur, aucune publicité. Nos formulaires n'envoient rien à nos serveurs.</div></div>
+        <h4>Formulaires</h4>
+        <p>Les informations saisies dans le formulaire de projet ou la demande d'audit restent dans votre navigateur. Le bouton d'envoi ouvre WhatsApp ou votre messagerie e-mail avec un message prérempli : rien n'est transmis tant que vous ne l'envoyez pas vous-même. Le message est ensuite acheminé par WhatsApp (Meta) ou par votre fournisseur d'e-mail, qui appliquent leur propre politique de confidentialité.</p>
+        <h4>Utilisation et conservation</h4>
+        <p>Vos informations servent uniquement à vous répondre, à préparer un devis ou un audit et, si vous devenez client, à mener et facturer votre projet. Elles ne sont jamais vendues. Nous les conservons le temps nécessaire au traitement de votre demande et, pour nos clients, pendant la relation commerciale et les obligations légales.</p>
+        <h4>Stockage dans le navigateur</h4>
+        <p>Le site enregistre seulement l'apparence choisie (couleur et mode d'affichage) dans le stockage local de votre navigateur. Cette information ne nous est jamais transmise.</p>
+        <h4>Vos droits</h4>
+        <p>Conformément à la loi n° 2017-20 du 20 avril 2018 portant Code du numérique en République du Bénin, vous disposez d'un droit d'accès, de rectification, d'opposition et de suppression de vos données : écrivez à <a class="kt-link" href="mailto:contact@adsolutions.bj">contact@adsolutions.bj</a>. Vous pouvez aussi saisir l'Autorité de protection des données à caractère personnel (APDP).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Curseur contextuel -->
+  <div class="cursor pointer-events-none fixed left-0 top-0 z-[90] -ml-10 -mt-10 grid size-20 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-xl" aria-hidden="true"><span class="cursor__label"></span></div>
+
+  <script src="../assets/js/ktui.min.js?v=2"></script>
+  <script src="../assets/js/lenis.min.js?v=2"></script>
+  <script src="../assets/js/site.js?v=4"></script>
+</body>
+</html>

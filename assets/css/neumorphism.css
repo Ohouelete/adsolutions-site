@@ -1,0 +1,210 @@
+/* ============================================================
+   AD SOLUTIONS — « Neumorphism » (soft UI)
+   Couche de style chargée APRÈS assets/css/app.css (CSS natif, aucune compilation).
+   Pour désactiver : retirer la ligne <link ... neumorphism.css> de index.html.
+
+   Principe : tout est moulé dans la même matière que le fond. Les volumes ne se lisent
+   que par la lumière : un reflet clair du côté de la source, une ombre douce de l'autre.
+   - relief (convexe) : boutons, cartes, badges, numéros
+   - creux (concave)  : champs, pistes d'onglets, puits d'icônes, éléments pressés ou choisis
+
+   Lumière dynamique : site.js pose --lx / --ly (direction de la lumière, ~ -0,4 à 1,6) et --la
+   (angle des dégradés) sur <html> ; la source suit la souris, toutes les ombres et tous les reliefs
+   de la page tournent avec elle. Par défaut (tactile, moins d'animations) : lumière en haut à gauche.
+
+   Hors @layer : passe au-dessus de KTUI et des utilitaires Tailwind.
+   html:not(#_) a la priorité d'un id, pour l'emporter sur les thèmes (orange, espresso).
+   ============================================================ */
+
+/* ---------- 1. Matière et lumière ---------- */
+html:not(#_) {
+  --lx: 1; --ly: 1; --la: 135deg;
+  --sx: calc(var(--lx) * 1px); --sy: calc(var(--ly) * 1px);
+
+  --nm-bg: oklch(93.6% 0.008 68);           /* gris chaud, assorti à l'orange AD */
+  --nm-hi: oklch(97.2% 0.006 68);           /* face éclairée */
+  --nm-lo: oklch(91% 0.009 68);             /* face à l'ombre */
+  --nm-dark: oklch(74% 0.02 60 / .5);       /* ombre */
+  --nm-light: oklch(100% 0 0 / .92);        /* reflet */
+  --nm-edge: oklch(100% 0 0 / .75);         /* arête éclairée */
+  --nm-deep: oklch(40% 0.03 55 / .14);      /* ombre portée des éléments qui flottent */
+  --nm-text-hi: oklch(100% 0 0 / .9);
+  --nm-text-lo: oklch(60% 0.03 55 / .22);
+
+  /* Le thème entier adopte la matière : surfaces = fond */
+  --background: var(--nm-bg);
+  --card: var(--nm-bg);
+  --popover: var(--nm-bg);
+  --muted: oklch(90.5% 0.009 68);
+  --accent: oklch(90.5% 0.01 68);
+  --border: oklch(86.5% 0.011 68);
+  --input: oklch(84% 0.012 68);
+}
+html.dark:not(#_) {
+  --nm-bg: oklch(25.5% 0.007 265);
+  --nm-hi: oklch(28.5% 0.007 265);
+  --nm-lo: oklch(23.5% 0.007 265);
+  --nm-dark: oklch(13% 0.008 265 / .8);
+  --nm-light: oklch(36% 0.008 265 / .55);
+  --nm-edge: oklch(100% 0 0 / .07);
+  --nm-deep: oklch(0% 0 0 / .45);
+  --nm-text-hi: oklch(100% 0 0 / .06);
+  --nm-text-lo: oklch(0% 0 0 / .55);
+  --muted: oklch(23% 0.007 265);
+  --accent: oklch(29% 0.008 265);
+  --border: oklch(31% 0.008 265);
+  --input: oklch(33% 0.008 265);
+}
+html.dark[data-tone="espresso"]:not(#_) {
+  --nm-bg: oklch(25% 0.02 52);
+  --nm-hi: oklch(28% 0.022 52);
+  --nm-lo: oklch(23% 0.02 52);
+  --nm-dark: oklch(13% 0.02 52 / .8);
+  --nm-light: oklch(36% 0.026 52 / .5);
+  --muted: oklch(23% 0.02 52);
+  --accent: oklch(29% 0.024 52);
+  --border: oklch(31% 0.026 52);
+  --input: oklch(34% 0.028 52);
+}
+
+/* Volumes (calculés sur <html>, hérités partout : ils tournent avec la lumière) */
+html:not(#_) {
+  --nm-raise-xs: calc(var(--sx) * 2) calc(var(--sy) * 2) 4px var(--nm-dark), calc(var(--sx) * -2) calc(var(--sy) * -2) 4px var(--nm-light);
+  --nm-raise-sm: calc(var(--sx) * 4) calc(var(--sy) * 4) 9px var(--nm-dark), calc(var(--sx) * -4) calc(var(--sy) * -4) 9px var(--nm-light);
+  --nm-raise: calc(var(--sx) * 8) calc(var(--sy) * 8) 20px var(--nm-dark), calc(var(--sx) * -8) calc(var(--sy) * -8) 20px var(--nm-light);
+  --nm-raise-lg: calc(var(--sx) * 14) calc(var(--sy) * 14) 34px var(--nm-dark), calc(var(--sx) * -14) calc(var(--sy) * -14) 34px var(--nm-light);
+  --nm-raise-xl: calc(var(--sx) * 22) calc(var(--sy) * 22) 54px var(--nm-dark), calc(var(--sx) * -22) calc(var(--sy) * -22) 54px var(--nm-light);
+  --nm-inset-sm: inset calc(var(--sx) * 2) calc(var(--sy) * 2) 5px var(--nm-dark), inset calc(var(--sx) * -2) calc(var(--sy) * -2) 5px var(--nm-light);
+  --nm-inset: inset calc(var(--sx) * 5) calc(var(--sy) * 5) 11px var(--nm-dark), inset calc(var(--sx) * -5) calc(var(--sy) * -5) 11px var(--nm-light);
+  --nm-rim: inset calc(var(--sx) * 1) calc(var(--sy) * 1) 0 var(--nm-edge);
+  --nm-convex: linear-gradient(var(--la), var(--nm-hi), var(--nm-lo));
+  --nm-concave: linear-gradient(var(--la), var(--nm-lo), var(--nm-hi));
+  --nm-surface: linear-gradient(var(--la), var(--nm-hi), var(--nm-bg) 45%, var(--nm-bg));
+  --nm-primary: linear-gradient(var(--la), color-mix(in oklab, var(--primary) 78%, #fff), color-mix(in oklab, var(--primary) 90%, #000));
+  --nm-primary-in: linear-gradient(var(--la), color-mix(in oklab, var(--primary) 88%, #000), color-mix(in oklab, var(--primary) 85%, #fff));
+  --nm-ring: 0 0 0 3px color-mix(in oklab, var(--primary) 26%, transparent);
+  --nm-ease: cubic-bezier(.16, 1, .3, 1);
+}
+
+/* Le fond reste calme : motifs atténués, voile orange conservé */
+.gm { opacity: .5; }
+::selection { background: color-mix(in oklab, var(--primary) 85%, transparent); }
+
+/* Titres en relief, comme pressés dans la matière */
+:is(h1, h2) { text-shadow: calc(var(--sx) * -1) calc(var(--sy) * -1) 1px var(--nm-text-hi), calc(var(--sx) * 1.5) calc(var(--sy) * 1.5) 3px var(--nm-text-lo); }
+
+/* ---------- 2. Cartes et surfaces ---------- */
+:is(.kt-card, .kt-accordion-item) {
+  border-color: transparent; border-radius: 24px; background: var(--nm-surface);
+  box-shadow: var(--nm-raise), var(--nm-rim);
+}
+.kt-card .kt-card { border-radius: 16px; box-shadow: var(--nm-raise-sm), var(--nm-rim); }
+.kt-card.magic { transition: box-shadow .5s var(--nm-ease), transform .5s var(--nm-ease); }
+@media (hover: hover) and (pointer: fine) { .kt-card.magic:hover { transform: translateY(-3px); box-shadow: var(--nm-raise-lg), var(--nm-rim); } }
+/* Carte mise en avant (offre AD BUSINESS) : plus haute, cerclée d'orange */
+.kt-card.border-primary { box-shadow: var(--nm-raise-lg), var(--nm-rim), 0 0 0 2px color-mix(in oklab, var(--primary) 55%, transparent); }
+/* Mur de technologies en mouvement : relief léger */
+.marquee3d .kt-card { box-shadow: var(--nm-raise-sm), var(--nm-rim); }
+/* Zones d'illustration des cartes de services : creusées dans la carte */
+.kt-card > .bg-muted\/50 { background: var(--nm-concave); border-color: transparent; box-shadow: var(--nm-inset); }
+/* Accordéon : la question ouverte s'enfonce */
+.kt-accordion-item { transition: box-shadow .4s var(--nm-ease); }
+.kt-accordion-item.active { background: var(--nm-concave); box-shadow: var(--nm-inset); }
+/* Choix du formulaire : la carte choisie s'enfonce, cerclée d'orange */
+.choice { transition: box-shadow .3s var(--nm-ease), transform .3s var(--nm-ease); }
+.choice:hover { transform: translateY(-2px); }
+.choice:has(input:checked) { background: var(--nm-concave); transform: none; box-shadow: var(--nm-inset), 0 0 0 2px color-mix(in oklab, var(--primary) 60%, transparent); }
+.kt-alert-light { border-color: transparent; border-radius: 18px; background: var(--nm-concave); box-shadow: var(--nm-inset-sm); }
+
+/* ---------- 3. Éléments flottants ---------- */
+:is(.kt-dropdown-menu, .kt-modal-content, .kt-drawer, .kt-toast) {
+  border-color: transparent; background: var(--nm-surface);
+  box-shadow: var(--nm-raise-lg), var(--nm-rim), 0 40px 80px -30px var(--nm-deep);
+}
+.kt-dropdown-menu, .kt-toast { border-radius: 22px; }
+.kt-modal-content { border-radius: 30px; }
+.kt-drawer { border-radius: 30px 0 0 30px; }
+.kt-dropdown-menu :is(a, button:not(.kt-btn)) { transition: box-shadow .25s, background .25s; }
+.kt-dropdown-menu :is(a, button:not(.kt-btn)):hover, .kt-dropdown-menu .is-on { background: var(--nm-concave); box-shadow: var(--nm-inset-sm); border-color: transparent; }
+.kt-modal-backdrop, .kt-drawer-backdrop { background-color: color-mix(in oklab, var(--nm-bg) 55%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+
+/* En-tête : navigation dans une piste creusée, curseur en relief ; au défilement, la barre devient une capsule */
+#nav { padding: 5px; border-radius: 999px; background: var(--nm-concave); box-shadow: var(--nm-inset-sm); }
+#nav .glider { top: 5px; bottom: 5px; border-radius: 999px; background: var(--nm-convex); box-shadow: var(--nm-raise-xs), var(--nm-rim); }
+#nav .nav-link { border-radius: 999px; }
+#hdr.is-stuck { background: transparent; border-color: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+#hdr > div.mx-auto { transition: margin .5s var(--nm-ease), max-width .5s var(--nm-ease), height .5s var(--nm-ease), border-radius .5s, padding .5s, box-shadow .5s, background .5s; }
+#hdr.is-stuck > div.mx-auto {
+  margin-top: 12px; height: 60px; max-width: min(1180px, calc(100% - 24px)); border-radius: 999px; padding-inline: 1.25rem .6rem;
+  background: var(--nm-surface); box-shadow: var(--nm-raise), var(--nm-rim);
+}
+#hdr.is-stuck #progress { left: calc(max(12px, 50% - 590px) + 32px); width: calc(min(1180px, 100% - 24px) - 64px); height: 2px; border-radius: 2px; }
+
+/* ---------- 4. Boutons ---------- */
+.kt-btn { border-radius: 16px; transition: box-shadow .25s var(--nm-ease), transform .25s var(--nm-ease), translate .35s var(--nm-ease), color .2s, background .25s; }
+:is(.kt-btn-outline, .kt-btn-secondary) { border-color: transparent; background: var(--nm-convex); color: var(--mono); box-shadow: var(--nm-raise-sm), var(--nm-rim); }
+:is(.kt-btn-outline, .kt-btn-secondary):hover { background: var(--nm-convex); color: var(--primary); box-shadow: var(--nm-raise), var(--nm-rim); }
+.kt-btn-ghost:hover { background: var(--nm-convex); box-shadow: var(--nm-raise-xs), var(--nm-rim); }
+.kt-btn-primary {
+  border-color: transparent; background: var(--nm-primary); text-shadow: 0 1px 1px rgb(0 0 0 / .14);
+  box-shadow: var(--nm-raise-sm), inset calc(var(--sx) * 1) calc(var(--sy) * 1) 1px rgb(255 255 255 / .4), inset calc(var(--sx) * -2) calc(var(--sy) * -2) 5px rgb(0 0 0 / .12);
+}
+.kt-btn-primary:hover { background: var(--nm-primary); box-shadow: var(--nm-raise), 0 10px 26px -12px color-mix(in oklab, var(--primary) 70%, transparent), inset calc(var(--sx) * 1) calc(var(--sy) * 1) 1px rgb(255 255 255 / .45), inset calc(var(--sx) * -2) calc(var(--sy) * -2) 5px rgb(0 0 0 / .12); }
+.kt-btn-mono { border-color: transparent; background: linear-gradient(var(--la), color-mix(in oklab, var(--mono) 82%, #fff), var(--mono)); box-shadow: var(--nm-raise-sm), inset calc(var(--sx) * 1) calc(var(--sy) * 1) 1px rgb(255 255 255 / .18); }
+/* Appui : le bouton s'enfonce dans la matière */
+.kt-btn:active { transform: scale(.985); }
+:is(.kt-btn-outline, .kt-btn-secondary, .kt-btn-ghost):active { background: var(--nm-concave); box-shadow: var(--nm-inset-sm); }
+.kt-btn-primary:active { background: var(--nm-primary-in); box-shadow: inset calc(var(--sx) * 3) calc(var(--sy) * 3) 7px rgb(0 0 0 / .25), inset calc(var(--sx) * -2) calc(var(--sy) * -2) 5px rgb(255 255 255 / .18); }
+:focus-visible { outline: 2px solid color-mix(in oklab, var(--primary) 70%, transparent); outline-offset: 3px; }
+
+/* Onglets et choix segmentés : piste creusée, choix en relief */
+.kt-toggle-group { border-color: transparent; border-radius: 20px; padding: 6px; gap: 6px; background: var(--nm-concave); box-shadow: var(--nm-inset); }
+.kt-toggle-group > .kt-btn { border-radius: 14px !important; border-color: transparent; background: transparent; box-shadow: none; }
+.kt-toggle-group > .kt-btn:hover { background: transparent; box-shadow: none; color: var(--primary); }
+.kt-toggle-group > .kt-btn.active, .seg label:has(input:checked) { background: var(--nm-convex); color: var(--primary); border-color: transparent; box-shadow: var(--nm-raise-sm), var(--nm-rim); }
+
+/* ---------- 5. Petits éléments ---------- */
+.kt-badge { border-radius: 999px; }
+.kt-badge-outline { border-color: transparent; background: var(--nm-convex); box-shadow: var(--nm-raise-xs), var(--nm-rim); }
+.kt-kbd { border-color: transparent; border-radius: 8px; background: var(--nm-convex); box-shadow: var(--nm-raise-xs), var(--nm-rim); }
+/* Puits d'icônes : creusés, l'icône orange au fond */
+.rounded-lg.bg-primary\/10, .rounded-md.bg-primary\/10 { background: var(--nm-concave); box-shadow: var(--nm-inset-sm); }
+/* Pastilles rondes (numéros d'étapes, icônes flottantes) : en relief */
+.rounded-full.border.bg-background, .rounded-full.border.bg-background\/80, .story-num { border-color: transparent; background: var(--nm-convex); box-shadow: var(--nm-raise-sm), var(--nm-rim); }
+.story-step.is-on .story-num { background: var(--nm-primary); box-shadow: var(--nm-raise-sm); }
+/* Lien « Nouveau » du hero et carrés d'icônes bordés */
+.rounded-full.border.bg-background\/70 { border-color: transparent; background: var(--nm-convex); box-shadow: var(--nm-raise-sm), var(--nm-rim); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.rounded-md.border.bg-background, .rounded-lg.border.bg-background { border-color: transparent; background: var(--nm-convex); box-shadow: var(--nm-raise-xs), var(--nm-rim); }
+/* Séparateurs gravés : un trait d'ombre, un trait de lumière */
+.kt-separator, .kt-dropdown-menu-separator { height: 2px; border: 0; background: linear-gradient(var(--nm-dark) 50%, var(--nm-light) 50%); opacity: .8; }
+
+/* Champs : creusés */
+:is(.kt-input, .kt-textarea, .kt-select) { border-color: transparent; border-radius: 16px; background: var(--nm-concave); box-shadow: var(--nm-inset); transition: box-shadow .25s; }
+:is(.kt-input, .kt-textarea, .kt-select):focus, :is(.kt-input, .kt-textarea, .kt-select):focus-within { box-shadow: var(--nm-inset), var(--nm-ring); }
+.kt-radio, input[type="checkbox"].kt-checkbox { border-color: transparent; background-color: var(--nm-bg); box-shadow: var(--nm-inset-sm); }
+.kt-radio:checked { background-color: var(--primary); box-shadow: var(--nm-raise-xs); }
+.kt-progress { border-radius: 99px; background: var(--nm-concave); box-shadow: var(--nm-inset-sm); }
+.kt-stepper-number { border-color: transparent; background: var(--nm-convex); box-shadow: var(--nm-raise-xs), var(--nm-rim); }
+
+/* ---------- 6. Hero : la vitrine dans la même matière ---------- */
+.hero-show__browser { border-color: transparent; border-radius: 22px; box-shadow: var(--nm-raise-xl), var(--nm-rim); }
+.hero-show__orb { display: none; }
+.hero-show .lglass {
+  border: 0; color: var(--mono); background: var(--nm-surface);
+  -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: var(--nm-raise), var(--nm-rim);
+}
+.hero-show .lglass::before, .hero-show .lglass::after { content: none; }
+.hero-show__tag.lglass { box-shadow: var(--nm-raise-sm), var(--nm-rim); }
+.hs-visual .lglass { background: color-mix(in oklab, var(--nm-bg) 92%, transparent); box-shadow: 4px 6px 14px rgb(0 0 0 / .14), var(--nm-rim); }
+.hero-show__phone { box-shadow: var(--nm-raise-lg); }
+.hero-phone__sheen { opacity: .5; }
+.hs-site .hs-btn--ghost, .hero-phone__chips > span { box-shadow: var(--nm-raise-xs); }
+.hero-phone__search { background: var(--nm-concave); box-shadow: var(--nm-inset-sm); }
+.-space-x-3 > span { box-shadow: var(--nm-raise-sm); }
+#wa-float { box-shadow: var(--nm-raise), inset calc(var(--sx) * 1) calc(var(--sy) * 1) 1px rgb(255 255 255 / .4); }
+
+/* ---------- 7. Accessibilité ---------- */
+@media (prefers-contrast: more) {
+  :is(.kt-card, .kt-accordion-item, .kt-btn-outline, .kt-btn-secondary, .kt-input, .kt-textarea, .kt-badge-outline, .kt-toggle-group) { border-color: var(--input) !important; }
+  :is(h1, h2) { text-shadow: none; }
+}
