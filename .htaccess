@@ -1,1 +1,16 @@
+# AD SOLUTIONS — configuration Apache (hébergement qui sert directement la branche main)
+
+# Page « introuvable »
 ErrorDocument 404 /404.html
+
+# ---------- Anciennes adresses du site (avant la refonte KTUI) : redirections permanentes ----------
+# Les liens déjà partagés et les pages déjà connues de Google mènent au bon contenu.
+Redirect 301 /services.html /index.html#services
+Redirect 301 /contact.html /index.html#contact
+Redirect 301 /realisations/thalias-traiteur.html /realisations.html#etudes
+Redirect 301 /realisations/marck-land.html /realisations.html#etudes
+Redirect 301 /realisations/blog.html /realisations.html#etudes
+
+# ---------- Fichiers de développement : présents dans le dépôt, mais jamais servis en ligne ----------
+RedirectMatch 404 "^/(src|scripts|node_modules)(/.*)?$"
+RedirectMatch 404 "^/(package(-lock)?\.json|README\.md|AD-SIGNATURE\.md|\.gitignore|\.git.*)$"

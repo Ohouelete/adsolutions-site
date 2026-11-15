@@ -1,162 +1,448 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-kt-theme-switch="true" data-kt-theme-switch-mode="light">
 <head>
+  <base href="/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page introuvable · AD SOLUTIONS</title>
-  <meta name="description" content="Cette page n'existe pas. Retrouvez les réalisations, services et offres d'AD SOLUTIONS.">
-  <meta property="og:title" content="Page introuvable · AD SOLUTIONS">
-  <meta property="og:description" content="Cette page n'existe pas. Retrouvez les réalisations, services et offres d'AD SOLUTIONS.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="/realisations/thalias-traiteur.jpg">
-  <meta name="theme-color" content="#0F1B2D">
-  <meta name="robots" content="noindex">
-  <link rel="icon" href="/logos/ad-solutions-icone.svg" type="image/svg+xml">
-  <link rel="preload" href="/fonts/clash-display-600.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/satoshi-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="logos/ad-solutions-icone.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/app.css?v=26">
+  <link rel="stylesheet" href="assets/css/liquid-glass.css?v=2"><!-- Verre noir transparent : retirer cette ligne pour désactiver -->
   <script>
-    /* Thème appliqué avant l'affichage pour éviter un flash. Sombre par défaut. */
+    /* Thème posé avant l'affichage : mode (clé KTThemeSwitch « kt-theme », clair par défaut ; « ad-mode » = espresso pour le sombre café, foret pour le sombre vert)
+       et couleur (« ad-accent » : orange par défaut, ou le bleu d'origine de KTUI). */
     (function () {
-      var d = document.documentElement, t = "dark";
-      try { t = localStorage.getItem("ad-theme") || "dark"; } catch (e) {}
-      d.dataset.theme = (t === "light" || t === "espresso") ? t : "dark";
-      d.classList.add("js");
+      var d = document.documentElement, m = "light", a = "orange", t = "";
+      try { m = localStorage.getItem("kt-theme") || "light"; a = localStorage.getItem("ad-accent") || "orange"; t = localStorage.getItem("ad-mode") || ""; } catch (e) {}
+      if (m === "system") m = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      if (t === "espresso" || t === "foret") { m = "dark"; d.dataset.tone = t; }
+      d.classList.add(m === "dark" ? "dark" : "light", "js");
+      d.dataset.accent = a === "blue" ? "blue" : "orange";
     })();
   </script>
+  <title>Page introuvable | AD SOLUTIONS</title>
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Cette page n'existe pas ou a été déplacée.">
+  <meta property="og:title" content="Page introuvable | AD SOLUTIONS">
+  <meta property="og:description" content="Cette page n'existe pas ou a été déplacée.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/thalias-traiteur.jpg">
 </head>
 <body>
+  <div class="page-graph" aria-hidden="true"></div><!-- Fond unifié à l’essai : papier millimétré 10 / 60 px. Fond de référence à garder : « page-dots » (points + accents). Autres : « page-grid », « page-diag » (diagonales + pointillés orange), « page-hatch », « page-angular » -->
 
-  <a class="skip" href="#main">Aller au contenu</a>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[200] kt-btn kt-btn-primary">Aller au contenu</a>
 
-  <!-- Curseur contextuel (« Visiter », « Démarrer ») : souris uniquement -->
-  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
-
-  <!-- ===== EN-TÊTE : bandeau d'annonce + Pill Nav (identique sur toutes les pages) ===== -->
-  <header class="header" id="top">
-    <a class="announce" href="/contact.html#audit">
-      <span class="announce__tag mono">Offert</span>
-      <span class="announce__text">Audit gratuit de votre site, de votre page ou de votre application</span>
-      <span class="announce__go">En profiter <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+  <!-- ================================================================
+       EN-TÊTE
+       ================================================================ -->
+  <header id="hdr" class="sticky top-0 z-50 border-b border-transparent transition-colors duration-300 [&.is-stuck]:border-border [&.is-stuck]:bg-background/80 [&.is-stuck]:backdrop-blur-xl">
+    <a href="index.html#audit" class="flex items-center justify-center gap-2.5 h-9 px-4 bg-mono text-mono-foreground text-xs sm:text-[13px] font-medium overflow-hidden transition-[height] duration-300 [.is-stuck_&]:h-0">
+      <span class="kt-badge kt-badge-xs kt-badge-primary">Offert</span>
+      <span class="truncate">Audit gratuit : découvrez ce qui vous fait perdre des clients en ligne</span>
+      <span class="hidden sm:inline-flex items-center gap-1 font-semibold">En profiter
+        <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </a>
-    <div class="container header__inner">
-      <a href="/index.html" class="header__logo" aria-label="AD SOLUTIONS, accueil">
-        <img class="logo-on-dark" src="/logos/ad-solutions-logo-inverse.svg" alt="AD SOLUTIONS" width="104" height="40">
-        <img class="logo-on-light" src="/logos/ad-solutions-logo.svg" alt="AD SOLUTIONS" width="104" height="40">
+    <div class="mx-auto flex h-16 max-w-7xl items-center gap-4 px-5 lg:px-8">
+      <a href="index.html#accueil" class="shrink-0" aria-label="AD SOLUTIONS, accueil">
+        <img class="logo-light h-8 w-auto" src="logos/ad-solutions-logo.svg" alt="AD SOLUTIONS" width="104" height="40">
+        <img class="logo-dark h-8 w-auto" src="logos/ad-solutions-logo-inverse.svg" alt="AD SOLUTIONS" width="104" height="40">
       </a>
-      <nav class="nav" id="nav" aria-label="Navigation principale">
-        <div class="nav__pill">
-          <span class="nav__indicator" aria-hidden="true"></span>
-          <a href="/realisations.html" data-swap>Réalisations</a>
-          <a href="/services.html" data-swap>Services</a>
-          <a href="/offres.html" data-swap>Offres</a>
-          <a href="/a-propos.html" data-swap>À propos</a>
+
+      <nav id="nav" class="relative mx-auto hidden lg:flex items-center gap-0.5" aria-label="Navigation principale">
+        <span class="glider absolute inset-y-0 left-0 w-0 rounded-md bg-accent opacity-0" aria-hidden="true"></span>
+        <a href="realisations.html" class="nav-link relative z-10 px-3 py-2 rounded-md text-sm font-medium text-secondary-foreground hover:text-foreground [&.is-active]:text-primary">Réalisations</a>
+        <div data-kt-dropdown="true" data-kt-dropdown-trigger="hover" data-kt-dropdown-placement="bottom" data-kt-dropdown-offset="0, 12px">
+          <button type="button" data-kt-dropdown-toggle="true" data-href="index.html#services" class="nav-link relative z-10 inline-flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium text-secondary-foreground hover:text-foreground [&.is-active]:text-primary">
+            Services
+            <svg class="size-3.5 transition-transform [.open_&]:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div data-kt-dropdown-menu="true" class="kt-dropdown-menu w-[560px] p-2">
+            <div class="grid grid-cols-2 gap-0.5">
+              <a href="services/site-vitrine.html" class="group flex items-center gap-3 rounded-md p-2.5 hover:bg-accent"><span class="flex size-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground group-hover:text-primary"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span><span><span class="block text-sm font-medium text-mono">Sites vitrines</span><span class="block text-xs text-muted-foreground">Présenter et rassurer</span></span></a>
+              <a href="services/e-commerce.html" class="group flex items-center gap-3 rounded-md p-2.5 hover:bg-accent"><span class="flex size-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground group-hover:text-primary"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11h11L21 7H6.2"/><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg></span><span><span class="block text-sm font-medium text-mono">E-commerce</span><span class="block text-xs text-muted-foreground">Vendre en ligne</span></span></a>
+              <a href="services/application-web.html" class="group flex items-center gap-3 rounded-md p-2.5 hover:bg-accent"><span class="flex size-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground group-hover:text-primary"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span><span><span class="block text-sm font-medium text-mono">Applications web</span><span class="block text-xs text-muted-foreground">SaaS, back-office</span></span></a>
+              <a href="services/application-mobile.html" class="group flex items-center gap-3 rounded-md p-2.5 hover:bg-accent"><span class="flex size-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground group-hover:text-primary"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span><span><span class="block text-sm font-medium text-mono">Applications mobiles</span><span class="block text-xs text-muted-foreground">Android et iOS</span></span></a>
+              <a href="services/ui-ux-design.html" class="group flex items-center gap-3 rounded-md p-2.5 hover:bg-accent"><span class="flex size-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground group-hover:text-primary"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14 4 6 6-10 10H4v-6z"/></svg></span><span><span class="block text-sm font-medium text-mono">UI / UX design</span><span class="block text-xs text-muted-foreground">Maquettes, prototypes</span></span></a>
+              <a href="services/api-integrations.html" class="group flex items-center gap-3 rounded-md p-2.5 hover:bg-accent"><span class="flex size-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground group-hover:text-primary"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg></span><span><span class="block text-sm font-medium text-mono">API et intégrations</span><span class="block text-xs text-muted-foreground">Paiements, outils</span></span></a>
+              <a href="services/hebergement.html" class="group flex items-center gap-3 rounded-md p-2.5 hover:bg-accent"><span class="flex size-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground group-hover:text-primary"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 8a4 4 0 0 1-1 10z"/></svg></span><span><span class="block text-sm font-medium text-mono">Hébergement</span><span class="block text-xs text-muted-foreground">Domaine, serveurs</span></span></a>
+              <a href="services/maintenance.html" class="group flex items-center gap-3 rounded-md p-2.5 hover:bg-accent"><span class="flex size-9 items-center justify-center rounded-md border border-border bg-background text-muted-foreground group-hover:text-primary"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span><span class="block text-sm font-medium text-mono">Maintenance</span><span class="block text-xs text-muted-foreground">Suivi, évolutions</span></span></a>
+            </div>
+            <div class="mt-2 flex items-center justify-between gap-3 border-t border-border px-2.5 pt-3 pb-1 text-sm text-muted-foreground">
+              <span>Pas sûr de ce qu'il vous faut&nbsp;?</span>
+              <button type="button" class="kt-btn kt-btn-sm kt-btn-primary" data-kt-modal-toggle="#devis">On en parle</button>
+            </div>
+          </div>
         </div>
-        <a href="/contact.html" class="btn btn--primary btn--sm nav__cta" data-magnet>Démarrer un projet</a>
+        <a href="methode.html" class="nav-link relative z-10 px-3 py-2 rounded-md text-sm font-medium text-secondary-foreground hover:text-foreground [&.is-active]:text-primary">Méthode</a>
+        <a href="offres.html" class="nav-link relative z-10 px-3 py-2 rounded-md text-sm font-medium text-secondary-foreground hover:text-foreground [&.is-active]:text-primary">Offres</a>
+        <a href="a-propos.html" class="nav-link relative z-10 px-3 py-2 rounded-md text-sm font-medium text-secondary-foreground hover:text-foreground [&.is-active]:text-primary">À propos</a>
+        <a href="faq.html" class="nav-link relative z-10 px-3 py-2 rounded-md text-sm font-medium text-secondary-foreground hover:text-foreground [&.is-active]:text-primary">FAQ</a>
       </nav>
-      <div class="header__actions">
-        <!-- Bouton de thème : chaque clic passe au suivant (Nuit → Espresso → Sable → Nuit) -->
-        <button class="theme-toggle" type="button" aria-label="Thème Nuit. Passer au thème Espresso">
-          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
-          <svg class="i-cup" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17M8 3c-1 1.2 1 2.3 0 3.5M12 3c-1 1.2 1 2.3 0 3.5"/></svg>
-          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+
+      <div class="ms-auto lg:ms-0 flex items-center gap-2">
+        <button type="button" class="kt-btn kt-btn-outline hidden md:inline-flex text-muted-foreground" data-kt-modal-toggle="#palette" aria-label="Rechercher (Ctrl K)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <span class="hidden xl:inline">Rechercher</span>
+          <span class="kt-kbd kt-kbd-xs" data-kbd>Ctrl K</span>
         </button>
-        <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
-          <span></span><span></span>
+
+        <!-- KTUI Dropdown : couleur (Orange AD / Bleu KTUI) et mode (clair / sombre / système) -->
+        <div data-kt-dropdown="true" data-kt-dropdown-placement="bottom-end" data-kt-dropdown-offset="0, 10px">
+          <button type="button" class="kt-btn kt-btn-ghost kt-btn-icon" data-kt-dropdown-toggle="true" aria-label="Apparence">
+            <svg class="dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            <svg class="hidden dark:block [[data-tone=espresso]_&]:hidden [[data-tone=foret]_&]:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
+            <svg class="hidden text-primary [[data-tone=espresso]_&]:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17M8 3c-1 1.2 1 2.3 0 3.5M12 3c-1 1.2 1 2.3 0 3.5"/></svg>
+            <svg class="hidden text-primary [[data-tone=foret]_&]:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.4 5.2-6.1"/></svg>
+          </button>
+          <div data-kt-dropdown-menu="true" class="kt-dropdown-menu w-60 p-2">
+            <p class="px-2 pb-2 pt-1 text-xs font-medium text-muted-foreground">Couleur</p>
+            <div class="grid grid-cols-2 gap-1.5 px-1">
+              <button type="button" data-accent-set="orange" class="flex items-center gap-2 rounded-md border border-border px-2.5 py-2 text-sm text-mono hover:bg-accent [&.is-on]:border-primary [&.is-on]:bg-accent"><span class="size-4 rounded-full" style="background:oklch(64.6% 0.222 41.116)"></span>Orange AD</button>
+              <button type="button" data-accent-set="blue" class="flex items-center gap-2 rounded-md border border-border px-2.5 py-2 text-sm text-mono hover:bg-accent [&.is-on]:border-primary [&.is-on]:bg-accent"><span class="size-4 rounded-full" style="background:oklch(62.3% 0.214 259.815)"></span>Bleu KTUI</button>
+            </div>
+            <div class="kt-dropdown-menu-separator my-2"></div>
+            <p class="px-2 pb-1 text-xs font-medium text-muted-foreground">Mode</p>
+            <button type="button" data-mode-set="light" class="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-sm text-mono hover:bg-accent [&.is-on]:bg-accent"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>Clair</button>
+            <button type="button" data-mode-set="dark" class="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-sm text-mono hover:bg-accent [&.is-on]:bg-accent"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>Sombre</button>
+            <button type="button" data-mode-set="espresso" class="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-sm text-mono hover:bg-accent [&.is-on]:bg-accent"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M17 11h1.5a2.5 2.5 0 0 1 0 5H17M8 3c-1 1.2 1 2.3 0 3.5M12 3c-1 1.2 1 2.3 0 3.5"/></svg>Espresso<span class="kt-badge kt-badge-xs kt-badge-primary kt-badge-outline ms-auto">café</span></button>
+            <button type="button" data-mode-set="foret" class="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-sm text-mono hover:bg-accent [&.is-on]:bg-accent"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.4 5.2-6.1"/></svg>Forêt<span class="kt-badge kt-badge-xs kt-badge-primary kt-badge-outline ms-auto">vert</span></button>
+            <button type="button" data-mode-set="system" class="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-sm text-mono hover:bg-accent [&.is-on]:bg-accent"><svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Système</button>
+          </div>
+        </div>
+
+        <button type="button" class="kt-btn kt-btn-primary shimmer hidden sm:inline-flex" data-kt-modal-toggle="#devis" data-magnet>Devis gratuit</button>
+        <button type="button" class="kt-btn kt-btn-ghost kt-btn-icon lg:hidden" data-kt-drawer-toggle="#nav-drawer" aria-label="Ouvrir le menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
         </button>
       </div>
     </div>
-    <div class="header__progress" aria-hidden="true"></div>
+    <div id="progress" class="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-primary" aria-hidden="true"></div>
   </header>
 
-  <main id="main">
+  <main id="main" class="relative">
 
-    <!-- ===== EN-TÊTE DE PAGE ===== -->
-    <section class="hero page-hero page-hero--404 dark" data-spotlight>
-      <div class="bg-rays" aria-hidden="true"></div>
-      <canvas class="grid-canvas" aria-hidden="true"></canvas>
-      <div class="bg-aurora" aria-hidden="true"><i></i><i></i><i></i></div>
-      <div class="bg-noise" aria-hidden="true"></div>
-      <div class="container page-hero__inner">
-        <nav class="crumbs reveal" aria-label="Fil d'Ariane"><ol><li><a href="/index.html">Accueil</a></li><li aria-current="page">Page introuvable</li></ol></nav>
-        <p class="lost__code" aria-hidden="true">404</p>
-        <p class="eyebrow" data-scramble>Erreur 404</p>
-        <h1 class="page-hero__title" data-split>Cette page n'existe pas (ou plus).</h1>
-        <p class="page-hero__lead reveal">L'adresse est peut-être mal saisie, ou la page a été déplacée. Voici de quoi reprendre votre visite.</p>
-        <div class="hero__actions reveal">
-          <a href="/index.html" class="btn btn--primary btn--lg" data-magnet><span>Retour à l'accueil</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a href="/contact.html" class="btn btn--ghost btn--lg" data-magnet>Démarrer un projet</a>
+    <!-- Fil conducteur : un voile de couleur qui serpente et deux rails qui relient toutes les sections -->
+    <div class="page-thread" aria-hidden="true"></div>
+    <div class="page-rails" aria-hidden="true"></div>
+    <div class="page-sparkle" aria-hidden="true"></div>
+
+    <!-- ================================================================
+         PAGE INTROUVABLE — page générée par scripts/build-pages.mjs (ne pas modifier à la main)
+         ================================================================ -->
+    <section id="haut" data-label="Page introuvable" class="relative pb-12 pt-10 sm:pt-14">
+      <div class="gm gm-sec" aria-hidden="true"></div>
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <nav aria-label="Fil d'Ariane" class="text-sm text-muted-foreground" data-reveal>
+          <ol class="flex flex-wrap items-center gap-1.5"><li><a href="index.html" class="hover:text-foreground">Accueil</a></li><li aria-hidden="true">/</li><li class="font-medium text-mono" aria-current="page">Page introuvable</li></ol>
+        </nav>
+        <div class="mt-10 max-w-3xl">
+          <span class="kt-badge kt-badge-outline kt-badge-primary rounded-full" data-scramble>Page introuvable</span>
+          <h1 class="mt-5 text-4xl font-semibold leading-[1.08] tracking-tight text-mono sm:text-5xl xl:text-[3.6rem]" data-words>Cette page est introuvable.</h1>
+          <p class="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg" data-reveal>Elle n'existe pas ou a été déplacée. Voici où trouver ce que vous cherchez.</p>
+          
         </div>
-        <ul class="lost reveal">
-          <li><a href="/realisations.html">Réalisations</a></li>
-          <li><a href="/services.html">Services</a></li>
-          <li><a href="/offres.html">Offres</a></li>
-          <li><a href="/a-propos.html">À propos</a></li>
-          <li><a href="/contact.html">Contact</a></li>
-        </ul>
       </div>
     </section>
 
-  </main>
 
-  <!-- ===== PIED DE PAGE (identique sur toutes les pages) ===== -->
-  <footer class="footer dark island">
-    <div class="bg-noise" aria-hidden="true"></div>
-    <div class="container">
-      <div class="footer__top">
-        <div class="footer__brand">
-          <a href="/index.html" aria-label="AD SOLUTIONS, accueil">
-            <img class="logo-on-dark" src="/logos/ad-solutions-logo-inverse.svg" alt="AD SOLUTIONS" width="156" height="60">
-            <img class="logo-on-light" src="/logos/ad-solutions-logo.svg" alt="AD SOLUTIONS" width="156" height="60">
-          </a>
-          <p>Sites, applications web et mobiles, du design à l'hébergement.</p>
+    <section id="pistes" data-label="Pistes" class="relative py-20 sm:py-28">
+      <div class="gm gm-sec" aria-hidden="true"></div>
+      <div class="mx-auto max-w-7xl px-5 lg:px-8">
+        <div class="max-w-2xl">
+          <span class="kt-badge kt-badge-outline kt-badge-primary rounded-full" data-scramble>Par ici</span>
+          <h2 class="mt-4 text-3xl font-semibold tracking-tight text-mono sm:text-4xl" data-words>Les pages les plus consultées.</h2>
+          
         </div>
-        <nav class="footer__nav" aria-label="Pied de page">
-          <div>
-            <h4 class="mono">Services</h4>
-            <a href="/services.html#svc-sites" data-swap>Sites web</a>
-            <a href="/services.html#svc-ecommerce" data-swap>E-commerce</a>
-            <a href="/services.html#svc-applications-web" data-swap>Applications web</a>
-            <a href="/services.html#svc-applications-mobiles" data-swap>Applications mobiles</a>
-            <a href="/offres.html" data-swap>Offres et tarifs</a>
-          </div>
-          <div>
-            <h4 class="mono">Agence</h4>
-            <a href="/realisations.html" data-swap>Réalisations</a>
-            <a href="/services.html#stack" data-swap>Technologies</a>
-            <a href="/services.html#methode" data-swap>Méthode</a>
-            <a href="/a-propos.html" data-swap>À propos</a>
-            <a href="/a-propos.html#recrutement" data-swap>Recrutement</a>
-          </div>
-          <div>
-            <h4 class="mono">Contact</h4>
-            <a href="/contact.html" data-swap>Démarrer un projet</a>
-            <a href="/contact.html#audit" data-swap>Audit gratuit</a>
-            <a href="/contact.html#faq" data-swap>Questions fréquentes</a>
-            <a href="#" data-contact="whatsapp" target="_blank" rel="noopener" data-swap>WhatsApp</a>
-          </div>
+        <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <a href="index.html" class="kt-card magic group" data-reveal><div class="kt-card-content flex flex-col gap-2 p-6">
+            <span class="kt-badge kt-badge-sm kt-badge-primary kt-badge-outline self-start">01</span>
+            <h3 class="mt-2 font-semibold text-mono">Accueil</h3>
+            <p class="text-sm text-muted-foreground">Sites, applications web et mobiles sur mesure, du design à l'hébergement.</p>
+          </div></a>
+          <a href="realisations.html" class="kt-card magic group" data-reveal><div class="kt-card-content flex flex-col gap-2 p-6">
+            <span class="kt-badge kt-badge-sm kt-badge-primary kt-badge-outline self-start">02</span>
+            <h3 class="mt-2 font-semibold text-mono">Nos réalisations</h3>
+            <p class="text-sm text-muted-foreground">Des projets en ligne, avec leurs études de cas.</p>
+          </div></a>
+          <a href="offres.html" class="kt-card magic group" data-reveal><div class="kt-card-content flex flex-col gap-2 p-6">
+            <span class="kt-badge kt-badge-sm kt-badge-primary kt-badge-outline self-start">03</span>
+            <h3 class="mt-2 font-semibold text-mono">Nos offres</h3>
+            <p class="text-sm text-muted-foreground">Des formules claires et un devis gratuit sous 24 h.</p>
+          </div></a>
+        </div>
+      </div>
+    </section>
+    <section id="demarrer" data-label="Démarrer" class="relative py-24 sm:py-32">
+      <div class="gm gm-sec" aria-hidden="true"></div>
+      <div class="mx-auto max-w-3xl px-5 text-center lg:px-8">
+        <span class="kt-badge kt-badge-outline kt-badge-primary rounded-full" data-scramble>Démarrer</span>
+        <h2 class="mt-4 text-4xl font-semibold tracking-tight text-mono sm:text-5xl" data-words>Prêt à lancer votre projet&nbsp;?</h2>
+        <p class="mx-auto mt-5 max-w-xl text-muted-foreground" data-reveal>Décrivez votre projet en 3 clics&nbsp;: vous recevez un devis détaillé sous 24 h, gratuit et sans engagement.<span class="wa-only"> Vous préférez parler&nbsp;? Écrivez-nous sur WhatsApp.</span></p>
+        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row" data-reveal>
+          <button type="button" class="kt-btn kt-btn-primary kt-btn-lg shimmer shadow-lg shadow-primary/25" data-kt-modal-toggle="#devis" data-magnet>Recevoir mon devis gratuit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <a href="#" class="kt-btn kt-btn-outline kt-btn-lg bg-background/70 backdrop-blur" data-wa target="_blank" rel="noopener" data-magnet><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg>Discuter sur WhatsApp</a>
+        </div>
+      </div>
+    </section>
+</main>
+
+  <!-- ================================================================
+       PIED DE PAGE
+       ================================================================ -->
+  <footer class="relative overflow-hidden bg-gradient-to-b from-transparent via-muted/30 to-muted/60">
+    <div class="mx-auto max-w-7xl px-5 pt-16 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-[1fr_1.6fr]">
+        <div class="flex flex-col items-start gap-4">
+          <img class="logo-light h-12 w-auto" src="logos/ad-solutions-logo.svg" alt="AD SOLUTIONS" width="156" height="60">
+          <img class="logo-dark h-12 w-auto" src="logos/ad-solutions-logo-inverse.svg" alt="AD SOLUTIONS" width="156" height="60">
+          <p class="text-sm text-muted-foreground">Sites, applications web et mobiles, du design à l'hébergement.</p>
+          <span class="kt-badge kt-badge-outline kt-badge-success"><span class="ping size-1.5 rounded-full bg-green-500 text-green-500"></span>Disponibles pour de nouveaux projets</span>
+        </div>
+        <nav class="grid grid-cols-2 gap-8 text-sm sm:grid-cols-3" aria-label="Pied de page">
+          <div class="flex flex-col gap-2.5"><h4 class="mb-1 text-xs font-semibold uppercase tracking-wider text-mono">Services</h4><a href="services/site-vitrine.html" class="text-muted-foreground hover:text-foreground">Sites vitrines</a><a href="services/e-commerce.html" class="text-muted-foreground hover:text-foreground">E-commerce</a><a href="services/application-web.html" class="text-muted-foreground hover:text-foreground">Applications web</a><a href="services/application-mobile.html" class="text-muted-foreground hover:text-foreground">Applications mobiles</a><a href="services/ui-ux-design.html" class="text-muted-foreground hover:text-foreground">UI / UX design</a><a href="services/api-integrations.html" class="text-muted-foreground hover:text-foreground">API et intégrations</a><a href="services/hebergement.html" class="text-muted-foreground hover:text-foreground">Hébergement et DevOps</a><a href="services/maintenance.html" class="text-muted-foreground hover:text-foreground">Maintenance et évolution</a></div>
+          <div class="flex flex-col gap-2.5"><h4 class="mb-1 text-xs font-semibold uppercase tracking-wider text-mono">Agence</h4><a href="realisations.html" class="text-muted-foreground hover:text-foreground">Réalisations</a><a href="methode.html" class="text-muted-foreground hover:text-foreground">Méthode</a><a href="offres.html" class="text-muted-foreground hover:text-foreground">Offres</a><a href="a-propos.html" class="text-muted-foreground hover:text-foreground">À propos</a><a href="a-propos.html#recrutement" class="text-muted-foreground hover:text-foreground">Recrutement</a></div>
+          <div class="flex flex-col gap-2.5"><h4 class="mb-1 text-xs font-semibold uppercase tracking-wider text-mono">Contact</h4><button type="button" class="self-start text-muted-foreground hover:text-foreground" data-kt-modal-toggle="#devis">Démarrer un projet</button><a href="index.html#audit" class="text-muted-foreground hover:text-foreground">Audit gratuit</a><a href="faq.html" class="text-muted-foreground hover:text-foreground">Questions fréquentes</a><a href="#" data-wa target="_blank" rel="noopener" class="text-muted-foreground hover:text-foreground">WhatsApp</a></div>
         </nav>
       </div>
-      <p class="footer__word" aria-hidden="true" data-letters>AD SOLUTIONS</p>
-      <!-- TODO : compléter RCCM et IFU une fois obtenus (ici et dans mentions-legales.html) -->
-      <div class="footer__bottom">
-        <p>© <span id="year"></span> AD SOLUTIONS SARL · RCCM : RB/COT/XX X XXXX · IFU : XXXXXXXXXXXXX</p>
-        <nav class="footer__legal" aria-label="Informations légales">
-          <a href="/mentions-legales.html">Mentions légales</a>
-          <a href="/confidentialite.html">Confidentialité</a>
-          <a href="#top" class="footer__top-link">Retour en haut ↑</a>
-        </nav>
+      <p class="wordmark mt-16 select-none whitespace-nowrap text-center text-[13vw] font-bold leading-[.8] tracking-tighter lg:text-[10rem]" aria-hidden="true" data-letters>AD SOLUTIONS</p>
+      <!-- TODO : compléter RCCM et IFU une fois obtenus -->
+      <div class="flex flex-col gap-3 border-t border-border py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <p>© <span id="year"></span> AD SOLUTIONS SARL<span class="hidden"> · RCCM : RB/COT/XX X XXXX · IFU : XXXXXXXXXXXXX</span></p><!-- retirer « hidden » une fois RCCM et IFU renseignés -->
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <button type="button" class="hover:text-foreground" data-kt-modal-toggle="#legal">Mentions légales</button>
+          <button type="button" class="hover:text-foreground" data-kt-modal-toggle="#privacy">Confidentialité</button>
+          <span class="inline-flex items-center gap-1.5">Astuce : <span class="kt-kbd kt-kbd-xs" data-kbd>Ctrl K</span></span>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- Bouton WhatsApp flottant -->
-  <a class="wa-float" href="#" data-contact="whatsapp" aria-label="Nous écrire sur WhatsApp" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 8.5c0 3.5 3.5 7 7 7l1-1.5-2-1-1 .8c-1-.5-2-1.5-2.5-2.5l.8-1-1-2z"/></svg>
-    <span class="wa-float__label">Discuter sur WhatsApp</span>
+  <!-- WhatsApp flottant (KTUI Button + Tooltip) -->
+  <a href="#" class="kt-btn kt-btn-primary kt-btn-icon fixed bottom-5 right-5 z-40 size-12 rounded-full shadow-xl transition-all duration-300 [&.is-off]:pointer-events-none [&.is-off]:translate-y-4 [&.is-off]:opacity-0" id="wa-float" data-wa target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp" data-kt-tooltip="true" data-kt-tooltip-placement="left">
+    <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M8.5 8.5c0 3.5 3.5 7 7 7l1-1.5-2-1-1 .8c-1-.5-2-1.5-2.5-2.5l.8-1-1-2z"/></svg>
+    <span class="kt-tooltip" data-kt-tooltip-content="true">Discuter sur WhatsApp</span>
   </a>
 
-  <script src="/script.js"></script>
+  <!-- ================================================================
+       KTUI DRAWER : menu mobile
+       ================================================================ -->
+  <div class="kt-drawer kt-drawer-start hidden w-[300px]" data-kt-drawer="true" data-kt-drawer-keyboard="true" id="nav-drawer">
+    <div class="kt-drawer-header">
+      <img class="logo-light h-7 w-auto" src="logos/ad-solutions-logo.svg" alt="AD SOLUTIONS" width="94" height="36">
+      <img class="logo-dark h-7 w-auto" src="logos/ad-solutions-logo-inverse.svg" alt="AD SOLUTIONS" width="94" height="36">
+      <button type="button" class="kt-drawer-close" data-kt-drawer-dismiss="true" aria-label="Fermer le menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <nav data-lenis-prevent class="kt-drawer-content flex flex-col gap-1" aria-label="Menu mobile">
+      <a href="realisations.html" data-close-drawer class="kt-btn kt-btn-ghost justify-start">Réalisations</a>
+      <a href="index.html#services" data-close-drawer class="kt-btn kt-btn-ghost justify-start">Services</a>
+      <div class="-mt-1 mb-1 ms-3 flex flex-col border-s border-border ps-2"><a href="services/site-vitrine.html" class="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Sites vitrines</a><a href="services/e-commerce.html" class="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">E-commerce</a><a href="services/application-web.html" class="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Applications web</a><a href="services/application-mobile.html" class="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Applications mobiles</a><a href="services/ui-ux-design.html" class="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">UI / UX design</a><a href="services/api-integrations.html" class="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">API et intégrations</a><a href="services/hebergement.html" class="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Hébergement et DevOps</a><a href="services/maintenance.html" class="rounded-md px-3 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Maintenance et évolution</a></div>
+      <a href="methode.html" data-close-drawer class="kt-btn kt-btn-ghost justify-start">Méthode</a>
+      <a href="offres.html" data-close-drawer class="kt-btn kt-btn-ghost justify-start">Offres</a>
+      <a href="index.html#audit" data-close-drawer class="kt-btn kt-btn-ghost justify-start">Audit gratuit</a>
+      <a href="a-propos.html" data-close-drawer class="kt-btn kt-btn-ghost justify-start">À propos</a>
+      <a href="faq.html" data-close-drawer class="kt-btn kt-btn-ghost justify-start">FAQ</a>
+      <a href="index.html#contact" data-close-drawer class="kt-btn kt-btn-ghost justify-start">Contact</a>
+    </nav>
+    <div class="kt-drawer-footer">
+      <button type="button" class="kt-btn kt-btn-primary w-full justify-center" data-kt-modal-toggle="#devis" data-close-drawer>Recevoir mon devis gratuit</button>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       KTUI DRAWERS : études de cas
+       ================================================================ -->
+  <div class="kt-drawer kt-drawer-end hidden w-full max-w-[620px]" data-kt-drawer="true" data-kt-drawer-keyboard="true" id="cs-thalias">
+    <div class="kt-drawer-header"><h3 class="kt-drawer-title">Étude de cas · Thalia's Traiteur</h3><button type="button" class="kt-drawer-close" data-kt-drawer-dismiss="true" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <div data-lenis-prevent class="kt-drawer-content kt-scrollable flex flex-col gap-5 [&>*]:shrink-0">
+      <div class="overflow-hidden rounded-lg border border-border"><div class="flex items-center border-b border-border bg-muted/50 px-3 py-2"><span class="mx-auto font-mono text-xs text-muted-foreground">thaliastraiteur.com</span></div><img src="assets/img/thalias-traiteur.jpg" alt="Page d'accueil du site Thalia's Traiteur" width="1200" height="750" class="w-full"></div>
+      <div class="flex flex-wrap gap-1.5"><span class="kt-badge kt-badge-outline">Site web</span><span class="kt-badge kt-badge-outline">Traiteur et événementiel</span><span class="kt-badge kt-badge-outline">Québec, Canada</span></div>
+      <div><h2 class="text-2xl font-semibold text-mono">Thalia's Traiteur</h2><p class="mt-2 text-muted-foreground">Un site sur mesure pour un traiteur ivoirien installé au Québec : un menu qui met en appétit, des services événementiels clairs, et une commande en ligne à portée de main.</p></div>
+      <div class="border-s-2 border-primary ps-4"><h4 class="font-semibold text-mono">Le contexte</h4><p class="mt-1 text-sm text-muted-foreground">Thalia's Traiteur propose une cuisine ivoirienne au Québec, pour les repas comme pour les mariages et les événements. Le traiteur voulait un site à la hauteur de sa cuisine : élégant, appétissant et capable de transformer une visite en commande ou en réservation d'événement.</p></div>
+      <div class="border-s-2 border-border ps-4"><h4 class="font-semibold text-mono">Le besoin</h4><p class="mt-1 text-sm text-muted-foreground">Présenter le menu et recevoir des demandes pour les mariages et les événements, sans que le visiteur ait à chercher comment commander ou qui contacter.</p></div>
+      <div class="border-s-2 border-border ps-4"><h4 class="font-semibold text-mono">Notre réponse</h4><p class="mt-1 text-sm text-muted-foreground">Un site conçu sur mesure et pensé d'abord pour le téléphone, où chaque page mène à une action : commander, demander un devis pour un événement ou écrire directement au traiteur. Le client étant au Canada, tout le projet a été mené à distance.</p></div>
+      <div><h4 class="font-semibold text-mono">Ce que nous avons livré</h4><div class="mt-3 flex flex-wrap gap-1.5"><span class="kt-badge kt-badge-success kt-badge-outline">Menu en ligne</span><span class="kt-badge kt-badge-success kt-badge-outline">Services événementiels</span><span class="kt-badge kt-badge-success kt-badge-outline">Commande en ligne</span><span class="kt-badge kt-badge-success kt-badge-outline">Livraison</span><span class="kt-badge kt-badge-success kt-badge-outline">Avis clients</span><span class="kt-badge kt-badge-success kt-badge-outline">WhatsApp intégré</span><span class="kt-badge kt-badge-success kt-badge-outline">Design sur mesure</span><span class="kt-badge kt-badge-success kt-badge-outline">Responsive mobile</span></div></div>
+    </div>
+    <div class="kt-drawer-footer"><a href="https://thaliastraiteur.com/" target="_blank" rel="noopener" class="kt-btn kt-btn-outline">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a><button type="button" class="kt-btn kt-btn-primary" data-kt-modal-toggle="#devis" data-close-drawer>Un projet similaire&nbsp;?</button></div>
+  </div>
+
+  <div class="kt-drawer kt-drawer-end hidden w-full max-w-[620px]" data-kt-drawer="true" data-kt-drawer-keyboard="true" id="cs-marck">
+    <div class="kt-drawer-header"><h3 class="kt-drawer-title">Étude de cas · Marck-Land</h3><button type="button" class="kt-drawer-close" data-kt-drawer-dismiss="true" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <div data-lenis-prevent class="kt-drawer-content kt-scrollable flex flex-col gap-5 [&>*]:shrink-0">
+      <div class="overflow-hidden rounded-lg border border-border"><div class="flex items-center border-b border-border bg-muted/50 px-3 py-2"><span class="mx-auto font-mono text-xs text-muted-foreground">marckland.com</span></div><img src="assets/img/marck-land.png" alt="Page d'accueil du portfolio Marck-Land réalisé par AD SOLUTIONS" width="1200" height="750" class="w-full"></div>
+      <div class="flex flex-wrap gap-1.5"><span class="kt-badge kt-badge-outline">Site web</span><span class="kt-badge kt-badge-outline">Portfolio</span></div>
+      <div><h2 class="text-2xl font-semibold text-mono">Marck-Land</h2><p class="mt-2 text-muted-foreground">Un portfolio personnel pour présenter un parcours, des compétences et des projets, avec un moyen simple d'entrer en contact.</p></div>
+      <div class="border-s-2 border-primary ps-4"><h4 class="font-semibold text-mono">Le contexte</h4><p class="mt-1 text-sm text-muted-foreground">Un portfolio est souvent le premier contact avec un recruteur, un client ou un partenaire. En quelques secondes, il doit dire qui l'on est, ce que l'on sait faire, et donner envie d'aller plus loin.</p></div>
+      <div class="border-s-2 border-border ps-4"><h4 class="font-semibold text-mono">Le besoin</h4><p class="mt-1 text-sm text-muted-foreground">Réunir en un seul endroit le parcours, les compétences et les projets réalisés, et permettre à un visiteur intéressé de prendre contact sans effort.</p></div>
+      <div class="border-s-2 border-border ps-4"><h4 class="font-semibold text-mono">Notre réponse</h4><p class="mt-1 text-sm text-muted-foreground">Un site personnel clair, qui présente le parcours, met en avant les compétences et les projets, et se termine par un moyen simple d'entrer en contact, sur téléphone comme sur ordinateur.</p></div>
+      <div><h4 class="font-semibold text-mono">Ce que nous avons livré</h4><div class="mt-3 flex flex-wrap gap-1.5"><span class="kt-badge kt-badge-success kt-badge-outline">Parcours</span><span class="kt-badge kt-badge-success kt-badge-outline">Compétences</span><span class="kt-badge kt-badge-success kt-badge-outline">Projets</span><span class="kt-badge kt-badge-success kt-badge-outline">Contact direct</span><span class="kt-badge kt-badge-success kt-badge-outline">Responsive mobile</span></div></div>
+    </div>
+    <div class="kt-drawer-footer"><a href="https://marckland.com/" target="_blank" rel="noopener" class="kt-btn kt-btn-outline" data-project-link>Visiter le site</a><button type="button" class="kt-btn kt-btn-primary ms-auto" data-kt-modal-toggle="#devis" data-close-drawer>Un projet similaire&nbsp;?</button></div>
+  </div>
+
+  <div class="kt-drawer kt-drawer-end hidden w-full max-w-[620px]" data-kt-drawer="true" data-kt-drawer-keyboard="true" id="cs-blog">
+    <div class="kt-drawer-header"><h3 class="kt-drawer-title">Étude de cas · Le Blog</h3><button type="button" class="kt-drawer-close" data-kt-drawer-dismiss="true" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <div data-lenis-prevent class="kt-drawer-content kt-scrollable flex flex-col gap-5 [&>*]:shrink-0">
+      <div class="overflow-hidden rounded-lg border border-border"><div class="flex items-center border-b border-border bg-muted/50 px-3 py-2"><span class="mx-auto font-mono text-xs text-muted-foreground">blog.marckland.com</span></div><img src="assets/img/blog.png" alt="Page d'accueil du blog de Marck-Land Ahouansou réalisé par AD SOLUTIONS" width="1200" height="750" class="w-full"></div>
+      <div class="flex flex-wrap gap-1.5"><span class="kt-badge kt-badge-outline">Site web</span><span class="kt-badge kt-badge-outline">Blog</span></div>
+      <div><h2 class="text-2xl font-semibold text-mono">Le Blog</h2><p class="mt-2 text-muted-foreground">Un blog pour publier des articles, les classer par thème et les rendre agréables à lire sur téléphone comme sur ordinateur.</p></div>
+      <div class="border-s-2 border-primary ps-4"><h4 class="font-semibold text-mono">Le contexte</h4><p class="mt-1 text-sm text-muted-foreground">Un blog vit de ses articles : il doit être simple à alimenter pour son auteur, et agréable à parcourir pour ses lecteurs, qui arrivent le plus souvent depuis leur téléphone.</p></div>
+      <div class="border-s-2 border-border ps-4"><h4 class="font-semibold text-mono">Le besoin</h4><p class="mt-1 text-sm text-muted-foreground">Publier des articles, les organiser par thème pour que chaque lecteur trouve ce qui l'intéresse, et soigner le confort de lecture.</p></div>
+      <div class="border-s-2 border-border ps-4"><h4 class="font-semibold text-mono">Notre réponse</h4><p class="mt-1 text-sm text-muted-foreground">Un blog à la mise en page aérée, avec des articles classés par thème et une typographie pensée pour la lecture, aussi confortable sur téléphone que sur ordinateur.</p></div>
+      <div><h4 class="font-semibold text-mono">Ce que nous avons livré</h4><div class="mt-3 flex flex-wrap gap-1.5"><span class="kt-badge kt-badge-success kt-badge-outline">Publication d'articles</span><span class="kt-badge kt-badge-success kt-badge-outline">Classement par thème</span><span class="kt-badge kt-badge-success kt-badge-outline">Lecture sur tous les écrans</span></div></div>
+    </div>
+    <div class="kt-drawer-footer"><a href="https://blog.marckland.com/" target="_blank" rel="noopener" class="kt-btn kt-btn-outline" data-project-link>Visiter le site</a><button type="button" class="kt-btn kt-btn-primary ms-auto" data-kt-modal-toggle="#devis" data-close-drawer>Un projet similaire&nbsp;?</button></div>
+  </div>
+
+  <!-- ================================================================
+       KTUI MODAL + STEPPER : devis en 3 étapes
+       ================================================================ -->
+  <div class="kt-modal" data-kt-modal="true" data-kt-modal-keyboard="true" id="devis">
+    <div class="kt-modal-content top-[6%] max-w-[600px]">
+      <div class="kt-modal-header">
+        <h3 class="kt-modal-title flex items-center gap-2">Votre devis gratuit <span class="kt-badge kt-badge-sm kt-badge-success kt-badge-outline">Réponse sous 24 h</span></h3>
+        <button type="button" class="kt-modal-close" data-kt-modal-dismiss="true" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      </div>
+      <form data-lenis-prevent class="kt-modal-body" id="devis-form" novalidate>
+        <div data-kt-stepper="true" id="devis-stepper">
+          <div class="flex gap-2">
+            <div class="flex flex-1 items-center gap-2 text-sm text-muted-foreground kt-stepper-item-active:font-medium kt-stepper-item-active:text-mono active" data-kt-stepper-item="#d-1"><span class="flex size-7 items-center justify-center rounded-full border border-border text-xs font-semibold kt-stepper-item-active:border-primary kt-stepper-item-active:bg-primary kt-stepper-item-active:text-primary-foreground kt-stepper-item-completed:border-primary kt-stepper-item-completed:text-primary" data-kt-stepper-number="true">1</span>Projet</div>
+            <div class="flex flex-1 items-center gap-2 text-sm text-muted-foreground kt-stepper-item-active:font-medium kt-stepper-item-active:text-mono" data-kt-stepper-item="#d-2"><span class="flex size-7 items-center justify-center rounded-full border border-border text-xs font-semibold kt-stepper-item-active:border-primary kt-stepper-item-active:bg-primary kt-stepper-item-active:text-primary-foreground kt-stepper-item-completed:border-primary kt-stepper-item-completed:text-primary" data-kt-stepper-number="true">2</span>Détails</div>
+            <div class="flex flex-1 items-center gap-2 text-sm text-muted-foreground kt-stepper-item-active:font-medium kt-stepper-item-active:text-mono" data-kt-stepper-item="#d-3"><span class="flex size-7 items-center justify-center rounded-full border border-border text-xs font-semibold kt-stepper-item-active:border-primary kt-stepper-item-active:bg-primary kt-stepper-item-active:text-primary-foreground kt-stepper-item-completed:border-primary kt-stepper-item-completed:text-primary" data-kt-stepper-number="true">3</span>Contact</div>
+          </div>
+          <div class="kt-progress kt-progress-primary mt-4" data-p id="devis-bar"><div class="kt-progress-indicator"></div></div>
+
+          <div id="d-1" class="pane-in mt-6 flex-col gap-4 [&:not(.hidden)]:flex">
+            <p class="text-lg font-semibold text-mono">Qu'aimeriez-vous construire&nbsp;?</p>
+            <div class="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+              <label class="choice kt-card cursor-pointer gap-1 p-4 transition-all hover:border-input"><input type="radio" class="kt-radio kt-radio-sm self-end" name="type" value="Site vitrine"><svg class="size-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span class="mt-1 text-sm font-medium text-mono">Site vitrine</span><span class="text-xs text-muted-foreground">AD START · BUSINESS</span></label>
+              <label class="choice kt-card cursor-pointer gap-1 p-4 transition-all hover:border-input"><input type="radio" class="kt-radio kt-radio-sm self-end" name="type" value="E-commerce"><svg class="size-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 4h2l2.4 11h11L21 7H6.2"/><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg><span class="mt-1 text-sm font-medium text-mono">E-commerce</span><span class="text-xs text-muted-foreground">Boutique, paiement</span></label>
+              <label class="choice kt-card cursor-pointer gap-1 p-4 transition-all hover:border-input"><input type="radio" class="kt-radio kt-radio-sm self-end" name="type" value="Application web"><svg class="size-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><span class="mt-1 text-sm font-medium text-mono">Application web</span><span class="text-xs text-muted-foreground">SaaS, plateforme</span></label>
+              <label class="choice kt-card cursor-pointer gap-1 p-4 transition-all hover:border-input"><input type="radio" class="kt-radio kt-radio-sm self-end" name="type" value="Application mobile"><svg class="size-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><span class="mt-1 text-sm font-medium text-mono">Application mobile</span><span class="text-xs text-muted-foreground">Android et iOS</span></label>
+              <label class="choice kt-card cursor-pointer gap-1 p-4 transition-all hover:border-input"><input type="radio" class="kt-radio kt-radio-sm self-end" name="type" value="Maintenance"><svg class="size-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><span class="mt-1 text-sm font-medium text-mono">Maintenance</span><span class="text-xs text-muted-foreground">Un site existant</span></label>
+              <label class="choice kt-card cursor-pointer gap-1 p-4 transition-all hover:border-input"><input type="radio" class="kt-radio kt-radio-sm self-end" name="type" value="Je ne sais pas encore" checked><svg class="size-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/></svg><span class="mt-1 text-sm font-medium text-mono">Je ne sais pas</span><span class="text-xs text-muted-foreground">On vous conseille</span></label>
+            </div>
+            <input type="hidden" name="offre" value="">
+            <p class="wizard-err text-sm text-destructive" hidden>Choisissez un type de projet pour continuer.</p>
+          </div>
+
+          <div id="d-2" class="pane-in mt-6 hidden flex-col gap-4 [&:not(.hidden)]:flex">
+            <p class="text-lg font-semibold text-mono">Quel est votre calendrier&nbsp;?</p>
+            <div class="kt-toggle-group seg w-full" role="radiogroup" aria-label="Délai">
+              <label class="kt-btn kt-btn-outline flex-1 cursor-pointer justify-center"><input type="radio" name="delai" value="Dès que possible" checked>Dès que possible</label>
+              <label class="kt-btn kt-btn-outline flex-1 cursor-pointer justify-center"><input type="radio" name="delai" value="Dans le mois">Dans le mois</label>
+              <label class="kt-btn kt-btn-outline flex-1 cursor-pointer justify-center"><input type="radio" name="delai" value="Pas pressé">Pas pressé</label>
+            </div>
+            <div class="flex flex-col gap-2"><label class="kt-label" for="d-msg">Votre projet en quelques mots *</label><textarea class="kt-textarea" id="d-msg" name="message" rows="4" required placeholder="Ex. : je veux une application pour que mes clients commandent et paient par Mobile Money."></textarea></div>
+            <p class="wizard-err text-sm text-destructive" hidden>Décrivez votre projet en quelques mots.</p>
+          </div>
+
+          <div id="d-3" class="pane-in mt-6 hidden flex-col gap-4 [&:not(.hidden)]:flex">
+            <p class="text-lg font-semibold text-mono">Comment vous joindre&nbsp;?</p>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="flex flex-col gap-2"><label class="kt-label" for="d-nom">Nom complet *</label><input class="kt-input" id="d-nom" name="nom" type="text" autocomplete="name" required></div>
+              <div class="flex flex-col gap-2"><label class="kt-label" for="d-tel">Téléphone / WhatsApp *</label><input class="kt-input" id="d-tel" name="tel" type="tel" autocomplete="tel" required placeholder="+229 …"></div>
+              <div class="flex flex-col gap-2 sm:col-span-2"><label class="kt-label" for="d-ent">Entreprise ou activité</label><input class="kt-input" id="d-ent" name="entreprise" type="text" autocomplete="organization"></div>
+            </div>
+            <p class="wizard-err text-sm text-destructive" hidden>Indiquez votre nom et votre numéro.</p>
+            <p class="text-xs text-muted-foreground">Le message s'ouvre dans WhatsApp, prêt à être envoyé. Aucune donnée n'est stockée.</p>
+          </div>
+
+          <div class="mt-6 flex items-center justify-between border-t border-border pt-5">
+            <button type="button" class="kt-btn kt-btn-ghost kt-stepper-first:invisible" data-kt-stepper-back="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Retour</button>
+            <button type="button" class="kt-btn kt-btn-primary kt-stepper-last:hidden" data-kt-stepper-next="true">Continuer<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <button type="submit" class="kt-btn kt-btn-primary hidden kt-stepper-last:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg>Recevoir mon devis sur WhatsApp</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       KTUI MODAL : palette de commandes (Ctrl K / ⌘ K)
+       ================================================================ -->
+  <div class="kt-modal" data-kt-modal="true" data-kt-modal-keyboard="true" id="palette">
+    <div class="kt-modal-content top-[12%] max-w-[560px] overflow-hidden">
+      <div class="flex items-center gap-3 border-b border-border px-4 py-3">
+        <svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="text" id="palette-input" class="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground" placeholder="Aller à une section, lancer une action…" autocomplete="off" aria-label="Rechercher" data-kt-modal-input-focus="true">
+        <span class="kt-kbd kt-kbd-xs">Échap</span>
+      </div>
+      <div class="kt-scrollable max-h-[50vh] overflow-y-auto p-2" id="palette-list" role="listbox" data-lenis-prevent>
+        <p class="palette-group px-2 pb-1 pt-2 text-xs font-medium text-muted-foreground">Actions</p>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-act="devis"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Démarrer un projet<span class="hidden">devis</span></button>
+        <button type="button" class="wa-only palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-act="wa"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg>Discuter sur WhatsApp<span class="hidden">contact</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-act="theme"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>Changer de thème<span class="hidden">clair sombre espresso café</span></button>
+        <p class="palette-group px-2 pb-1 pt-3 text-xs font-medium text-muted-foreground">Sections</p>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="realisations.html"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Réalisations<span class="hidden">projets thalia marck blog portfolio</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-go="#bientot"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Bientôt : nos projets secrets<span class="hidden">produits lancement logement chambre ecole nouveautes</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-go="#services"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg>Services<span class="hidden">site e-commerce application mobile api hébergement technologies</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="methode.html"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h6"/></svg>Méthode<span class="hidden">étapes process</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="offres.html"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12V3h9l9 9-9 9z"/></svg>Offres et tarifs<span class="hidden">prix start business premium apps maintenance</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-go="#audit"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Audit gratuit<span class="hidden">analyse</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="a-propos.html"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>À propos<span class="hidden">équipe recrutement</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="faq.html"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/></svg>Questions fréquentes<span class="hidden">faq délais paiement</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-go="#contact"><svg class="size-4 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Contact<span class="hidden">téléphone email</span></button>
+        <p class="palette-group px-2 pb-1 pt-3 text-xs font-medium text-muted-foreground">Pages services</p>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="services/site-vitrine.html">Sites vitrines<span class="hidden">service page offre Site vitrine</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="services/e-commerce.html">E-commerce<span class="hidden">service page offre E-commerce</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="services/application-web.html">Applications web<span class="hidden">service page offre Application web</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="services/application-mobile.html">Applications mobiles<span class="hidden">service page offre Application mobile</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="services/ui-ux-design.html">UI / UX design<span class="hidden">service page offre UI / UX design</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="services/api-integrations.html">API et intégrations<span class="hidden">service page offre API et intégrations</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="services/hebergement.html">Hébergement et DevOps<span class="hidden">service page offre Hébergement</span></button>
+        <button type="button" class="palette-item flex w-full items-center gap-3 rounded-md px-2 py-2 text-left text-sm text-mono [&.is-sel]:bg-accent" data-url="services/maintenance.html">Maintenance et évolution<span class="hidden">service page offre Maintenance</span></button>
+        <p class="palette-empty px-2 py-6 text-center text-sm text-muted-foreground" hidden>Aucun résultat. Essayez « offres » ou « mobile ».</p>
+      </div>
+      <div class="flex gap-4 border-t border-border px-4 py-2.5 text-xs text-muted-foreground"><span class="inline-flex items-center gap-1"><span class="kt-kbd kt-kbd-xs">↑</span><span class="kt-kbd kt-kbd-xs">↓</span> naviguer</span><span class="inline-flex items-center gap-1"><span class="kt-kbd kt-kbd-xs">Entrée</span> ouvrir</span></div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       KTUI MODALS : informations légales
+       ================================================================ -->
+  <div class="kt-modal" data-kt-modal="true" data-kt-modal-keyboard="true" id="legal">
+    <div class="kt-modal-content top-[6%] max-w-[680px]">
+      <div class="kt-modal-header"><h3 class="kt-modal-title">Mentions légales</h3><button type="button" class="kt-modal-close" data-kt-modal-dismiss="true" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+      <div data-lenis-prevent class="kt-modal-body kt-scrollable max-h-[70vh] space-y-3 overflow-y-auto text-sm text-muted-foreground [&_h4]:mt-4 [&_h4]:font-semibold [&_h4]:text-mono">
+        <!-- TODO : compléter adresse, RCCM, IFU, téléphone, directeur de la publication et hébergeur -->
+        <h4>Éditeur du site</h4>
+        <p>AD SOLUTIONS SARL, Cotonou, Bénin.<span class="hidden"> Adresse, RCCM, IFU et téléphone : <span class="kt-badge kt-badge-sm kt-badge-warning kt-badge-outline">à compléter</span>.</span> E-mail : <a class="kt-link" href="mailto:contact@adsolutions.bj">contact@adsolutions.bj</a>.<span class="hidden"> Directeur de la publication : <span class="kt-badge kt-badge-sm kt-badge-warning kt-badge-outline">à compléter</span>.</span></p>
+        <h4 class="hidden">Hébergeur</h4>
+        <p class="hidden"><span class="kt-badge kt-badge-sm kt-badge-warning kt-badge-outline">à compléter</span></p><!-- retirer « hidden » une fois l'hébergeur renseigné -->
+        <h4>Propriété intellectuelle</h4>
+        <p>Les textes, le logo, les éléments graphiques et le code de ce site sont la propriété d'AD SOLUTIONS. Toute reproduction sans autorisation écrite préalable est interdite. Les captures et les noms des projets présentés appartiennent à leurs propriétaires respectifs et sont présentés à titre de références.</p>
+        <p>Interface construite avec KTUI par Keenthemes et Tailwind CSS (licences MIT). Police Inter (SIL Open Font License), hébergée sur ce site.</p>
+        <h4>Responsabilité</h4>
+        <p>Les prix indiqués sont des prix de départ : seul le devis remis au client fait foi. Ce site contient des liens vers des sites tiers dont AD SOLUTIONS n'est pas responsable.</p>
+        <h4>Droit applicable</h4>
+        <p>Ce site est soumis au droit béninois. À défaut d'accord amiable, les tribunaux de Cotonou sont compétents.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kt-modal" data-kt-modal="true" data-kt-modal-keyboard="true" id="privacy">
+    <div class="kt-modal-content top-[6%] max-w-[680px]">
+      <div class="kt-modal-header"><h3 class="kt-modal-title">Politique de confidentialité</h3><button type="button" class="kt-modal-close" data-kt-modal-dismiss="true" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+      <div data-lenis-prevent class="kt-modal-body kt-scrollable max-h-[70vh] space-y-3 overflow-y-auto text-sm text-muted-foreground [&_h4]:mt-4 [&_h4]:font-semibold [&_h4]:text-mono">
+        <div class="kt-alert kt-alert-success kt-alert-light"><div class="kt-alert-title">Aucun cookie, aucun traceur, aucune publicité. Nos formulaires n'envoient rien à nos serveurs.</div></div>
+        <h4>Formulaires</h4>
+        <p>Les informations saisies dans le formulaire de projet ou la demande d'audit restent dans votre navigateur. Le bouton d'envoi ouvre WhatsApp ou votre messagerie e-mail avec un message prérempli : rien n'est transmis tant que vous ne l'envoyez pas vous-même. Le message est ensuite acheminé par WhatsApp (Meta) ou par votre fournisseur d'e-mail, qui appliquent leur propre politique de confidentialité.</p>
+        <h4>Utilisation et conservation</h4>
+        <p>Vos informations servent uniquement à vous répondre, à préparer un devis ou un audit et, si vous devenez client, à mener et facturer votre projet. Elles ne sont jamais vendues. Nous les conservons le temps nécessaire au traitement de votre demande et, pour nos clients, pendant la relation commerciale et les obligations légales.</p>
+        <h4>Stockage dans le navigateur</h4>
+        <p>Le site enregistre seulement l'apparence choisie (couleur et mode d'affichage) dans le stockage local de votre navigateur. Cette information ne nous est jamais transmise.</p>
+        <h4>Vos droits</h4>
+        <p>Conformément à la loi n° 2017-20 du 20 avril 2018 portant Code du numérique en République du Bénin, vous disposez d'un droit d'accès, de rectification, d'opposition et de suppression de vos données : écrivez à <a class="kt-link" href="mailto:contact@adsolutions.bj">contact@adsolutions.bj</a>. Vous pouvez aussi saisir l'Autorité de protection des données à caractère personnel (APDP).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Curseur contextuel -->
+  <div class="cursor pointer-events-none fixed left-0 top-0 z-[90] -ml-10 -mt-10 grid size-20 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-xl" aria-hidden="true"><span class="cursor__label"></span></div>
+
+  <script src="assets/js/ktui.min.js?v=2"></script>
+  <script src="assets/js/lenis.min.js?v=2"></script>
+  <script src="assets/js/site.js?v=4"></script>
 </body>
 </html>

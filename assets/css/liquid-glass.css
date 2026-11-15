@@ -1,0 +1,103 @@
+/* ============================================================
+   AD SOLUTIONS — Verre noir transparent
+   CSS natif chargé APRÈS assets/css/app.css (aucune compilation).
+   Pour désactiver : retirer la ligne <link ... liquid-glass.css> de index.html.
+
+   Un seul effet : les surfaces (cartes, blocs, zones de fond) deviennent du noir transparent.
+   Pas de flou, pas de reflet, pas de liseré ajouté. Les boutons, badges et champs ne changent pas.
+   Les menus déroulants et les fenêtres restent opaques : ils passent par-dessus du texte.
+
+   Réglage : --glass-black (opacité du noir), en clair et en sombre.
+   Hors @layer : passe au-dessus de KTUI et des utilitaires Tailwind.
+   ============================================================ */
+
+:root {
+  --glass-black: rgb(0 0 0 / .08);   /* un iota plus soutenu qu'avant (.05) */
+  /* petites ombres : détachent le noir transparent du fond (fin liseré clair en haut + ombre douce en dessous) */
+  /* ombres renforcées : ombre portée plus profonde + ombre intérieure qui creuse le noir transparent */
+  --glass-shadow: inset 0 1px 0 rgb(255 255 255 / .6), inset 0 10px 24px -14px rgb(0 0 0 / .16), inset 0 -10px 20px -16px rgb(0 0 0 / .12),
+    0 2px 4px rgb(0 0 0 / .08), 0 12px 28px -10px rgb(0 0 0 / .3), 0 28px 56px -28px rgb(0 0 0 / .25);
+  --glass-shadow-sm: inset 0 1px 0 rgb(255 255 255 / .5), inset 0 6px 14px -10px rgb(0 0 0 / .14),
+    0 1px 3px rgb(0 0 0 / .1), 0 8px 18px -8px rgb(0 0 0 / .24);
+}
+.dark {
+  --glass-black: rgb(0 0 0 / .38);
+  --glass-shadow: inset 0 1px 0 rgb(255 255 255 / .08), inset 0 12px 28px -14px rgb(0 0 0 / .55),
+    0 2px 4px rgb(0 0 0 / .5), 0 16px 36px -12px rgb(0 0 0 / .8), 0 32px 64px -28px rgb(0 0 0 / .7);
+  --glass-shadow-sm: inset 0 1px 0 rgb(255 255 255 / .06), inset 0 8px 16px -10px rgb(0 0 0 / .5),
+    0 1px 3px rgb(0 0 0 / .45), 0 8px 18px -8px rgb(0 0 0 / .7);
+}
+
+/* Surfaces : cartes, questions de la FAQ, alertes, groupe d'onglets */
+:is(.kt-card, .kt-accordion-item, .kt-alert, .kt-toggle-group),
+/* Blocs à fond plein posés par les utilitaires (zones d'illustration, pastilles d'icônes, tuiles…), hors boutons */
+:is(div, span, li, figure, article, section, aside):is(.bg-background, .bg-card, .bg-muted, .bg-accent, .bg-secondary,
+  .bg-background\/50, .bg-background\/70, .bg-background\/80, .bg-muted\/50, .bg-muted\/80, .bg-card\/50, .bg-input\/60),
+/* Vitrine du hero : fenêtre du site, étiquettes et notifications */
+.hero-show__browser, .hs-site, .hero-show .lglass {
+  background: var(--glass-black);
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+
+/* Petites ombres pour faire ressortir le transparent */
+:is(.kt-card, .kt-accordion-item, .kt-alert, .kt-toggle-group), .hero-show .lglass { box-shadow: var(--glass-shadow); }
+:is(div, span, li, figure):is(.bg-background, .bg-card, .bg-muted, .bg-accent, .bg-secondary,
+  .bg-background\/50, .bg-background\/70, .bg-background\/80, .bg-muted\/50, .bg-muted\/80, .bg-card\/50, .bg-input\/60):not(.kt-card) { box-shadow: var(--glass-shadow-sm); }
+.kt-card .kt-card { box-shadow: var(--glass-shadow-sm); }
+/* Au survol, les cartes « Magic » se détachent un peu plus */
+@media (hover: hover) and (pointer: fine) { .kt-card.magic { transition: box-shadow .35s; } .kt-card.magic:hover { box-shadow: var(--glass-shadow), 0 14px 30px -14px rgb(0 0 0 / .28); } }
+
+/* Repères d'angle sur les cartes (comme des traits de coupe) : discrets, orange au survol */
+.kt-card:not(.hero-show__browser, .compare, .kt-card .kt-card) {
+  --cm: color-mix(in oklab, var(--foreground) 22%, transparent); --ci: 9px; --cl: 11px;
+  background:
+    linear-gradient(var(--cm), var(--cm)) left var(--ci) top var(--ci) / var(--cl) 1px no-repeat,
+    linear-gradient(var(--cm), var(--cm)) left var(--ci) top var(--ci) / 1px var(--cl) no-repeat,
+    linear-gradient(var(--cm), var(--cm)) right var(--ci) top var(--ci) / var(--cl) 1px no-repeat,
+    linear-gradient(var(--cm), var(--cm)) right var(--ci) top var(--ci) / 1px var(--cl) no-repeat,
+    linear-gradient(var(--cm), var(--cm)) left var(--ci) bottom var(--ci) / var(--cl) 1px no-repeat,
+    linear-gradient(var(--cm), var(--cm)) left var(--ci) bottom var(--ci) / 1px var(--cl) no-repeat,
+    linear-gradient(var(--cm), var(--cm)) right var(--ci) bottom var(--ci) / var(--cl) 1px no-repeat,
+    linear-gradient(var(--cm), var(--cm)) right var(--ci) bottom var(--ci) / 1px var(--cl) no-repeat,
+    var(--glass-black);
+}
+.kt-card:not(.hero-show__browser, .compare, .kt-card .kt-card):hover { --cm: color-mix(in oklab, var(--primary) 75%, transparent); }
+
+/* Bordure « champ actif » de KTUI (focus des inputs) appliquée aux cartes et aux blocs, en gris :
+   bordure grise + anneau gris de 3 px. Pour les illustrations qui ont un cadre en pointillé décollé,
+   elle se place sur leur propre bord, juste avant le pointillé. */
+:root { --focus-edge: color-mix(in oklab, var(--foreground) 28%, transparent); --focus-ring: 0 0 0 3px color-mix(in oklab, var(--foreground) 9%, transparent); }
+.dark { --focus-edge: color-mix(in oklab, var(--foreground) 30%, transparent); --focus-ring: 0 0 0 3px color-mix(in oklab, var(--foreground) 10%, transparent); }
+:is(.kt-card, .kt-accordion-item, .kt-alert, .kt-toggle-group, .hero-show__browser, .hero-show .lglass),
+:is(div, li, figure):is(.bg-background, .bg-card, .bg-muted, .bg-accent, .bg-secondary,
+  .bg-background\/50, .bg-background\/70, .bg-background\/80, .bg-muted\/50, .bg-muted\/80, .bg-card\/50, .bg-input\/60):not(.kt-card .kt-card *) {
+  border-color: var(--focus-edge) !important; box-shadow: var(--focus-ring), var(--glass-shadow);
+}
+.kt-card .kt-card { box-shadow: var(--focus-ring), var(--glass-shadow-sm); }
+/* La carte mise en avant (offre AD BUSINESS) garde son cadre orange */
+.kt-card.border-primary { border-color: var(--primary) !important; }
+@media (hover: hover) and (pointer: fine) { .kt-card.magic:hover { box-shadow: var(--focus-ring), var(--glass-shadow), 0 14px 30px -14px rgb(0 0 0 / .28); } }
+
+/* Survol / actif : la bordure s'allume en orange uniquement autour du curseur (--mx / --my posés par site.js),
+   avec un léger reflet orange à l'intérieur. Le reste du contour reste gris. */
+:is(.kt-card, .kt-accordion-item, .kt-toggle-group):not(.beam, .compare, .absolute, .fixed, .sticky) { position: relative; isolation: isolate; }
+:is(.kt-card, .kt-accordion-item, .kt-toggle-group):not(.beam, .compare)::before {
+  content: ""; position: absolute; inset: 0; z-index: 3; border-radius: inherit; padding: 2px; pointer-events: none;
+  opacity: 0; transition: opacity .3s;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), var(--primary), color-mix(in oklab, var(--primary) 45%, transparent) 35%, transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+:is(.kt-card, .kt-accordion-item, .kt-toggle-group):not(.beam, .compare)::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), color-mix(in oklab, var(--primary) 8%, transparent), transparent 65%);
+}
+:is(.kt-card, .kt-accordion-item, .kt-toggle-group):not(.beam, .compare):is(:hover, :focus-within, .active)::before,
+:is(.kt-card, .kt-accordion-item, .kt-toggle-group):not(.beam, .compare):is(:hover, :focus-within)::after { opacity: 1; }
+
+/* Comparateur « réseau social / site pro » : ses deux calques doivent rester opaques pour se masquer l'un l'autre */
+.compare, .compare :is(div, span) { background-color: revert-layer; }
+.compare :is(div, span) { box-shadow: revert-layer; }
+
+/* Le verre de la vitrine perd ses reflets */
+.hero-show .lglass::before, .hero-show .lglass::after { content: none; }
