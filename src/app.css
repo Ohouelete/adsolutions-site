@@ -98,6 +98,28 @@ html[data-accent="coral"].dark, html[data-accent="coral"] .dark {
   --ring: #ff5a4e;
 }
 
+/* ---------- Thème « Vert néon » : #15ff00 ----------
+   Très lumineux : en clair un vert bien plus profond (le néon est illisible sur blanc), en sombre le #15ff00 exact
+   avec un texte de bouton vert très foncé (le blanc ne se lit pas dessus). Palette bleue de KTUI → vert, teinte 142. */
+html[data-accent="neon"] {
+  --primary: oklch(58% 0.19 142);
+  --primary-foreground: oklch(1 0 0);
+  --ring: oklch(58% 0.19 142);
+  --color-blue-50: oklch(97.5% 0.03 142);
+  --color-blue-100: oklch(94.5% 0.07 142);
+  --color-blue-400: oklch(80% 0.25 142);
+  --color-blue-500: oklch(70% 0.23 142);
+  --color-blue-600: oklch(58% 0.19 142);
+  --color-blue-700: oklch(50% 0.16 142);
+  --color-blue-800: oklch(42% 0.13 142);
+  --color-blue-950: oklch(25% 0.07 142);
+}
+html[data-accent="neon"].dark, html[data-accent="neon"] .dark {
+  --primary: #15ff00;                               /* oklch(86.7% 0.294 142) */
+  --ring: #15ff00;
+  --primary-foreground: oklch(18% 0.05 142);
+}
+
 /* ---------- Mode « Espresso » : chocolat noir, orange doré ----------
    html.dark[data-tone="espresso"] : mêmes composants KTUI, jetons de couleur en chocolat noir (bruns profonds et chauds, texte crème).
    Teinte 42 (brun rougeâtre du cacao), clarté très basse, chroma plus élevé qu'un simple gris chaud. */
@@ -134,6 +156,9 @@ html[data-tone="espresso"][data-accent="pink"] { --primary: #ff54ae; --ring: #ff
 /* Corail #ff5a4e sur le chocolat */
 html[data-tone="espresso"][data-accent="coral"] { --primary: #ff5a4e; --ring: #ff5a4e; --primary-foreground: oklch(16% 0.035 42);
   --color-blue-600: #ff5a4e; --color-blue-950: oklch(28% 0.08 30); }
+/* Vert néon #15ff00 sur le chocolat */
+html[data-tone="espresso"][data-accent="neon"] { --primary: #15ff00; --ring: #15ff00; --primary-foreground: oklch(16% 0.035 42);
+  --color-blue-600: #15ff00; --color-blue-950: oklch(28% 0.08 142); }
 /* Fond velouté : reflet cacao en haut, chocolat noir en bas */
 html[data-tone="espresso"] { background: radial-gradient(120% 50% at 50% 0%, oklch(18% 0.06 44), oklch(11.5% 0.034 42) 60%) fixed, oklch(11.5% 0.034 42); }
 
@@ -172,6 +197,9 @@ html[data-tone="foret"][data-accent="pink"] { --primary: #ff54ae; --ring: #ff54a
 /* Corail #ff5a4e sur le vert */
 html[data-tone="foret"][data-accent="coral"] { --primary: #ff5a4e; --ring: #ff5a4e; --primary-foreground: oklch(16% 0.035 158);
   --color-blue-600: #ff5a4e; --color-blue-950: oklch(28% 0.08 30); }
+/* Vert néon #15ff00 sur le vert */
+html[data-tone="foret"][data-accent="neon"] { --primary: #15ff00; --ring: #15ff00; --primary-foreground: oklch(16% 0.035 158);
+  --color-blue-600: #15ff00; --color-blue-950: oklch(28% 0.08 142); }
 /* Fond velouté : reflet de sous-bois en haut, vert profond en bas */
 html[data-tone="foret"] { background: radial-gradient(120% 50% at 50% 0%, oklch(18% 0.06 155), oklch(11.5% 0.034 158) 60%) fixed, oklch(11.5% 0.034 158); }
 
