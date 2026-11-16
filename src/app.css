@@ -56,6 +56,27 @@ html[data-accent="orange"].dark, html[data-accent="orange"] .dark {
   --ring: oklch(70.5% 0.213 47.604);
 }
 
+/* ---------- Thème « Rose » : #ff54ae ----------
+   Même principe que l'orange : en clair un rose un cran plus profond (lisible sur blanc),
+   en sombre le #ff54ae exact. La palette bleue de KTUI (badges, alertes…) passe au rose, teinte 352. */
+html[data-accent="pink"] {
+  --primary: oklch(64% 0.235 352);
+  --primary-foreground: oklch(1 0 0);
+  --ring: oklch(64% 0.235 352);
+  --color-blue-50: oklch(97.1% 0.014 352);
+  --color-blue-100: oklch(94.8% 0.03 352);
+  --color-blue-400: oklch(76% 0.17 352);
+  --color-blue-500: oklch(70.4% 0.222 352);
+  --color-blue-600: oklch(64% 0.235 352);
+  --color-blue-700: oklch(55% 0.21 352);
+  --color-blue-800: oklch(46% 0.17 352);
+  --color-blue-950: oklch(28% 0.09 352);
+}
+html[data-accent="pink"].dark, html[data-accent="pink"] .dark {
+  --primary: #ff54ae;                               /* oklch(70.4% 0.222 352) */
+  --ring: #ff54ae;
+}
+
 /* ---------- Mode « Espresso » : chocolat noir, orange doré ----------
    html.dark[data-tone="espresso"] : mêmes composants KTUI, jetons de couleur en chocolat noir (bruns profonds et chauds, texte crème).
    Teinte 42 (brun rougeâtre du cacao), clarté très basse, chroma plus élevé qu'un simple gris chaud. */
@@ -86,6 +107,9 @@ html[data-tone="espresso"].dark, html[data-tone="espresso"] .dark {
 /* Orange plus doré et lumineux sur le chocolat */
 html[data-tone="espresso"][data-accent="orange"] { --primary: oklch(74% 0.18 58); --ring: oklch(74% 0.18 58); --primary-foreground: oklch(16% 0.035 42);
   --color-blue-600: oklch(74% 0.18 58); --color-blue-950: oklch(28% 0.07 45); }
+/* Rose #ff54ae sur le chocolat, texte des boutons en chocolat noir */
+html[data-tone="espresso"][data-accent="pink"] { --primary: #ff54ae; --ring: #ff54ae; --primary-foreground: oklch(16% 0.035 42);
+  --color-blue-600: #ff54ae; --color-blue-950: oklch(28% 0.08 0); }
 /* Fond velouté : reflet cacao en haut, chocolat noir en bas */
 html[data-tone="espresso"] { background: radial-gradient(120% 50% at 50% 0%, oklch(18% 0.06 44), oklch(11.5% 0.034 42) 60%) fixed, oklch(11.5% 0.034 42); }
 
@@ -118,6 +142,9 @@ html[data-tone="foret"].dark, html[data-tone="foret"] .dark {
 /* Orange doré, lumineux sur le vert */
 html[data-tone="foret"][data-accent="orange"] { --primary: oklch(76% 0.17 62); --ring: oklch(76% 0.17 62); --primary-foreground: oklch(16% 0.035 158);
   --color-blue-600: oklch(76% 0.17 62); --color-blue-950: oklch(28% 0.06 150); }
+/* Rose #ff54ae sur le vert, texte des boutons en vert profond */
+html[data-tone="foret"][data-accent="pink"] { --primary: #ff54ae; --ring: #ff54ae; --primary-foreground: oklch(16% 0.035 158);
+  --color-blue-600: #ff54ae; --color-blue-950: oklch(28% 0.08 0); }
 /* Fond velouté : reflet de sous-bois en haut, vert profond en bas */
 html[data-tone="foret"] { background: radial-gradient(120% 50% at 50% 0%, oklch(18% 0.06 155), oklch(11.5% 0.034 158) 60%) fixed, oklch(11.5% 0.034 158); }
 
